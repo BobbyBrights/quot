@@ -3,15 +3,24 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta content='width=device-width, initial-scale=1.0' name='viewport'>
         {% block stylesheets %}
           {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
           {% endstylesheets %}
-        {% endblock %}  
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+      {{ include('shared/header.html.twig') }}
+      <div class='container-fluid quot-container'>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+      </div>
+      {{ include('shared/footer.html.twig') }}
+      {% block javascripts %}
+        {% javascripts 'bundles/app/js/*' %}
+          <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+      {% endblock %}
     </body>
 </html>
