@@ -1,18 +1,44 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
+    <div class='row brand-logo'>
+      <div class="col-lg-12">
+        <a href="/">
+          {% image '%kernel.root_dir%/Resources/public/images/brand-logo.png' %}
+            <img src="{{ asset_url }}" alt="Quot" />
+          {% endimage %}
+        </a>
+      </div>
     </div>
+    <div class='row'>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    </div><!-- /.navbar-collapse -->
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse quot-menu" id="bs-example-navbar-collapse-1">
+        <div class="col-lg-10">
+          <ul class="section-link nav navbar-nav">
+            <li><a href="#">Pre-venta</a></li>
+            <li><a href="#">Camisas</a></li>
+            <li><a href="#">Colecci&oacute;n</a></li>
+            <li><a href="#">Personalizar</a></li>
+            <li><a href="#">Origen</a></li>
+            <li><a href="#">Circulo</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <ul class="cart-links nav navbar-nav">
+            <li><a>cuenta</a></li>
+            <li><a>compras</a></li>
+          </ul>
+        </div>
+      </div><!-- /.navbar-collapse -->
+    </div>
   </div><!-- /.container-fluid -->
 </nav>

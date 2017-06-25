@@ -72,5 +72,15 @@ assetic:
     use_controller: '%kernel.debug%'
     bundles:
          - AppBundle
+    assets:
+      gotham-book-otf:
+        inputs: '%kernel.root_dir%/Resources/public/fonts/GOTHAM-BOOK.OTF'
+        output: 'fonts/gotham-book.otf'
+      gotham-medium-otf:
+        inputs: '%kernel.root_dir%/Resources/public/fonts/GOTHAM-MEDIUM.OTF'
+        output: 'fonts/gotham-medium.otf'
+      questa-grande-otf:
+        inputs: '%kernel.root_dir%/Resources/public/fonts/2-questa_grande_regular_31.otf'
+        output: 'fonts/questa-grande.otf'
     filters:
         cssrewrite: ~
