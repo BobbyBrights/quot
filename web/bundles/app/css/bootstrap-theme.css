@@ -865,3 +865,133 @@ fieldset[disabled] .btn-danger.active {
   text-decoration: underline;
 }
 /* End promo images */
+
+
+/* Collection highlight */
+.info-collection {
+  margin-top: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
+  margin-bottom: 30px;
+}
+
+.info-collection h2 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 40px;
+}
+
+.info-collection h4 {
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-top: 20px;
+}
+
+.info-collection p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-family: gothamBook;
+}
+
+.link-collection {
+  margin-top: 30px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.link-collection a{
+  float: right;
+  font-family: gothamBook;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-top: 40px;
+  position: relative;
+  text-decoration: none;
+  color: #ffbd47;
+  margin-bottom: 70px;
+  text-align: right;
+}
+
+.link-collection a:hover{
+  float: right;
+  font-family: gothamBook;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-top: 40px;
+  position: relative;
+  text-decoration: none;
+  color: #ffbd47;
+  margin-bottom: 70px;
+  text-align: right;
+}
+
+.link-collection a:after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  border-width: 0 0 1px;
+  border-style: solid;
+  text-align: center;
+  text-decoration: none;
+  color: #ffbd47;
+}
+/* End collection highlight */
+
+/* Newsletter */
+
+.newsletter {
+  padding-left: 20px;
+  padding-right:20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #ae8d5f
+}
+
+.newsletter-title {
+  color: #ffffff;
+  text-align: left;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffffff;
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.newsletter-title h3 {
+  display: inline-block;
+  font-family: gothamBook;
+  font-size: 13px;
+  margin:0;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.newsletter form {
+  display: inline-block;
+}
+
+.newsletter input{
+  background-color: #ffffff;
+  color: #e1e1e1;
+  font-family: gothamBook;
+  font-size: 13px;
+  text-transform: uppercase;
+  width: 300px;
+  text-align: center;
+}
+
+.newsletter input::-webkit-input-placeholder {
+  color: #e1e1e1;
+}
+/* End newsletter */
