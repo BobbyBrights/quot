@@ -995,3 +995,66 @@ fieldset[disabled] .btn-danger.active {
   color: #e1e1e1;
 }
 /* End newsletter */
+
+/* Product carousel */
+.product-wrapper {
+  background-size: cover;
+  height: 100%;
+}
+
+.product-caption {
+  text-align: center;
+  height: 80%;
+}
+
+.product-caption h3 {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 40px;
+  color: #000000;
+}
+
+.product-caption p {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.product-links {
+  vertical-align: middle;
+  height: 20%;
+}
+
+.product-single-link {
+    float: right;
+    display: inline;
+    color: #000000;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000000;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.product-single-link a {
+    font-family: gothamBook;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-decoration: none;
+    color: #000000;
+}
+
+.product-single-link a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+/* End product carousel */

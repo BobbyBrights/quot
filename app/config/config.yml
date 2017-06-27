@@ -82,5 +82,20 @@ assetic:
       questa-grande-otf:
         inputs: '%kernel.root_dir%/Resources/public/fonts/2-questa_grande_regular_31.otf'
         output: 'fonts/questa-grande.otf'
+      glyphicons-halflings-eot:
+        inputs: '%kernel.root_dir%/Resources/public/fonts/glyphicons-halflings-regular.eot'
+        output: 'fonts/glyphicons-halflings-regular.eot'
+      glyphicons-halflings-ttf:
+        inputs: '%kernel.root_dir%/Resources/public/fonts/glyphicons-halflings-regular.ttf'
+        output: 'fonts/glyphicons-halflings-regular.ttf'
+      glyphicons-halflings-svg:
+        inputs: '%kernel.root_dir%/Resources/public/fonts/glyphicons-halflings-regular.svg'
+        output: 'fonts/glyphicons-halflings-regular.svg'
+      glyphicons-halflings-woff:
+        inputs: '%kernel.root_dir%/Resources/public/fonts/glyphicons-halflings-regular.woff'
+        output: 'fonts/glyphicons-halflings-regular.woff'
+      glyphicons-halflings-woff2:
+        inputs: '%kernel.root_dir%/Resources/public/fonts/glyphicons-halflings-regular.woff2'
+        output: 'fonts/glyphicons-halflings-regular.woff2'
     filters:
         cssrewrite: ~
