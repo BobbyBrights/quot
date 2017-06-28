@@ -1118,3 +1118,83 @@ fieldset[disabled] .btn-danger.active {
   font-family: gothamBook;
 }
 /* End city promo */
+
+/* Video block */
+.video-promo {
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.video-promo-info {
+  position: relative;
+  min-height: 80%;
+  text-align: center;
+  padding-left:25%;
+  padding-right: 25%;
+  padding-top: 150px;
+  margin-bottom: 100px;
+  z-index:10;
+}
+
+.video-promo-info h3 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.video-promo-info p {
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 11px;
+  font-family: gothamBook;
+  text-align: center;
+}
+
+.video-promo-links {
+  position: relative;
+  min-height: 20%;
+  text-align: center;
+  padding-left:25%;
+  padding-right: 25%;
+  z-index:10;
+  padding-bottom: 5%;
+}
+
+.video-full {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+}
+
+.video-single-link {
+    float: right;
+    display: inline;
+    color: #ffffff;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ffffff;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.video-single-link a {
+    font-family: gothamBook;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.video-single-link a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+/* End video block */
