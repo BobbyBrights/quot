@@ -9,6 +9,10 @@
    src: url('/fonts/gotham-book.otf');
  }
  @font-face {
+   font-family: gothamMedium;
+   src: url('/fonts/gotham-medium.otf');
+ }
+ @font-face {
    font-family: questaGrande;
    src: url('/fonts/questa-grande.otf');
  }
@@ -1058,3 +1062,59 @@ fieldset[disabled] .btn-danger.active {
     color: #000000;
 }
 /* End product carousel */
+
+/* City promo */
+.city-promo {
+  background-size: cover;
+  height: 100%;
+  text-align: center;
+  padding-left:10%;
+  padding-right: 10%;
+  padding-top: 150px;
+  min-height: 499px;
+}
+
+.city-promo h3 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 40px;
+  color: #ffffff;
+  margin-bottom: 70px;
+}
+
+.promo-block {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.promo-block h4 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: 11px;
+    font-family: gothamBook;
+}
+
+.promo-block h4:after {
+    content: '';
+    width: 60%;
+    position: absolute;
+    left: 20%;
+    bottom: -3px;
+    border-width: 0 0 1px;
+    border-style: solid;
+    text-align: center;
+}
+
+.promo-block p {
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 11px;
+  font-family: gothamBook;
+}
+/* End city promo */
