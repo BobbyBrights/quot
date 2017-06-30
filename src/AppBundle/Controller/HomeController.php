@@ -10,9 +10,11 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-      /*return new Response(
-        '<html><body>Hello world</body></html>'
-      );*/
       return $this->render('home/index.html.twig');
+    }
+
+    public function listAction()
+    {
+      return $this->render('home/product-list.html.twig');
     }
 }

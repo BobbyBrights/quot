@@ -5,3 +5,6 @@
 home:
     path:     /
     defaults: { _controller: AppBundle:Home:index }
+product_list:
+    path:     /demo/product-list
+    defaults: { _controller: AppBundle:Home:list }

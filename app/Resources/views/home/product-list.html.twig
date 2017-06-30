@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Home{% endblock %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='detail-wrapper'>
+        <h1>La vito 2017 - II</h1>
+        <div class="owl-carousel">
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+    console.log('carousel');
+    $(document).ready(function(){
+      $(".owl-carousel").owlCarousel({
+         loop:true,
+         margin:10,
+         responsiveClass:true,
+         responsive:{
+           0:{
+               items:1,
+               nav:true
+           },
+           600:{
+               items:3,
+               nav:false
+           },
+           1000:{
+               items:5,
+               nav:true,
+               loop:false
+           }
+         }
+      });
+    });
+  </script>
+{% endblock %}
