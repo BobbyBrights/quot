@@ -1203,6 +1203,8 @@ fieldset[disabled] .btn-danger.active {
 .detail-wrapper {
   padding-top: 30px;
   padding-bottom: 30px;
+  border-bottom: 7px solid #000000;
+  margin-bottom: 20px;
 }
 
 .detail-wrapper h1 {
