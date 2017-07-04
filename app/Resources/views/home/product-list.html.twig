@@ -18,6 +18,13 @@
       </div>
     </div>
   </div>
+  <div class='row'>
+    <div class='col-md-12'>
+      {{ include('home/partials/product-detail.html.twig', { 'class': 'detail-1' }) }}
+      {{ include('home/partials/product-detail.html.twig', { 'class': 'detail-2' }) }}
+      {{ include('home/partials/product-detail.html.twig', { 'class': 'detail-3' }) }}
+    </div>
+  </div>
 {% endblock %}
 
 {% block javascripts %}
@@ -25,6 +32,11 @@
   <script>
     console.log('carousel');
     $(document).ready(function(){
+
+      $('#detail-1').carousel();
+      $('#detail-2').carousel();
+      $('#detail-3').carousel();
+
       $(".owl-carousel").owlCarousel({
          loop:true,
          margin:10,
@@ -32,7 +44,7 @@
          responsive:{
            0:{
                items:1,
-               nav:true
+               nav:false
            },
            600:{
                items:3,
@@ -40,7 +52,7 @@
            },
            1000:{
                items:5,
-               nav:true,
+               nav:false,
                loop:false
            }
          }

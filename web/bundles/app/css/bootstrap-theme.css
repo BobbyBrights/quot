@@ -1269,4 +1269,93 @@ fieldset[disabled] .btn-danger.active {
   padding: 5px;
   background-color: #ffffff;
 }
+
+.product-detail-row {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.product-detail-carousel-caption {
+    position: absolute;
+    right: 45%;
+    bottom: 50px;
+    left: 5%;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
+.product-detail-carousel-right {
+  right: 40% !important;
+  left: auto;
+}
+
+.product-detail {
+  padding-top: 0px;
+  padding-bottom: 30px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.product-detail h2{
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 36px;
+  color: #000000;
+  margin: 0;
+  margin-bottom:30px;
+}
+
+.product-detail-info-block {
+  border-top: 1px solid #e1e1e1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.product-detail-info-block span{
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.product-detail-info-block h3{
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.product-detail-info-block p{
+  font-family: gothamBook;
+  font-size: 12px;
+}
+
+.product-detail-info-block a {
+  color: #000000;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  display: inline-block;
+}
+
+.product-detail-info-block a:hover {
+  color: #000000;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+}
+
+.aligned_right {
+  text-align: right;
+}
+
+.no-border {
+  border: none;
+}
 /* End product detail */
