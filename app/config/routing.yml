@@ -8,3 +8,6 @@ home:
 product_list:
     path:     /demo/product-list
     defaults: { _controller: AppBundle:Home:list }
+product_modal:
+    path:     /demo/product-list-modal
+    defaults: { _controller: AppBundle:Home:modal }

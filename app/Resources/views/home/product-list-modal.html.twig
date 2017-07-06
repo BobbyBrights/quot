@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Home{% endblock %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='detail-wrapper'>
+        <h1>La vito 2017 - II</h1>
+        <div class="owl-carousel">
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12'>
+      {{ include('home/partials/product-detail.html.twig', { 'class': 'detail-1' }) }}
+      {{ include('home/partials/product-detail.html.twig', { 'class': 'detail-2' }) }}
+      {{ include('home/partials/product-detail.html.twig', { 'class': 'detail-3' }) }}
+    </div>
+  </div>
+  <div class="modal fade white-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content white-modal-content">
+        <div class='white-modal-wrapper'>
+          <h2>Primero los primeros</h2>
+          <h3>Personalizacion</h3>
+          <p>
+            Importancia y valor a lo individual. Cada una de nuestras camisas es
+            una edicion limitada de 50 unidades
+          </p>
+          <div class='white-modal-links'>
+            <a>
+              Personalizar
+            </a>
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+    console.log('carousel');
+    $(document).ready(function(){
+      $('#myModal').modal();
+
+      $('#detail-1').carousel();
+      $('#detail-2').carousel();
+      $('#detail-3').carousel();
+
+      $(".owl-carousel").owlCarousel({
+         loop:true,
+         margin:10,
+         responsiveClass:true,
+         responsive:{
+           0:{
+               items:1,
+               nav:false
+           },
+           600:{
+               items:3,
+               nav:false
+           },
+           1000:{
+               items:5,
+               nav:false,
+               loop:false
+           }
+         }
+      });
+    });
+  </script>
+{% endblock %}

@@ -1360,4 +1360,60 @@ fieldset[disabled] .btn-danger.active {
 .no-border {
   border: none;
 }
+
+.white-modal {
+  background-color:rgba(255, 255, 255, 0.8);
+}
+
+.white-modal-wrapper {
+  padding: 40px
+}
+
+.white-modal-wrapper h2 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 36px;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.white-modal-wrapper h3 {
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.white-modal-wrapper p {
+  font-family: gothamBook;
+  font-size: 12px;
+}
+
+.white-modal-links {
+  width: 100%;
+  text-align: right;
+}
+
+.white-modal-wrapper a {
+  display: inline-block;
+  font-family: gothamBook;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-top: 40px;
+  text-decoration: none;
+  color: #ffbd47;
+  text-align: right;
+  border-bottom: 2px solid #ffbd47;
+}
+
+.white-modal-wrapper a:hover {
+  text-decoration: none;
+  color: #ffbd47;
+}
 /* End product detail */

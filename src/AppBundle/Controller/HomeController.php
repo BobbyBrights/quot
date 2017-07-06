@@ -17,4 +17,9 @@ class HomeController extends Controller
     {
       return $this->render('home/product-list.html.twig');
     }
+
+    public function modalAction()
+    {
+      return $this->render('home/product-list-modal.html.twig');
+    }
 }
