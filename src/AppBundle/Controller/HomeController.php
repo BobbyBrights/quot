@@ -22,4 +22,9 @@ class HomeController extends Controller
     {
       return $this->render('home/product-list-modal.html.twig');
     }
+
+    public function productToCartAction()
+    {
+      return $this->render('home/product-to-cart.html.twig');
+    }
 }

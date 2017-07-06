@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Home{% endblock %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='product-to-cart-wrapper'>
+        <div class='row'>
+          <div class='col-md-6'>
+            <div class='row'>
+              <div class='col-md-5'>
+                <div class='product-teaser product-to-cart-shirt'>
+                  <a class='shirt-block'>
+                    <div class='shirt-image'>
+                      {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
+                        <img src="{{ asset_url }}" alt="cellphone"/>
+                      {% endimage %}
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class='col-md-7 product-to-cart-detail'>
+                <h2>Rosatta</h2>
+                <span>$150.000</span>
+                <div class='product-to-cart-table'>
+                  <div class='row'>
+                    <div class='col-md-6'>
+                      <h4>Talla S</h4>
+                      <p>
+                        Cuello semi-frances
+                        puño redondo
+                      </p>
+                    </div>
+                    <div class='col-md-6 align-right'>
+                      <h4>Talla S</h4>
+                      <p>
+                        Botones rojos
+                        hilo rojo
+                      </p>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-md-6'>
+                      <h4>Combinacion</h4>
+                      <p>
+                        Pechera
+                        Puños
+                      </p>
+                    </div>
+                    <div class='col-md-6 align-right'>
+                    </div>
+                  </div>
+                </div>
+                <div class='product-to-cart-stock'>
+                  20 de 50
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-6'>
+            <div class='product-to-cart-links'>
+              <a>Editar</a>
+              <a>Seguir al checkout</a>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='detail-wrapper'>
+        <h1>La vito 2017 - II</h1>
+        <div class="owl-carousel">
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+          {{ include('home/partials/product-teaser.html.twig') }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+    console.log('carousel');
+    $(document).ready(function(){
+      $(".owl-carousel").owlCarousel({
+         loop:true,
+         margin:10,
+         responsiveClass:true,
+         responsive:{
+           0:{
+               items:1,
+               nav:false
+           },
+           600:{
+               items:3,
+               nav:false
+           },
+           1000:{
+               items:5,
+               nav:false,
+               loop:false
+           }
+         }
+      });
+    });
+  </script>
+{% endblock %}

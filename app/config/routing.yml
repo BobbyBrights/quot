@@ -11,3 +11,6 @@ product_list:
 product_modal:
     path:     /demo/product-list-modal
     defaults: { _controller: AppBundle:Home:modal }
+product_to_cart:
+    path:     /demo/product-to-cart
+    defaults: { _controller: AppBundle:Home:productToCart }

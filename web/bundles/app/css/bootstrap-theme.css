@@ -1416,4 +1416,80 @@ fieldset[disabled] .btn-danger.active {
   text-decoration: none;
   color: #ffbd47;
 }
+
+.product-to-cart-wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 7px solid #000000;
+}
+
+.product-to-cart-shirt {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.product-to-cart-detail {
+
+}
+
+.product-to-cart-stock {
+  color: #e2e2e2;
+  padding-top: 10px;
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.product-to-cart-detail h2 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 36px;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.product-to-cart-detail span {
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.product-to-cart-table {
+  margin-top:20px;
+}
+
+.product-to-cart-table p {
+  font-family: gothamBook;
+  font-size: 12px;
+}
+
+.product-to-cart-table h4 {
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.product-to-cart-links {
+  vertical-align : bottom;
+  margin-left: 50px;
+  padding-top: 200px;
+}
+
+.product-to-cart-links a {
+  color: #000000;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  display: inline;
+  margin-right: 50px;
+  font-weight: bold;
+}
 /* End product detail */
