@@ -1239,8 +1239,16 @@ fieldset[disabled] .btn-danger.active {
   text-align: center;
 }
 
+.align-left {
+  text-align: left;
+}
+
 .align-right {
   text-align: right;
+}
+
+.align-center {
+  text-align: center;
 }
 
 .shirt-block {
@@ -1493,3 +1501,129 @@ fieldset[disabled] .btn-danger.active {
   font-weight: bold;
 }
 /* End product detail */
+
+/* User forms */
+.user-form-wrapper {
+  background-color: #e2e2e2;
+  height: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.user-form {
+  width: 500px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+}
+
+.user-form h1 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 38px;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.user-form form {
+  text-align: justify;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+.user-form label{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.user-form input{
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  height: 42px;
+  margin-bottom: 20px !important;
+  border: solid 1px #e2e2e2;
+}
+
+.user-form  a{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffbd47;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffbd47;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 auto;
+  letter-spacing: 2px;
+}
+
+.user-form  a:hover{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #ffbd47;
+  text-decoration: none;
+}
+
+.user-form .input-group{
+  width: 100% !important;
+}
+
+.new-user {
+
+}
+
+.new-user a{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+  border: none;
+}
+
+.new-user a:hover{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+  border: none;
+}
+
+.new-user-link {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.new-user-link a{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #000000;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 auto;
+  letter-spacing: 2px;
+}
+
+.new-user-link  a:hover{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+}
+/* End user forms */

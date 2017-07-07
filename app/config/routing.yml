@@ -14,3 +14,12 @@ product_modal:
 product_to_cart:
     path:     /demo/product-to-cart
     defaults: { _controller: AppBundle:Home:productToCart }
+login:
+    path:     /demo/login
+    defaults: { _controller: AppBundle:Home:login }
+sign-up-one:
+    path:     /demo/sign-up-one
+    defaults: { _controller: AppBundle:Home:signUpOne }
+sign-up-two:
+    path:     /demo/sign-up-two
+    defaults: { _controller: AppBundle:Home:signUpTwo }

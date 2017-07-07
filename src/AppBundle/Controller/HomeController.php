@@ -27,4 +27,19 @@ class HomeController extends Controller
     {
       return $this->render('home/product-to-cart.html.twig');
     }
+
+    public function loginAction()
+    {
+      return $this->render('home/login.html.twig');
+    }
+
+    public function signUpOneAction()
+    {
+      return $this->render('home/sign-up-one.html.twig');
+    }
+
+    public function signUpTwoAction()
+    {
+      return $this->render('home/sign-up-two.html.twig');
+    }
 }

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Home{% endblock %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='user-form-wrapper'>
+        <div class='user-form'>
+          <h1>Cuenta</h1>
+          <form>
+            <label for="email">Email</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="email" aria-describedby="basic-addon3">
+            </div>
+            <label for="password">Contraseña</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="password" aria-describedby="basic-addon3">
+            </div>
+            <div class="input-group align-center">
+              <a>Entrar</a>
+            </div>
+          </form>
+          <div class="input-group align-left new-user">
+            <a>Eres nuevo?</a>
+          </div>
+          <div class="input-group new-user-link">
+            <a>Crear cuenta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
