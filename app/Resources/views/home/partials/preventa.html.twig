@@ -3,6 +3,6 @@
     {{ include('home/partials/promo-image.html.twig')}}
   </div>
   <div class="col-lg-6">
-    {{ include('home/partials/promo-text.html.twig')}}
+    {{ include('home/partials/promo-text.html.twig', {'description': module.field_descripcion, 'text': module.texts }) }}
   </div>
 </div>
