@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Home{% endblock %}
+
+{% block body %}
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='user-form-wrapper'>
+      <div class='user-form'>
+        <h1>Compras</h1>
+        <form>
+          {{ include('home/partials/cart-item.html.twig') }}
+          {{ include('home/partials/cart-item.html.twig') }}
+          {{ include('home/partials/cart-item.html.twig') }}
+          <div class='row invoice-block'>
+            <div class='col-md-9 align-right'>
+              Total
+            </div>
+            <div class='col-md-3 align-right'>
+              $500.000
+            </div>
+          </div>
+          <div class='row invoice-block'>
+            <h4>Direcci&oacute;n de env&iacute;o</h4>
+            <p>
+              Calle 95# 21-39 apto 201
+            </p>
+          </div>
+          <div class='row invoice-block'>
+            <h4>Modo de pago</h4>
+            <p>
+              Al dar click en comprar, se redigira al sitio de nuestro
+              servidor de pagos autorizado
+            </p>
+          </div>
+          <div class="input-group align-center margin-top-40">
+            <a>Comprar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

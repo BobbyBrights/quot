@@ -23,3 +23,9 @@ sign-up-one:
 sign-up-two:
     path:     /demo/sign-up-two
     defaults: { _controller: AppBundle:Home:signUpTwo }
+payment-method:
+    path:     /demo/payment-method
+    defaults: { _controller: AppBundle:Home:paymentMethod }
+cart-items:
+    path:     /demo/cart-items
+    defaults: { _controller: AppBundle:Home:cartItems }

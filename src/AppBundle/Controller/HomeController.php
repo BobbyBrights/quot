@@ -42,4 +42,14 @@ class HomeController extends Controller
     {
       return $this->render('home/sign-up-two.html.twig');
     }
+
+    public function paymentMethodAction()
+    {
+      return $this->render('home/payment-method.html.twig');
+    }
+
+    public function cartItemsAction()
+    {
+      return $this->render('home/cart-items.html.twig');
+    }
 }
