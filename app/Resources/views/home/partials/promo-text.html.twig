@@ -1,24 +1,8 @@
 <div class='promo-container'>
-  <h2>primero los primeros</h2>
-  <h4>Uno en muy pocos</h4>
-  <p>
-    Importancia y valor a lo individual. Cada una de nuestras
-    camisas es una edicion limitada de 50 unidades
-  </p>
-  <h4>Uno en muy pocos</h4>
-  <p>
-    Importancia y valor a lo individual. Cada una de nuestras
-    camisas es una edicion limitada de 50 unidades
-  </p>
-  <a>Disponible en pre-venta</a>
-  <h4>Uno en muy pocos</h4>
-  <p>
-    Importancia y valor a lo individual. Cada una de nuestras
-    camisas es una edicion limitada de 50 unidades
-  </p>
-  <h4>Uno en muy pocos</h4>
-  <p>
-    Importancia y valor a lo individual. Cada una de nuestras
-    camisas es una edicion limitada de 50 unidades
-  </p>
+    {% if description is defined %}
+        <h2>{{ description }}</h2>
+    {% endif %}
+    {% if text is defined %}
+      {{ text|raw }}
+    {% endif %}
 </div>
