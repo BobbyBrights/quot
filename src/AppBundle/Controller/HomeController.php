@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        $homeJson = file_get_contents('http://dev-quot.pantheonsite.io/modulos-home?a2b4c1d');
+        $homeJson = file_get_contents($this->container->getParameter('json_home'));
         $home = json_decode($homeJson);
         return $this->render('home/index.html.twig', array('home' => $home));
     }
