@@ -1,7 +1,7 @@
 <div class='promo-image'>
-  <div class='image-container'>
-    {% image '%kernel.root_dir%/Resources/public/images/test-promo.png' %}
-      <img src="{{ asset_url }}" alt="cellphone"/>
-    {% endimage %}
-  </div>
+    <div class='image-container'>      
+        {% image '%kernel.root_dir%/Resources/public/images/test-promo.png' %}
+          <img src="{% if src_image is defined %}{{ src_image }}{% endif %}" alt="{% if alt is defined %}{{ alt }}{% endif %}"/>
+        {% endimage %} 
+    </div>
 </div>
