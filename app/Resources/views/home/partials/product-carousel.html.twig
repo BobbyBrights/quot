@@ -6,54 +6,44 @@
   </ol>-->
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      {% image '%kernel.root_dir%/Resources/public/images/back-coleccion.png' %}
-        <img src="{{ asset_url }}" alt=""/>
-      {% endimage %}
-      <div class="carousel-caption">
-        {% image '%kernel.root_dir%/Resources/public/images/shirt-bg.png' %}
-          <div class='product-wrapper' style="background-image:url({{asset_url}}); background-position: center">
-            <div class='product-caption'>
-              <h3>El Felo</h3>
-              <p>De la ciudad al oceano</p>
-            </div>
-            <div class='product-links'>
-              <div class='product-single-link'>
-                <a>Personalizar</a>
-              </div>
-              <div class='product-single-link'>
-                <a>Comprar</a>
-              </div>
-            </div>
-          </div>
-        {% endimage %}
-      </div>
+    <div class="carousel-inner" role="listbox">
+        {% set aux = 1 %}
+        {% set aux1 = 0 %}
+        {% set totalElemts = module.imagen|length - 1 %}
+        {% for key, carousel in module.imagen %}
+            {% if aux1 < totalElemts %}
+                {% if key == 0 %}
+                    <div class="item active">
+                {% else %}
+                    <div class="item">
+                {% endif %}
+                {% image '%kernel.root_dir%/Resources/public/images/back-coleccion.png' %}
+                    <img src="{{ module.imagen[aux1].src }}" alt=""/>
+                {% endimage %}
+                    <div class="carousel-caption">
+                        {% image '%kernel.root_dir%/Resources/public/images/shirt-bg.png' %}
+                            <div class='product-wrapper' style="background-image:url({{ module.imagen[aux].src }}); background-position: center">
+                                <div class='product-caption'>
+                                    <h3>{{ module.imagen[aux1].alt }}</h3>
+                                    <p>{{ module.imagen[aux].alt }}</p>
+                                </div>
+                                <div class='product-links'>
+                                    <div class='product-single-link'>
+                                        <a>Personalizar</a>
+                                    </div>
+                                        <div class='product-single-link'>
+                                        <a>Comprar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endimage %}
+                    </div>
+                </div>
+                {% set aux = aux + 2 %}
+                {% set aux1 = aux1 + 2 %}
+            {% endif %}
+        {% endfor %}
     </div>
-    <div class="item">
-      {% image '%kernel.root_dir%/Resources/public/images/back-coleccion.png' %}
-        <img src="{{ asset_url }}" alt=""/>
-      {% endimage %}
-      <div class="carousel-caption">
-        {% image '%kernel.root_dir%/Resources/public/images/shirt-bg.png' %}
-          <div class='product-wrapper' style="background-image:url({{asset_url}}); background-position: center">
-            <div class='product-caption'>
-              <h3>El Felo</h3>
-              <p>De la ciudad al oceano</p>
-            </div>
-            <div class='product-links'>
-              <div class='product-single-link'>
-                <a>Personalizar</a>
-              </div>
-              <div class='product-single-link'>
-                <a>Comprar</a>
-              </div>
-            </div>
-          </div>
-        {% endimage %}
-      </div>
-    </div>
-  </div>
 
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

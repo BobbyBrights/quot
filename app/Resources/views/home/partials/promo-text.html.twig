@@ -1,6 +1,9 @@
 <div class='promo-container'>
+    {% if title is defined %}
+        <h2>{{ title }}</h2>
+    {% endif %}
     {% if description is defined %}
-        <h2>{{ description }}</h2>
+        <p>{{ description }}</p>
     {% endif %}
     {% if text is defined %}
       {{ text|raw }}

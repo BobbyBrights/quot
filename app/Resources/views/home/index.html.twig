@@ -4,11 +4,9 @@
 
 {% block body %}
     {% for key, module in home %}
-        {{ include ('home/partials/'~ module.title|lower ~'.html.twig', {'module': module}) }}
+        {{ include ('home/partials/'~ module.title_module|lower ~'.html.twig', {'module': module}) }}
     {% endfor %}
-    {{ include('home/partials/collection-highlight.html.twig') }}
     {{ include('home/partials/newsletter.html.twig') }}
-    {{ include('home/partials/product-carousel.html.twig') }}
     {{ include('home/partials/video-promo.html.twig') }}
     {{ include('home/partials/city-promo.html.twig') }}
 {% endblock %}
