@@ -3,7 +3,6 @@
 {% block title %}Quot - Colecciones{% endblock %}
 
 {% block body %}
-    {{ dump(collections) }}
     {% for col in collections %}
         {% if col.products is not empty %}
             <div class='row'>
