@@ -1,0 +1,38 @@
+<div class='row product-detail-row'>
+    <div id="ancla_{{ vid }}" name="ancla_{{ vid }}" class='col-md-6'>
+        <div id="detail-{{ class }}" class="carousel slide" data-ride="carousel">
+          <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  {% image '%kernel.root_dir%/Resources/public/images/fondo-3.jpg' %}
+                    <img src="{{ asset_url }}" width='100%'/>
+                  {% endimage %}
+                  <div class="product-detail-carousel-caption">
+                    {% image '%kernel.root_dir%/Resources/public/images/white-shirt-2.png' %}
+                      <img src="{{ asset_url }}" width='100%'/>
+                    {% endimage %}
+                  </div>
+                </div>
+                <div class="item">
+                    {% image '%kernel.root_dir%/Resources/public/images/fondo-3.jpg' %}
+                        <img src="{{ asset_url }}" width='100%'/>
+                    {% endimage %}
+                    <div class="product-detail-carousel-caption">
+                        {% image '%kernel.root_dir%/Resources/public/images/white-shirt-2.png' %}
+                            <img src="{{ asset_url }}" width='100%'/>
+                        {% endimage %}
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#{{ class }}" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control product-detail-carousel-right" href="#{{ class }}" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
