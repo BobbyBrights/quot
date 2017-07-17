@@ -49,3 +49,6 @@ payment-method:
 cart-items:
     path:     /demo/cart-items
     defaults: { _controller: AppBundle:Home:cartItems }
+products:
+    path:     /colecciones
+    defaults: { _controller: AppBundle:Products:collections }

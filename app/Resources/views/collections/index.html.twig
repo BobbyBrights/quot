@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Colecciones{% endblock %}
+
+{% block body %}
+    {% for col in collections %}
+        {% if col.products is not empty %}
+            <div class='row'>
+                <div class='col-md-12'>
+                    <div class='detail-wrapper'>
+                      <h1>{{ col.title_collection }}</h1>
+                        <div class="owl-carousel">
+                            {% for base in col.products %}
+                                {{ include('collections/partials/product-teaser.html.twig', {'image': base.images.0, 'title': base.title, 'vid': base.vid }) }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-md-12'>
+                    {% for base in col.products %}
+                        {{ include('collections/partials/product-detail.html.twig', { 'class': loop.revindex, 'vid': base.vid }) }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+    $(document).ready(function(){
+      $('#detail-1').carousel();
+      $('#detail-2').carousel();
+      $('#detail-3').carousel();
+      $(".owl-carousel").owlCarousel({
+         loop:true,
+         margin:10,
+         responsiveClass:true,
+         responsive:{
+           0:{
+               items:1,
+               nav:false
+           },
+           600:{
+               items:3,
+               nav:false
+           },
+           1000:{
+               items:5,
+               nav:false,
+               loop:false
+           }
+         }
+      });
+    });
+  </script>
+{% endblock %}
