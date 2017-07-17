@@ -1,6 +1,28 @@
 imports:
     - { resource: config.yml }
 
+hwi_oauth:
+    # list of names of the firewalls in which this bundle is active, this setting MUST be set
+    connect: ~
+    firewall_names: [secured_area]
+    fosub:
+        username_iterations: 30
+        properties:
+            # these properties will be used/redefined later in the custom FOSUBUserProvider service.
+            facebook: facebook_id
+            google:   google_id
+    resource_owners:
+        facebook:
+            type:                'facebook'
+            client_id:           '1551315244925566'
+            client_secret:       'e87a3d76a527dd0e8a05ea7076027e94'
+            scope:               'email public_profile'
+        google:
+            type:                'google'
+            client_id:           '741458678928-h7r8fkc7i65gcl3acoohrns44f1ngevg.apps.googleusercontent.com'
+            client_secret:       'hyyGxggfPVoOcTwto30K7tEk'
+            scope:               'email profile'
+
 #framework:
 #    validation:
 #        cache: validator.mapping.cache.apc
