@@ -1,0 +1,26 @@
+{% extends 'HWIOAuthBundle::layout.html.twig' %}
+
+{% block title %}Quot - Registro{% endblock %}
+
+{% block hwi_oauth_content %}
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='user-form-wrapper'>
+      <div class='user-form'>
+        <h1>
+          {{ 'header.register' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}
+        </h1>
+        {{ form_start(form, {'action': path('hwi_oauth_connect_registration', {'key': key}), 'attr': {'class': 'hwi_oauth_registration_register'}}) }}
+          {{ form_widget(form) }}
+          <div class="input-group align-center">
+            <button type="submit">{{ 'connect.registration.submit'|trans({}, 'HWIOAuthBundle') }}</button>
+          </div>
+          <div class="input-group align-center">
+            <a href="{{ path('hwi_oauth_connect') }}" class="btn">{{ 'connect.registration.cancel' | trans({}, 'HWIOAuthBundle') }}</a>
+          </div>
+        {{ form_end(form) }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock hwi_oauth_content %}

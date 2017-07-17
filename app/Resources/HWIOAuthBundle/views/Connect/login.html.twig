@@ -1,0 +1,56 @@
+{% extends 'HWIOAuthBundle::layout.html.twig' %}
+
+{% block title %}Quot - Iniciar sesi&oacute;n{% endblock %}
+
+{% block hwi_oauth_content %}
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='user-form-wrapper'>
+        <div class='user-form'>
+          <h1>Cuenta</h1>
+          <form action="{{ path("fos_user_security_check") }}" method="post">
+            <label for="email">Email</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="username" name="_username" aria-describedby="basic-addon3">
+            </div>
+            <label for="password">Contraseña</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="password" name="_password" aria-describedby="basic-addon3">
+            </div>
+            <div class="input-group align-center">
+              {% if error is defined and error %}
+                  <span>{{ error }}</span>
+              {% endif %}
+              {% for owner in hwi_oauth_resource_owners() %}
+                {% if owner == 'facebook' %}
+                  {% image '%kernel.root_dir%/Resources/public/images/facebook-connect.png' %}
+                    <a class='image-link' href="{{ hwi_oauth_login_url(owner) }}">
+                      <img src="{{ asset_url }}" alt={{owner}} width="200"/>
+                    </a><br />
+                  {% endimage %}
+                {% endif %}
+                {% if owner == 'google' %}
+                  {% image '%kernel.root_dir%/Resources/public/images/google-plus.png' %}
+                    <a class='image-link' href="{{ hwi_oauth_login_url(owner) }}">
+                      <img src="{{ asset_url }}" alt={{owner}} width="150"/>
+                    </a><br />
+                  {% endimage %}
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="input-group align-center">
+              <button type="submit">Entrar</button>
+            </div>
+          </form>
+          <div class="input-group align-left new-user">
+            <a>Eres nuevo?</a>
+          </div>
+          <div class="input-group new-user-link">
+            <a href="/register">Crear cuenta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock hwi_oauth_content %}

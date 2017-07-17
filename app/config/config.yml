@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: es
 
 framework:
     #esi:             ~
@@ -30,11 +30,20 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+    translator: ~
 
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: secured_area
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: "info@quot.com"
+        sender_name: "info quot"
 
 # Doctrine Configuration
 doctrine:
@@ -72,6 +81,8 @@ assetic:
     use_controller: '%kernel.debug%'
     bundles:
          - AppBundle
+         - HWIOAuthBundle
+         - FOSUserBundle
     assets:
       gotham-book-otf:
         inputs: '%kernel.root_dir%/Resources/public/fonts/GOTHAM-BOOK.OTF'

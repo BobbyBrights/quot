@@ -1541,6 +1541,7 @@ fieldset[disabled] .btn-danger.active {
   font-family: gothamBook;
   font-size: 12px;
   text-transform: uppercase;
+  display: block;
 }
 
 .user-form input{
@@ -1550,6 +1551,25 @@ fieldset[disabled] .btn-danger.active {
   height: 42px;
   margin-bottom: 20px !important;
   border: solid 1px #e2e2e2;
+  width:100%;
+  padding: 6px 12px;
+}
+
+.user-form  button{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffbd47;
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 2px solid #ffbd47;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  background-color: #ffffff;
 }
 
 .user-form  a{
@@ -1563,6 +1583,7 @@ fieldset[disabled] .btn-danger.active {
   display: inline-block;
   font-weight: bold;
   margin: 0 auto;
+  margin-top: 10px;
   letter-spacing: 2px;
 }
 
@@ -1572,6 +1593,10 @@ fieldset[disabled] .btn-danger.active {
   text-transform: uppercase;
   color: #ffbd47;
   text-decoration: none;
+}
+
+.user-form .image-link {
+  border: none;
 }
 
 .user-form .input-group{

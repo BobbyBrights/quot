@@ -1,0 +1,20 @@
+{% extends 'HWIOAuthBundle::layout.html.twig' %}
+
+{% block title %}Quot - Registro exitoso{% endblock %}
+
+{% block hwi_oauth_content %}
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='user-form-wrapper'>
+      <div class='user-form'>
+        <h1>
+          {{ 'header.registration_success' | trans({'%username%': app.user.username}, 'HWIOAuthBundle') }}
+        </h1>
+        <div class="input-group align-center">
+          <a href='/'>Volver al home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock hwi_oauth_content %}
