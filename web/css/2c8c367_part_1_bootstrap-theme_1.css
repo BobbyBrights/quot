@@ -9,6 +9,10 @@
    src: url('/fonts/gotham-book.otf');
  }
  @font-face {
+   font-family: gothamMedium;
+   src: url('/fonts/gotham-medium.otf');
+ }
+ @font-face {
    font-family: questaGrande;
    src: url('/fonts/questa-grande.otf');
  }
@@ -995,3 +999,760 @@ fieldset[disabled] .btn-danger.active {
   color: #e1e1e1;
 }
 /* End newsletter */
+
+/* Product carousel */
+.product-wrapper {
+  background-size: cover;
+  height: 100%;
+}
+
+.product-caption {
+  text-align: center;
+  height: 80%;
+}
+
+.product-caption h3 {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 40px;
+  color: #000000;
+}
+
+.product-caption p {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.product-links {
+  vertical-align: middle;
+  height: 20%;
+}
+
+.product-single-link {
+    float: right;
+    display: inline;
+    color: #000000;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000000;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.product-single-link a {
+    font-family: gothamBook;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-decoration: none;
+    color: #000000;
+}
+
+.product-single-link a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+/* End product carousel */
+
+/* City promo */
+.city-promo {
+  background-size: cover;
+  height: 100%;
+  text-align: center;
+  padding-left:10%;
+  padding-right: 10%;
+  padding-top: 150px;
+  min-height: 499px;
+}
+
+.city-promo h3 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 40px;
+  color: #ffffff;
+  margin-bottom: 70px;
+}
+
+.promo-block {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.promo-block h4 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: 11px;
+    font-family: gothamBook;
+}
+
+.promo-block h4:after {
+    content: '';
+    width: 60%;
+    position: absolute;
+    left: 20%;
+    bottom: -3px;
+    border-width: 0 0 1px;
+    border-style: solid;
+    text-align: center;
+}
+
+.promo-block p {
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 11px;
+  font-family: gothamBook;
+}
+/* End city promo */
+
+/* Video block */
+.video-promo {
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.video-promo-info {
+  position: relative;
+  min-height: 80%;
+  text-align: center;
+  padding-left:25%;
+  padding-right: 25%;
+  padding-top: 150px;
+  margin-bottom: 100px;
+  z-index:10;
+}
+
+.video-promo-info h3 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.video-promo-info p {
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 11px;
+  font-family: gothamBook;
+  text-align: center;
+}
+
+.video-promo-links {
+  position: relative;
+  min-height: 20%;
+  text-align: center;
+  padding-left:25%;
+  padding-right: 25%;
+  z-index:10;
+  padding-bottom: 5%;
+}
+
+.video-full {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+}
+
+.video-single-link {
+    float: right;
+    display: inline;
+    color: #ffffff;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ffffff;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.video-single-link a {
+    font-family: gothamBook;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.video-single-link a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+/* End video block */
+
+/* Product detail */
+.detail-wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 7px solid #000000;
+  margin-bottom: 20px;
+}
+
+.detail-wrapper h1 {
+  color: #ffbd47;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.product-teaser {
+  margin-right: 15px;
+}
+
+.product-price {
+  padding: 5px;
+  border-bottom: 1px solid #000000;
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.product-stock {
+  color: #e2e2e2;
+  padding: 10px;
+  border-bottom: 1px solid #e2e2e2;
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.shirt-block {
+  background-color: #e2e2e2;
+  text-decoration: none;
+  padding: 20px;
+  display: block;
+  text-align: center;
+  color: #000000;
+}
+
+.shirt-block:hover {
+  background-color: #ae8d5f;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.shirt-block h4 {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.shirt-image {
+  padding: 5px;
+  background-color: #ffffff;
+}
+
+.product-detail-row {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.product-detail-carousel-caption {
+    position: absolute;
+    right: 45%;
+    bottom: 50px;
+    left: 5%;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
+.product-detail-carousel-right {
+  right: 40% !important;
+  left: auto;
+}
+
+.product-detail {
+  padding-top: 0px;
+  padding-bottom: 30px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.product-detail h2{
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 36px;
+  color: #000000;
+  margin: 0;
+  margin-bottom:30px;
+}
+
+.product-detail-info-block {
+  border-top: 1px solid #e1e1e1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.product-detail-info-block span{
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.product-detail-info-block h3{
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.product-detail-info-block p{
+  font-family: gothamBook;
+  font-size: 12px;
+}
+
+.product-detail-info-block a {
+  color: #000000;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  display: inline-block;
+}
+
+.product-detail-info-block a:hover {
+  color: #000000;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+}
+
+.aligned_right {
+  text-align: right;
+}
+
+.no-border {
+  border: none;
+}
+
+.white-modal {
+  background-color:rgba(255, 255, 255, 0.8);
+}
+
+.white-modal-wrapper {
+  padding: 40px
+}
+
+.white-modal-wrapper h2 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 36px;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.white-modal-wrapper h3 {
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.white-modal-wrapper p {
+  font-family: gothamBook;
+  font-size: 12px;
+}
+
+.white-modal-links {
+  width: 100%;
+  text-align: right;
+}
+
+.white-modal-wrapper a {
+  display: inline-block;
+  font-family: gothamBook;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-top: 40px;
+  text-decoration: none;
+  color: #ffbd47;
+  text-align: right;
+  border-bottom: 2px solid #ffbd47;
+}
+
+.white-modal-wrapper a:hover {
+  text-decoration: none;
+  color: #ffbd47;
+}
+
+.product-to-cart-wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 7px solid #000000;
+}
+
+.product-to-cart-shirt {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.product-to-cart-detail {
+
+}
+
+.product-to-cart-stock {
+  color: #e2e2e2;
+  padding-top: 10px;
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.product-to-cart-detail h2 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 36px;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.product-to-cart-detail span {
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.product-to-cart-table {
+  margin-top:20px;
+}
+
+.product-to-cart-table p {
+  font-family: gothamBook;
+  font-size: 12px;
+}
+
+.product-to-cart-table h4 {
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.product-to-cart-links {
+  vertical-align : bottom;
+  margin-left: 50px;
+  padding-top: 200px;
+}
+
+.product-to-cart-links a {
+  color: #000000;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  display: inline;
+  margin-right: 50px;
+  font-weight: bold;
+}
+/* End product detail */
+
+/* User forms */
+.user-form-wrapper {
+  background-color: #e2e2e2;
+  height: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.user-form {
+  width: 500px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+}
+
+.user-form h1 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 38px;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.user-form form {
+  text-align: justify;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+.user-form label{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.user-form input{
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  height: 42px;
+  margin-bottom: 20px !important;
+  border: solid 1px #e2e2e2;
+  width:100%;
+  padding: 6px 12px;
+}
+
+.user-form  button{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffbd47;
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 2px solid #ffbd47;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  background-color: #ffffff;
+}
+
+.user-form  a{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffbd47;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffbd47;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+.user-form  a:hover{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #ffbd47;
+  text-decoration: none;
+}
+
+.user-form .image-link {
+  border: none;
+}
+
+.user-form .input-group{
+  width: 100% !important;
+}
+
+.new-user {
+
+}
+
+.new-user a{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+  border: none;
+}
+
+.new-user a:hover{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+  border: none;
+}
+
+.new-user-link {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.new-user-link a{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #000000;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 auto;
+  letter-spacing: 2px;
+}
+
+.new-user-link  a:hover{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+}
+
+.shirt-cart-block {
+  background-color: #e2e2e2;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  color: #000000;
+}
+
+.shirt-cart-block:hover {
+  background-color: #ae8d5f;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.shirt-cart-image {
+  padding: 5px;
+  background-color: #ffffff;
+}
+
+.shirt-cart-image img{
+  width: 100%
+}
+
+.shirt-cart-pricetag {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.shirt-cart-pricetag h4 {
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: 2px;
+}
+
+.shirt-cart-pricetag p {
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-top: 40px;
+  margin-bottom: 0;
+  letter-spacing: 2px;
+}
+
+.shirt-cart-pricetag a {
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block;
+  padding-bottom: 5px;
+  text-decoration: none;
+  border-bottom: 1px solid #000000;
+  color: #000000;
+}
+
+.shirt-cart-pricetag a:hover {
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block;
+  padding-bottom: 5px;
+  text-decoration: none;
+  border-bottom: 1px solid #000000;
+  color: #000000;
+}
+
+.invoice-block {
+  border-top: 1px solid #e2e2e2;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.invoice-block h4{
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.invoice-block p{
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform:capitalize;
+  margin: 0;
+}
+
+.margin-top-40 {
+  margin-top: 40px;
+}
+
+.margin-bottom-40 {
+  margin-bottom: 40px;
+}
+/* End user forms */
