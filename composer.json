@@ -43,7 +43,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "compile": [
-          "app/console assetic:dump"
+          "app/console assetic:dump --debug"
         ]
     },
     "config": {
