@@ -21,8 +21,8 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
-        version: 'v5'
-        version_format: '%%s?version=%%s'
+        version: 6.1
+        version_format: "stv%%2$s/%%1$s"
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
