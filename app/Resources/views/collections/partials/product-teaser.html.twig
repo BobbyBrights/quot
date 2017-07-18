@@ -1,23 +1,33 @@
+{% set sizes = data.sizes|split(',') %}
 <div class='product-teaser'>
-  <a class='shirt-block bk-ancla' href="#ancla_{{ vid }}">
-    <div class='shirt-image'>
-      {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
-        <img src="{{ image }}" alt="cellphone"/>
-      {% endimage %}
+    <a class='shirt-block bk-ancla' href="#ancla_{{ data.vid }}">
+        <div class='shirt-image'>
+            {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
+              <img src="{{ data.images.0 }}" alt="cellphone"/>
+            {% endimage %}
+        </div>
+        <h4>{{ data.title }}</h4>
+    </a>
+    <div class='product-price'>
+        <div class='row'>
+            <div class='col-md-6'>
+                ${{ data.price }}
+            </div>
+            <div class='col-md-6 align-right'>
+                Talla
+                <ul>
+                    {% for size in sizes %}
+                        <li>{{ size }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
-    <h4>{{ title }}</h4>
-  </a>
-  <div class='product-price'>
-    <div class='row'>
-      <div class='col-md-6'>
-        $150.000
-      </div>
-      <div class='col-md-6 align-right'>
-        Talla
-      </div>
+    <div class='product-stock'>
+      20 de 50
     </div>
-  </div>
-  <div class='product-stock'>
-    20 de 50
-  </div>
+    <div class="product-custom">
+        <a href="/prezonalizar/{{ data.vid }}">Personalizar</a>
+        <a href="#">agregar a compras</a>
+    </div>
 </div>
