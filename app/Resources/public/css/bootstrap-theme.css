@@ -623,8 +623,8 @@ fieldset[disabled] .btn-danger.active {
 
 .section-link a {
   color: #E1E1E1;
-  padding-left: 4.5rem;
-  padding-right: 4.5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 
 .section-link a:hover {
@@ -1756,3 +1756,7 @@ fieldset[disabled] .btn-danger.active {
   margin-bottom: 40px;
 }
 /* End user forms */
+
+.small-link {
+  font-size: 10px;
+}

@@ -22,20 +22,25 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse quot-menu" id="bs-example-navbar-collapse-1">
-        <div class="col-lg-10">
+        <div class="col-lg-9">
           <ul class="section-link nav navbar-nav">
-            <li><a href="#preventa" data-ancla="preventa">Pre-venta</a></li>
-            <li><a href="#carousel-example-generic" data-ancla="carousel-example-generic"href="#">Camisas</a></li>
-            <li><a href="#collection" data-ancla="collection">Colecci&oacute;n</a></li>
-            <li><a href="#video-promo" data-ancla="video-promo">Personalizar</a></li>
-            <li><a href="#city-promo" data-ancla="city-promo">Origen</a></li>
-            <li><a href="#circulo" data-ancla="circulo">Circulo</a></li>
+            <li><a class='main-menu-link' href="#preventa" data-ancla="preventa">Pre-venta</a></li>
+            <li><a class='main-menu-link' href="#carousel-example-generic" data-ancla="carousel-example-generic"href="#">Camisas</a></li>
+            <li><a class='main-menu-link' href="#collection" data-ancla="collection">Colecci&oacute;n</a></li>
+            <li><a class='main-menu-link' href="#video-promo" data-ancla="video-promo">Personalizar</a></li>
+            <li><a class='main-menu-link' href="#city-promo" data-ancla="city-promo">Origen</a></li>
+            <li><a class='main-menu-link' href="#circulo" data-ancla="circulo">Circulo</a></li>
           </ul>
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-3">
           <ul class="cart-links nav navbar-nav">
-            <li><a>cuenta</a></li>
-            <li><a>compras</a></li>
+            {% if is_granted("ROLE_USER") %}
+              <li><a class='small-link'>Hola {{ app.user.username }}</a></li>
+              <li><a class='small-link' href='/logout'>Cerrar sesi&oacute;n</a></li>
+            {% else %}
+              <li><a href='/login'>cuenta</a></li>
+              <li><a>compras</a></li>
+            {% endif %}
           </ul>
         </div>
       </div><!-- /.navbar-collapse -->
