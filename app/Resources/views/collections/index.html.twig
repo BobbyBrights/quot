@@ -11,7 +11,7 @@
                       <h1>{{ col.title_collection }}</h1>
                         <div class="owl-carousel">
                             {% for base in col.products %}
-                                {{ include('collections/partials/product-teaser.html.twig', {'data': base }) }}
+                                {{ include('collections/partials/product-teaser.html.twig', {'data': base, 'vid_parent': col.vid }) }}
                             {% endfor %}
                         </div>
                     </div>
@@ -20,7 +20,7 @@
             <div class='row'>
                 <div class='col-md-12'>
                     {% for base in col.products %}
-                        {{ include('collections/partials/product-detail.html.twig', {'data': base, 'class': loop.revindex }) }}
+                        {{ include('collections/partials/product-detail.html.twig', {'data': base, 'class': loop.revindex, 'vid_parent': col.vid }) }}
                     {% endfor %}
                 </div>
             </div>

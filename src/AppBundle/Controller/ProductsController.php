@@ -17,13 +17,20 @@ class ProductsController extends Controller
         return $this->render('collections/index.html.twig', array('collections' => $collections));
     }
     
-    public function customAction(Request $request, $vid)
+    public function customAction(Request $request, $vidParent, $vid)
     {
-        print $vid;
-        die;
         $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
         $collections = json_decode($collectionsJson);
-        $collections = array_values($collections);
-        return $this->render('collections/index.html.twig', array('collections' => $collections));
+        foreach($collections as $col){
+            if($col->vid == $vidParent){
+                $shirt = array();
+                foreach($col->products as $info){
+                    if($info->vid == $vid){
+                        $shirt = $info;
+                    }
+                }
+            }
+        }
+        return $this->render('collections/custom.html.twig', array('shirt' => $shirt));
     }
 }
