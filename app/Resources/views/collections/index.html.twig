@@ -70,6 +70,14 @@
         $(this).parents('div').children('span').text($(this).text());
       });
 
+      $(".product-teaser").hover(function(){
+        $(this).children('.product-custom product-customize-link a').trigger('mouseenter');;
+        $(this).children('.product-custom product-customize-cart a').trigger('mouseenter');
+      },function(){
+        $(this).children('.product-custom product-customize-link a').trigger('mouseenter');
+        $(this).children('.product-custom product-customize-cart a').trigger('mouseenter');
+      });
+
       $('#detail-1').carousel();
       $('#detail-2').carousel();
       $('#detail-3').carousel();

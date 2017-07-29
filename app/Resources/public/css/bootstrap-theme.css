@@ -1239,6 +1239,56 @@ fieldset[disabled] .btn-danger.active {
   text-align: center;
 }
 
+.hidden{
+  visibility: hidden;
+}
+
+.product-custom {
+
+}
+
+.product-customize-link {
+  color: #000000;
+  padding: 10px;
+  border-bottom: 1px solid #e2e2e2;
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.product-customize-link a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.product-customize-link a:hover {
+  text-decoration: none;
+  font-size: 13px;
+  color: #000000;
+}
+
+.product-customize-cart {
+  color: #000000;
+  padding: 10px;
+  border-bottom: 1px solid #000000;
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.product-customize-cart a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.product-customize-cart a:hover {
+  text-decoration: none;
+  font-size: 13px;
+  color: #000000;
+}
+
 .align-left {
   text-align: left;
 }
