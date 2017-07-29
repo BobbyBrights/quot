@@ -1,7 +1,130 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Quot - Colecciones{% endblock %}
+{% block title %}Quot - Personalizar{% endblock %}
 
 {% block body %}
-    {{ dump(shirt) }}
+    
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='product-to-cart-wrapper'>
+                <div class='row'>
+                    <div class='col-md-6'>
+                        <div class='row'>
+                            <div class='col-md-5'>
+                                <div class='product-teaser product-to-cart-shirt'>
+                                    <a class='shirt-block'>
+                                        <div class='shirt-image'>
+                                            {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
+                                              <img src="{{ shirt.images.0 }}" alt="cellphone"/>
+                                            {% endimage %}
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class='col-md-7 product-to-cart-detail'>
+                                <h2>{{ shirt.title }}</h2>
+                                <span>${{ shirt.price }}</span>
+                                <div class='product-to-cart-table'>
+                                    <div class='row'>
+                                        <div class='col-md-6'>
+                                            <h4>Talla S</h4>
+                                            <p>{{ shirt.description }}</p>
+                                          </div>
+                                        <div class='col-md-6 align-right'>
+                                            <h4>Talla {{ size }}</h4>
+                                            <p>
+                                              Botones rojos
+                                              hilo rojo
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-md-6'>
+                                            <h4>Combinacion</h4>
+                                            <p>
+                                              Pechera
+                                              Puños
+                                            </p>
+                                        </div>
+                                        <div class='col-md-6 align-right'>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='product-to-cart-stock'>
+                                  20 de 50
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  <div class='col-md-6'>
+                    <div class='product-to-cart-links'>
+                      <a data-toggle="modal" data-target="#myModal">Editar</a>
+                      <a>Seguir al checkout</a>
+                    </div>  
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='detail-wrapper'>
+                <h1>La vito 2017 - II</h1>
+                <div class="owl-carousel">
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade white-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content white-modal-content">
+                <div class='white-modal-wrapper'>
+                    <h2>Primero los primeros</h2>
+                    <h3>Personalizacion</h3>
+                    <p>
+                      Importancia y valor a lo individual. Cada una de nuestras camisas es
+                      una edicion limitada de 50 unidades
+                    </p>
+                    <div class='white-modal-links'>
+                        <a>Personalizar</a>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+    $(document).ready(function(){
+        
+        $(".owl-carousel").owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:false
+                },
+                600:{
+                    items:3,
+                    nav:false
+                },
+                1000:{
+                    items:5,
+                    nav:false,
+                    loop:false
+                }
+            }
+        });
+    });
+  </script>
 {% endblock %}

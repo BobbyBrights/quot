@@ -17,7 +17,7 @@ class ProductsController extends Controller
         return $this->render('collections/index.html.twig', array('collections' => $collections));
     }
     
-    public function customAction(Request $request, $vidParent, $vid)
+    public function customAction(Request $request, $vidParent, $vid, $size)
     {
         $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
         $collections = json_decode($collectionsJson);
@@ -31,6 +31,6 @@ class ProductsController extends Controller
                 }
             }
         }
-        return $this->render('collections/custom.html.twig', array('shirt' => $shirt));
+        return $this->render('collections/custom.html.twig', array('shirt' => $shirt, 'size' => $size));
     }
 }

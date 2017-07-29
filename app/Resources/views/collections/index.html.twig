@@ -32,6 +32,10 @@
   {{ parent() }}
   <script>
 
+    function generateLink(vid_parent, vid, size){
+        window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
+    }
+
     function DropDown(el) {
       this.dd = el;
       this.initEvents();

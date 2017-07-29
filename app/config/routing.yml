@@ -53,5 +53,5 @@ products:
     path:     /colecciones
     defaults: { _controller: AppBundle:Products:collections }
 custom:
-    path:     /personalizar/{vidParent}/{vid}
+    path:     /personalizar/{vidParent}/{vid}/{size}
     defaults: { _controller: AppBundle:Products:custom }
