@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Response;
+//use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class ProductsController extends Controller
@@ -32,5 +32,23 @@ class ProductsController extends Controller
             }
         }
         return $this->render('collections/custom.html.twig', array('shirt' => $shirt, 'size' => $size));
+    }
+    
+    public function customDetailAction(Request $request)
+    {
+        var_dump($request->query);
+        $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
+        $collections = json_decode($collectionsJson);
+        foreach($collections as $col){
+            if($col->vid == $request->query->get('vidParent')){
+                $shirt = array();
+                foreach($col->products as $info){
+                    if($info->vid == $request->query->get('vid')){
+                        $shirt = $info;
+                    }
+                }
+            }
+        }
+        return $this->render('collections/custom-detail.html.twig', array('shirt' => $shirt, 'size' => $request->query->get('size')));
     }
 }
