@@ -10,14 +10,10 @@
                     {% else %}
                         <div class="item">
                     {% endif %}
-                        {% image '%kernel.root_dir%/Resources/public/images/fondo-3.jpg' %}
-                            <img src="{{ data.images_bk }}" width='100%'/>
-                        {% endimage %}
-                        <div class="product-detail-carousel-caption">
-                            {% image '%kernel.root_dir%/Resources/public/images/white-shirt-2.png' %}
-                                <img src="{{ img }}" width='100%'/>
-                            {% endimage %}
-                        </div>
+                      <img src="{{ data.images_bk }}" width='100%'/>
+                      <div class="product-detail-carousel-caption">
+                        <img src="{{ img }}" width='100%'/>}
+                      </div>
                     </div>
                 {% endfor %}
             </div>
@@ -32,21 +28,23 @@
             </a>
         </div>
     </div>
-    
+
     <div class='col-md-6'>
         <div class='product-detail'>
             <h2>{{ data.title }}</h2>
             <div class='product-detail-info-block'>
                 <div class='row'>
                     <div class='col-md-6'>
-                        <span>Talla {{ data.sizes }}</span>
-                        <ul>
-                            {% for size in sizes %}
-                                <li>{{ size }}</li>
-                            {% endfor %}
-                        </ul>
+                        <span>Talla</span>
                     </div>
                     <div class='col-md-6'>
+                      <div class="dd wrapper-dropdown-5" tabindex="1"><span>Talla</span>
+            						<ul class="dropdown">
+                          {% for size in sizes %}
+                            <li><a>{{ size }}</a></li>
+                          {% endfor %}
+            						</ul>
+            					</div>
                     </div>
                 </div>
             </div>
