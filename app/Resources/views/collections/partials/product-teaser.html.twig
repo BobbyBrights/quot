@@ -12,13 +12,13 @@
           ${{ data.price }}
         </div>
         <div class='col-md-5'>
-            <div class="dd wrapper-dropdown-5" tabindex="1"><span>Talla</span>
-                <ul id="select_{{ data.vid }}" class="dropdown">
-                    {% for size in sizes %}
-                        <li><a>{{ size }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+          <div class="dd div_{{ data.vid }} wrapper-dropdown-5" tabindex="1"><span>Talla</span>
+						<ul id="select_{{ data.vid }}" class="dropdown">
+              {% for size in sizes %}
+                <li><a>{{ size }}</a></li>
+              {% endfor %}
+						</ul>
+					</div>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
       20 de 50
     </div>
     <div class="product-custom">
-        <a onclick="generateLink('{{ vid_parent }}','{{ data.vid }}','L')" href="#">Personalizar</a>
+        <a onclick="generateLink('{{ vid_parent }}','{{ data.vid }}')" href="#">Personalizar</a>
         <a href="#">agregar a compras</a>
     </div>
 </div>
