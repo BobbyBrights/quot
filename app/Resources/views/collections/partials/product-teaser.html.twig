@@ -15,7 +15,7 @@
             </div>
             <div class='col-md-6 align-right'>
                 Talla
-                <ul>
+                <ul id="select_{{ data.vid }}">
                     {% for size in sizes %}
                         <li>{{ size }}</li>
                     {% endfor %}
@@ -27,7 +27,8 @@
       20 de 50
     </div>
     <div class="product-custom">
-        <a href="/personalizar/{{ vid_parent }}/{{ data.vid }}">Personalizar</a>
+        <a onclick="generateLink('{{ vid_parent }}','{{ data.vid }}','L')" href="#">Personalizar</a>
         <a href="#">agregar a compras</a>
     </div>
 </div>
+<!-- $('#select_33').find(":selected").val() -->

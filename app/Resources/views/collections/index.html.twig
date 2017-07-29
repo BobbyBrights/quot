@@ -30,31 +30,34 @@
 
 {% block javascripts %}
   {{ parent() }}
-  <script>
-    $(document).ready(function(){
-      $('#detail-1').carousel();
-      $('#detail-2').carousel();
-      $('#detail-3').carousel();
-      $(".owl-carousel").owlCarousel({
-         loop:true,
-         margin:10,
-         responsiveClass:true,
-         responsive:{
-           0:{
-               items:1,
-               nav:false
-           },
-           600:{
-               items:3,
-               nav:false
-           },
-           1000:{
-               items:5,
-               nav:false,
-               loop:false
-           }
-         }
-      });
-    });
-  </script>
+    <script>
+        function generateLink(vid_parent, vid, size){
+            window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
+        }
+        $(document).ready(function(){        
+            $('#detail-1').carousel();
+            $('#detail-2').carousel();
+            $('#detail-3').carousel();
+            $(".owl-carousel").owlCarousel({
+                loop:true,
+                margin:10,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:false
+                    },
+                    600:{
+                        items:3,
+                        nav:false
+                    },
+                    1000:{
+                        items:5,
+                        nav:false,
+                        loop:false
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
