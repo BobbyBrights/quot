@@ -32,8 +32,14 @@
   {{ parent() }}
   <script>
 
-    function generateLink(vid_parent, vid, size){
-        window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
+    function generateLink(vid_parent, vid){
+      var size = $('.div_' + vid).children('span').text();
+      window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
+    }
+
+    function generateLinkFromDetail(vid_parent, vid){
+      var size = $('#div_' + vid).children('span').text();
+      window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
     }
 
     function DropDown(el) {

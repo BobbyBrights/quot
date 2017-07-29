@@ -38,7 +38,7 @@
                         <span>Talla</span>
                     </div>
                     <div class='col-md-6'>
-                      <div class="dd wrapper-dropdown-5" tabindex="1"><span>Talla</span>
+                      <div id="div_{{ data.vid }}" class="dd wrapper-dropdown-5" tabindex="1"><span>Talla</span>
             						<ul class="dropdown">
                           {% for size in sizes %}
                             <li><a>{{ size }}</a></li>
@@ -52,7 +52,7 @@
                 <span>${{ data.price }}</span>
             </div>
             <div class='product-detail-info-block aligned_right'>
-                <a href="/personalizar/{{ vid_parent }}/{{ data.vid }}">Personalizar</a><br />
+                <a onclick="generateLinkFromDetail('{{ vid_parent }}','{{ data.vid }}')">Personalizar</a><br />
                 <a>Agregar a compras</a>
             </div>
             <div class='product-detail-info-block no-border'>
