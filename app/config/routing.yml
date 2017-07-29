@@ -55,3 +55,6 @@ products:
 custom:
     path:     /personalizar/{vidParent}/{vid}/{size}
     defaults: { _controller: AppBundle:Products:custom }
+custom-detail:
+    path:     /personalizar/detalle
+    defaults: { _controller: AppBundle:Products:customDetail }
