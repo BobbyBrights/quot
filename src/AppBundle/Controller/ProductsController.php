@@ -35,8 +35,8 @@ class ProductsController extends Controller
     
     public function customDetailAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        $userId = $user->getId();
+        //$user = $this->container->get('security.context')->getToken()->getUser();
+        $userId = 1205;//$user->getId();
         $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
         $collections = json_decode($collectionsJson);
         foreach($collections as $col){
