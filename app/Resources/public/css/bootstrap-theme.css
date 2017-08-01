@@ -1906,4 +1906,215 @@ fieldset[disabled] .btn-danger.active {
     max-height: 400px;
 }
 
-/* No CSS3 support: none */
+/* Product customization */
+.detail-customization-wrapper {
+  padding-top: 30px;
+  margin-bottom: 20px;
+}
+
+.detail-customization-wrapper h1 {
+  color: #ffbd47;
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.product-custom-info-block {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.product-custom-info-block h2{
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 36px;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.product-custom-info-block h3 {
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.product-custom-info-block p {
+  font-family: gothamBook;
+  font-size: 12px;
+}
+
+.product-custom-options {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: grid;
+}
+
+.product-custom-options ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.product-custom-options li {
+  float: left;
+  margin-right:20px;
+}
+
+.product-custom-options li:last-child {
+  margin-right: 0px;
+}
+
+.customization-box {
+  height: 88px;
+  width: 88px;
+  background-color: #e2e2e2;
+}
+
+.customization-box:hover {
+  height: 88px;
+  width: 88px;
+  background-color: #e2e2e2;
+  border: 3px solid #000000;
+}
+
+.custom-radio {
+
+}
+
+.custom-radio [type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+.custom-radio [type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    font-family: gothamBook;
+    font-size: 12px;
+    position: relative;
+    padding-left: 28px;
+    padding-right: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #000000;
+}
+.custom-radio [type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #000000;
+    border-radius: 100%;
+    background: #ffffff;
+}
+.custom-radio [type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    background: #000000;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.custom-radio [type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.custom-radio [type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.product-step-links {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.product-step-links a {
+  color: #000000;
+  font-family: gothamBook;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  display: inline;
+  margin-right: 50px;
+  font-weight: bold;
+}
+
+.product-step-links a:hover {
+  color: #e2e2e2;
+  font-family: gothamBook;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e2e2;
+  text-decoration: none;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  display: inline;
+  margin-right: 50px;
+  font-weight: bold;
+}
+
+.product-step-links a.active {
+  color: #e2e2e2;
+  font-family: gothamBook;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e2e2;
+  text-decoration: none;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  display: inline;
+  margin-right: 50px;
+  font-weight: bold;
+}
+
+.product-step-resume {
+  margin-top: 35px;
+  margin-bottom: 40px;
+}
+
+.product-step-resume a {
+    float: right;
+    font-family: gothamBook;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-decoration: none;
+    color: #ffbd47;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ffbd47;
+}
+
+.product-step-resume a:hover {
+    float: right;
+    font-family: gothamBook;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-decoration: none;
+    color: #ffbd47;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ffbd47;
+}
+/* Product customization end */

@@ -20,7 +20,7 @@ facebook_login:
     path: /login/check-facebook
 
 google_login:
-    path: /login/check-google    
+    path: /login/check-google
 
 home:
     path:     /
@@ -49,6 +49,9 @@ payment-method:
 cart-items:
     path:     /demo/cart-items
     defaults: { _controller: AppBundle:Home:cartItems }
+product-customization:
+    path:     /demo/product-customization
+    defaults: { _controller: AppBundle:Home:productCustomization }
 products:
     path:     /colecciones
     defaults: { _controller: AppBundle:Products:collections }

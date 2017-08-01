@@ -55,4 +55,9 @@ class HomeController extends Controller
     {
       return $this->render('home/cart-items.html.twig');
     }
+
+    public function productCustomizationAction()
+    {
+      return $this->render('home/product-customization.html.twig');
+    }
 }
