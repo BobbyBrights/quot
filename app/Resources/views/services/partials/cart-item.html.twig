@@ -1,0 +1,18 @@
+<div class='row margin-top-40 margin-bottom-40'>
+    <div class='col-md-3'>
+        <div class="shirt-cart-block">
+          <div class="shirt-cart-image">
+            {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
+              <img src="{{ asset_url }}" alt=""/>
+            {% endimage %}
+          </div>
+        </div>
+    </div>
+    <div class='col-md-9'>
+        <div class='shirt-cart-pricetag'>
+            <h4>{{ product.title }}</h4>
+            <p>${{ product.value }}</p>
+            <a>Ver detalles</a>
+        </div>
+    </div>
+</div>

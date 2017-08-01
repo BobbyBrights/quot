@@ -3,9 +3,8 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-//use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductsController extends Controller
 {
@@ -31,24 +30,63 @@ class ProductsController extends Controller
                 }
             }
         }
-        return $this->render('collections/custom.html.twig', array('shirt' => $shirt, 'size' => $size));
+        return $this->render('collections/custom.html.twig', array('shirt' => $shirt, 'size' => $size, 'vidParent' => $vidParent));
     }
     
     public function customDetailAction(Request $request)
     {
-        var_dump($request->query);
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $userId = $user->getId();
         $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
         $collections = json_decode($collectionsJson);
         foreach($collections as $col){
             if($col->vid == $request->query->get('vidParent')){
-                $shirt = array();
+                $shirtParent = array();
+                $shirtChild = array();
+                $shirtChild1 = array();
+                $shirtChild2 = array();
                 foreach($col->products as $info){
                     if($info->vid == $request->query->get('vid')){
-                        $shirt = $info;
+                        if($request->query->get('child')){
+                            foreach($info->childs as $ch){
+                                if($ch->vid == $request->query->get('vchild')){
+                                    $shirtChild = $ch;
+                                }
+                                if($request->query->get('child1')){
+                                    foreach($ch->childs as $ch1){
+                                        if($ch1->vid == $request->query->get('vchild1')){
+                                            $shirtChild1 = $ch1;
+                                        }
+                                        if($request->query->get('child2')){
+                                            foreach($ch1->childs as $ch2){
+                                                if($ch2->vid == $request->query->get('vchild2')){
+                                                    $shirtChild2 = $ch2;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        $shirtParent = $info;
                     }
                 }
             }
         }
-        return $this->render('collections/custom-detail.html.twig', array('shirt' => $shirt, 'size' => $request->query->get('size')));
+        $data = array();
+        if(!empty($shirtParent)){
+            $data = $shirtParent;
+        }
+        if(!empty($shirtChild)){
+            $data = $shirtChild;
+        }
+        if(!empty($shirtChild1)){
+            $data = $shirtChild1;
+        }
+        if(!empty($shirtChild2)){
+            $data = $shirtChild2;
+        }
+        return $this->render('collections/custom-detail.html.twig', array('user_id' => $userId, 'shirt' => $data, 'size' => $request->query->get('size')));
     }
+    
 }

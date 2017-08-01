@@ -3,7 +3,6 @@
 {% block title %}Quot - Personalizar{% endblock %}
 
 {% block body %}
-    
     <div class='row'>
         <div class='col-md-12'>
             <div class='product-to-cart-wrapper'>
@@ -27,7 +26,7 @@
                                 <div class='product-to-cart-table'>
                                     <div class='row'>
                                         <div class='col-md-6'>
-                                            <h4>Talla S</h4>
+                                            <h4>Talla {{ size }}</h4>
                                             <p>{{ shirt.description }}</p>
                                           </div>
                                         <div class='col-md-6 align-right'>
@@ -92,7 +91,7 @@
                       una edicion limitada de 50 unidades
                     </p>
                     <div class='white-modal-links'>
-                        <a>Personalizar</a>
+                        <a href="/personalizar/detalle?vidParent={{ vidParent }}&vid={{ shirt.vid }}&size={{ size }}">Personalizar</a>
                     </div>  
                 </div>
             </div>

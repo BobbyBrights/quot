@@ -24,6 +24,16 @@ class Purchase
     /** @ORM\Column(name="value", type="string", length=255, nullable=true) */
     protected $value;
     
+    /**
+     * @ORM\OneToMany(targetEntity="PurchaseDetail", mappedBy="purchase_detail")
+     */
+    protected $purchase;
+    
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $status;
+    
 
     /**
      * Get id
@@ -81,5 +91,70 @@ class Purchase
     public function getValue()
     {
         return $this->value;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->purchase = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add purchase
+     *
+     * @param \AppBundle\Entity\PurchaseDetail $purchase
+     *
+     * @return Purchase
+     */
+    public function addPurchase(\AppBundle\Entity\PurchaseDetail $purchase)
+    {
+        $this->purchase[] = $purchase;
+
+        return $this;
+    }
+
+    /**
+     * Remove purchase
+     *
+     * @param \AppBundle\Entity\PurchaseDetail $purchase
+     */
+    public function removePurchase(\AppBundle\Entity\PurchaseDetail $purchase)
+    {
+        $this->purchase->removeElement($purchase);
+    }
+
+    /**
+     * Get purchase
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPurchase()
+    {
+        return $this->purchase;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Purchase
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

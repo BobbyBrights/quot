@@ -58,3 +58,15 @@ custom:
 custom-detail:
     path:     /personalizar/detalle
     defaults: { _controller: AppBundle:Products:customDetail }
+data-product:
+    path:     /data-product
+    defaults: { _controller: AppBundle:Products:dataProduct }
+save-purchase:
+    path:     /save-purchase
+    defaults: { _controller: AppBundle:Services:savePurchase }    
+save-preorder:
+    path:     /save-preorder
+    defaults: { _controller: AppBundle:Services:savePreOrder }
+list-products-orders:
+    path:     /resumen-compra
+    defaults: { _controller: AppBundle:Services:listProductsOrder }
