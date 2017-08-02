@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Resumen{% endblock %}
+
+{% block body %}
+    <div class='shirt-image'>
+        {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
+          <img src="{{ shirt }}" alt=""/>
+        {% endimage %}
+    </div>
+{% endblock %}
