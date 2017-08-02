@@ -99,23 +99,27 @@ class ProductsController extends Controller
             $nivel = '';
             $urlPrev = '/personalizar/4/33/L';
             $url = '/personalizar/detalle?vidParent=' . $request->query->get('vidParent') . '&vid=' . $request->query->get('vid') . '&size=' . $request->query->get('size');
+            $urlResumen = '/resumen-camisa?vidParent=' . $request->query->get('vidParent') . '&vid=' . $request->query->get('vid') . '&size=' . $request->query->get('size');
         }
         if(!empty($shirtChild)){
             $data = $shirtChild;
             $nivel = 1;
             $urlPrev = $url;
             $url .= '&child=' . $request->query->get('child') . '&vchild=' . $request->query->get('vchild');
+            $urlResumen .= '&child=' . $request->query->get('child') . '&vchild=' . $request->query->get('vchild');
         }
         if(!empty($shirtChild1)){
             $data = $shirtChild1;
             $urlPrev = $url;
             $url .= '&child1=' . $request->query->get('child1') . '&vchild1=' . $request->query->get('vchild1');
+            $urlResumen .= '&child1=' . $request->query->get('child1') . '&vchild1=' . $request->query->get('vchild1');
             $nivel = 2;
         }
         if(!empty($shirtChild2)){
             $urlPrev = $url;
             $data = $shirtChild2;
             $url .= '&child2=' . $request->query->get('child2') . '&vchild2=' . $request->query->get('vchild2');
+            $urlResumen .= '&child2=' . $request->query->get('child2') . '&vchild2=' . $request->query->get('vchild2');
             $nivel = 3;
         }
         
@@ -130,7 +134,55 @@ class ProductsController extends Controller
             'vchild2' => $request->query->get('vchild2'),
             'size' => $request->query->get('size'),
         );
-        return $this->render('collections/partials/custom-detail-ajax.html.twig', array('urlPrev' => $urlPrev, 'url' => $url, 'nivel' => $nivel, 'user_id' => $userId, 'shirt' => $data, 'size' => $request->query->get('size'), 'queryString' => $queryString));
+        return $this->render('collections/partials/custom-detail-ajax.html.twig', array('urlResumen' => $urlResumen, 'urlPrev' => $urlPrev, 'url' => $url, 'nivel' => $nivel, 'user_id' => $userId, 'shirt' => $data, 'size' => $request->query->get('size'), 'queryString' => $queryString));
     }
     
+    public function completedShirtAction(Request $request){
+        $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
+        $collections = json_decode($collectionsJson);
+        foreach($collections as $col){
+            if($col->vid == $request->query->get('vidParent')){
+                $shirtParent = array();
+                $shirtChild = array();
+                $shirtChild1 = array();
+                $shirtChild2 = array();
+                foreach($col->products as $info){
+                    if($info->vid == $request->query->get('vid')){
+                        if($request->query->get('child')){
+                            foreach($info->childs as $ch){
+                                if($ch->vid == $request->query->get('vchild')){
+                                    $shirtChild = $ch;
+                                }
+                                if($request->query->get('child1')){
+                                    foreach($ch->childs as $ch1){
+                                        if($ch1->vid == $request->query->get('vchild1')){
+                                            $shirtChild1 = $ch1;
+                                        }
+                                        if($request->query->get('child2')){
+                                            foreach($ch1->childs as $ch2){
+                                                if($ch2->vid == $request->query->get('vchild2')){
+                                                    $shirtChild2 = $ch2;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        $shirtParent = $info;
+                    }
+                }
+            }
+        }
+        if(!empty($shirtParent)){
+            $shirt = $shirtParent->childs[0]->images_final;
+        }
+        if(!empty($shirtChild)){
+            $shirt = $shirtChild->childs[0]->images_final;
+        }
+        if(!empty($shirtChild1)){
+            $shirt = $shirtChild1->childs[0]->images_final;
+        }
+        return $this->render('collections/partials/completed-shirt.html.twig', array('shirt' => $shirt));
+    }
 }

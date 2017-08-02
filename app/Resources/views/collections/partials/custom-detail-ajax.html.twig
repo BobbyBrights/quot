@@ -27,6 +27,7 @@
             <h3>Cuello</h3>
             <div class='product-custom-options'>
                 <ul>
+                    {% set resumen = '' %}
                     {% for key, dt in shirt.childs%}
                         {% if dt.childs is defined %}
                             {% set child = 1 %}
@@ -57,14 +58,20 @@
             </div>
                 <div class='row'>
                     <div class='col-md-6'>
+                        
                         <div class='product-step-links'>
-                            <a id="btn_prev" onclick="loadPage('{{ urlPrev }}');" href="javascript:void(0);" class=''>Anterior</a>
-                            <a id="btn_next" onclick="loadPage('{{ url }}');" href="javascript:void(0);" class=''>Siguiente</a>
+                            {%if nivel != 2 %}
+                                <a id="btn_prev" onclick="loadPage('{{ urlPrev }}');" href="javascript:void(0);" class=''>Anterior</a>
+                                <a id="btn_next" onclick="loadPage('{{ url }}');" href="javascript:void(0);" class=''>Siguiente</a>
+                            {% else %}
+                                <a id="btn_prev" onclick="loadPage('{{ urlPrev }}');" href="javascript:void(0);" class=''>Anterior</a>
+                                <a id="btn_next" href="{{ urlResumen }}" class=''>Siguiente</a>
+                            {% endif %}
                         </div>
                     </div>
                     <div class='col-md-6 align-right'>
                         <div class='product-step-resume'>
-                            <a>Ver resumen</a>
+                            <a href="{{ urlResumen }}">Ver resumen</a>
                         </div>
                     </div>
                 </div>

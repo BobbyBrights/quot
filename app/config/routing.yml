@@ -76,3 +76,6 @@ save-preorder:
 list-products-orders:
     path:     /resumen-compra
     defaults: { _controller: AppBundle:Services:listProductsOrder }
+completed-shirt:
+    path:     /resumen-camisa
+    defaults: { _controller: AppBundle:Products:completedShirt }
