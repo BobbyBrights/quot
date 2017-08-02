@@ -37,6 +37,24 @@ class ProductsController extends Controller
     {
         //$user = $this->container->get('security.context')->getToken()->getUser();
         $userId = 1205;//$user->getId();
+        $queryString = array(
+            'vidParent' => $request->query->get('vidParent'),
+            'vid' => $request->query->get('vid'),
+            'child' => $request->query->get('child'),
+            'vchild' => $request->query->get('vchild'),
+            'child1' => $request->query->get('child1'),
+            'vchild1' => $request->query->get('vchild1'),
+            'child2' => $request->query->get('child2'),
+            'vchild2' => $request->query->get('vchild2'),
+            'size' => $request->query->get('size'),
+        );
+        return $this->render('collections/custom-detail.html.twig', $queryString);
+    }
+    
+    public function customDetailAjaxAction(Request $request)
+    {
+        //$user = $this->container->get('security.context')->getToken()->getUser();
+        $userId = 1205;//$user->getId();
         $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
         $collections = json_decode($collectionsJson);
         foreach($collections as $col){
@@ -73,20 +91,46 @@ class ProductsController extends Controller
                 }
             }
         }
+        $nivel = '';
+        $url = '';
         $data = array();
         if(!empty($shirtParent)){
             $data = $shirtParent;
+            $nivel = '';
+            $urlPrev = '/personalizar/4/33/L';
+            $url = '/personalizar/detalle?vidParent=' . $request->query->get('vidParent') . '&vid=' . $request->query->get('vid') . '&size=' . $request->query->get('size');
         }
         if(!empty($shirtChild)){
             $data = $shirtChild;
+            $nivel = 1;
+            $urlPrev = $url;
+            $url .= '&child=' . $request->query->get('child') . '&vchild=' . $request->query->get('vchild');
         }
         if(!empty($shirtChild1)){
             $data = $shirtChild1;
+            $urlPrev = $url;
+            $url .= '&child1=' . $request->query->get('child1') . '&vchild1=' . $request->query->get('vchild1');
+            $nivel = 2;
         }
         if(!empty($shirtChild2)){
+            $urlPrev = $url;
             $data = $shirtChild2;
+            $url .= '&child2=' . $request->query->get('child2') . '&vchild2=' . $request->query->get('vchild2');
+            $nivel = 3;
         }
-        return $this->render('collections/custom-detail.html.twig', array('user_id' => $userId, 'shirt' => $data, 'size' => $request->query->get('size')));
+        
+        $queryString = array(
+            'vidParent' => $request->query->get('vidParent'),
+            'vid' => $request->query->get('vid'),
+            'child' => $request->query->get('child'),
+            'vchild' => $request->query->get('vchild'),
+            'child1' => $request->query->get('child1'),
+            'vchild1' => $request->query->get('vchild1'),
+            'child2' => $request->query->get('child2'),
+            'vchild2' => $request->query->get('vchild2'),
+            'size' => $request->query->get('size'),
+        );
+        return $this->render('collections/partials/custom-detail-ajax.html.twig', array('urlPrev' => $urlPrev, 'url' => $url, 'nivel' => $nivel, 'user_id' => $userId, 'shirt' => $data, 'size' => $request->query->get('size'), 'queryString' => $queryString));
     }
     
 }

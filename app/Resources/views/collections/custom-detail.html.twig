@@ -3,69 +3,41 @@
 {% block title %}Quot - Perzonalización{% endblock %}
 
 {% block body %}
-    <div>
-    
-    </div>
-    <div class='row'>
-        <div class='col-md-12'>
-            <div class='detail-customization-wrapper no-border'>
-                <h1>La vito 2017 - II</h1>
-            </div>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='col-md-6 align-center'>
-            {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
-                <img src="{{ shirt.images.0 }}" width='70%'/>
-            {% endimage %}
-        </div>
-        <div class='col-md-6'>
-            <div class='product-custom-info-block'>
-                <h2>Rosatta</h2>
-                <h3>Cuello</h3>
-                <div class='product-custom-options'>
-                    <ul>
-                        {% for key, dt in shirt.childs%}
-                            <li>
-                                <div class='customization-box'>
-                                    {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
-                                        <img src="{{ dt.images.0 }}"/>
-                                    {% endimage %}
-                                </div>
-                            </li>
-                        {% endfor%}
-                    </ul>
-                </div>
-                <h3>Descripcion</h3>
-                <p>
-                  Importancia y valor a lo individual. Cada una de nuestras camisas
-                  es una edicion limitada de 50 unidades
-                </p>
-                <h3>Combinacion</h3>
-                <div class='custom-radio'>
-                    <input type="radio" id="radio01" name="radio" />
-                    <label for="radio01"><span></span>Si</label>
-                    <input type="radio" id="radio02" name="radio" />
-                    <label for="radio02"><span></span>No</label>
-                </div>
-                    <div class='row'>
-                        <div class='col-md-6'>
-                            <div class='product-step-links'>
-                                <a class='active'>Anterior</a>
-                                <a>Siguiente</a>
-                            </div>
-                        </div>
-                        <div class='col-md-6 align-right'>
-                            <div class='product-step-resume'>
-                                <a>Ver resumen</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
+    <div id="custom_detail"></div>
 {% endblock %}
 
 {% block javascripts %}
   {{ parent() }}
+  <script>
+        $(document).ready(function(){
+            $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
+            $.ajax({
+                url: "/personalizar/detalle-ajax",
+                data: {'vidParent':'{{ vidParent }}', 'vid':'{{ vid }}', 'child':'{{ child }}', 'vchild':'{{ vchild }}', 'child1':'{{ child1 }}', 'vchild1':'{{ vchild1 }}',  'child2':'{{ child2 }}',  'vchild2':'{{ vchild2 }}',  'size':'{{ size }}'},
+                type: "get",
+                success: function(data){
+                    $('#custom_detail').html(data);
+                }
+            });
+        });
+        
+        function loadPage(url){
+            
+            $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
+            $.ajax({
+                url: url,
+                //data: {'vidParent':'{{ vidParent }}', 'vid':'{{ vid }}', 'child':'{{ child }}', 'vchild':'{{ vchild }}', 'child1':'{{ child1 }}', 'vchild1':'{{ vchild1 }}',  'child2':'{{ child2 }}',  'vchild2':'{{ vchild2 }}',  'size':'{{ size }}'},
+                type: "get",
+                success: function(data){
+                    $('#custom_detail').html(data);
+                }
+            });
+        }
+        
+        function changeImg(key, urlNext, urlPrev){
+            $('#btn_next').attr('onclick', 'loadPage("' + urlNext + '")');
+            $("div[id*='detail_']").css('display', 'none');
+            $("#detail_" + key).css('display', 'block');
+        }
+  </script>
 {% endblock %}

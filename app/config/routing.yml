@@ -61,6 +61,9 @@ custom:
 custom-detail:
     path:     /personalizar/detalle
     defaults: { _controller: AppBundle:Products:customDetail }
+custom-detail-ajax:
+    path:     /personalizar/detalle-ajax
+    defaults: { _controller: AppBundle:Products:customDetailAjax }
 data-product:
     path:     /data-product
     defaults: { _controller: AppBundle:Products:dataProduct }

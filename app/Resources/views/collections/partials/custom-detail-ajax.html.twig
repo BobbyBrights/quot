@@ -1,0 +1,73 @@
+{#
+{{ dump(shirt) }}
+{{ dump(queryString) }}
+#}
+<div class='row'>
+    <div class='col-md-12'>
+        <div class='detail-customization-wrapper no-border'>
+            <h1>La vito 2017 - II</h1>
+        </div>
+    </div>
+</div>
+<div class='row'>
+    {% for key, dt in shirt.childs %}
+        {% set style = "display:none;" %}
+        {% if key == 0 %}
+            {% set style = "display:block;" %}
+        {% endif %}
+        <div id="detail_{{ key }}" style="{{ style }}" class='col-md-6 align-center'>
+            {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
+                <img src="{{ dt.images_detail.1 }}" width='70%'/>
+            {% endimage %}
+        </div>
+    {% endfor %}
+    <div class='col-md-6'>
+        <div class='product-custom-info-block'>
+            <h2>Rosatta</h2>
+            <h3>Cuello</h3>
+            <div class='product-custom-options'>
+                <ul>
+                    {% for key, dt in shirt.childs%}
+                        {% if dt.childs is defined %}
+                            {% set child = 1 %}
+                            {% set vchild = dt.vid %}
+                            {% set url_child = url ~ '&child' ~ nivel ~ '=' ~ child ~ '&vchild' ~ nivel ~ '=' ~ vchild %}
+                        {% endif %}
+                        <li>
+                            <div class='customization-box'>
+                                {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
+                                    <img onclick="changeImg({{ key }}, '{{ url_child }}');" src="{{ dt.images.0 }}"/>
+                                {% endimage %}
+                            </div>
+                        </li>
+                    {% endfor%}
+                </ul>
+            </div>
+            <h3>Descripcion</h3>
+            <p>
+              Importancia y valor a lo individual. Cada una de nuestras camisas
+              es una edicion limitada de 50 unidades
+            </p>
+            <h3>Combinacion</h3>
+            <div class='custom-radio'>
+                <input type="radio" id="radio01" name="radio" />
+                <label for="radio01"><span></span>Si</label>
+                <input type="radio" id="radio02" name="radio" />
+                <label for="radio02"><span></span>No</label>
+            </div>
+                <div class='row'>
+                    <div class='col-md-6'>
+                        <div class='product-step-links'>
+                            <a id="btn_prev" onclick="loadPage('{{ urlPrev }}');" href="javascript:void(0);" class='active'>Anterior</a>
+                            <a id="btn_next" onclick="loadPage('{{ url }}');" href="javascript:void(0);" class='active'>Siguiente</a>
+                        </div>
+                    </div>
+                    <div class='col-md-6 align-right'>
+                        <div class='product-step-resume'>
+                            <a>Ver resumen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
