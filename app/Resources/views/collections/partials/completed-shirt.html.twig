@@ -7,5 +7,29 @@
         {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
           <img src="{{ shirt }}" alt=""/>
         {% endimage %}
+        <a id="btn_pre_order" href="javascript:void(0);">checkout</a>
+        <div id="custom_detail"></div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+        $(document).ready(function(){            
+            $('#btn_pre_order').click(function(){
+                $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
+                $.ajax({
+                    url: "/save-preorder",
+                    data: {'title':'prueba camisa', 'description': 'descripcion camisa comprada', 'value': '1200', 'user_id': {{ user_id }}, 'shirt': '{{ shirt }}', 'vid': {{ vid }}},
+                    type: "post",
+                    success: function(data){
+                        $('#custom_detail').html(data);
+                        $('#custom_detail').html('');
+                    }
+                });
+            });            
+        });
+        
+        
+  </script>
 {% endblock %}

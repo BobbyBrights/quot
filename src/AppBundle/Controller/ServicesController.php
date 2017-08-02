@@ -31,14 +31,16 @@ class ServicesController extends Controller
     }
     
     public function savePreOrderAction(Request $request){
+        
         $purchaseDetail = new PurchaseDetail();
         $purchaseEm = $this->getDoctrine()->getManager();
-        $purchaseDetail->setUserId(1205);
-        $purchaseDetail->setDescription('descripcion de la camisa');
-        $purchaseDetail->setTitle('titulo camisa');
-        $purchaseDetail->setImage('rutaimagen');
-        $purchaseDetail->setValue(19000);
-        $purchaseDetail->setStatus(2);
+        $purchaseDetail->setUserId($this->get('request')->request->get('user_id'));
+        $purchaseDetail->setDescription($this->get('request')->request->get('description'));
+        $purchaseDetail->setTitle($this->get('request')->request->get('title'));
+        $purchaseDetail->setImage($this->get('request')->request->get('shirt'));
+        $purchaseDetail->setValue($this->get('request')->request->get('value'));
+        $purchaseDetail->setVid($this->get('request')->request->get('vid'));
+        $purchaseDetail->setStatus(0);
         $purchaseEm->persist($purchaseDetail);
         $purchaseEm->flush();
         $idPreOrder = $purchaseDetail->getId();

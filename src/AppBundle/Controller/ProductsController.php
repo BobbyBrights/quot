@@ -35,8 +35,11 @@ class ProductsController extends Controller
     
     public function customDetailAction(Request $request)
     {
-        //$user = $this->container->get('security.context')->getToken()->getUser();
-        $userId = 1205;//$user->getId();
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userId = $user->getId();
         $queryString = array(
             'vidParent' => $request->query->get('vidParent'),
             'vid' => $request->query->get('vid'),
@@ -46,15 +49,13 @@ class ProductsController extends Controller
             'vchild1' => $request->query->get('vchild1'),
             'child2' => $request->query->get('child2'),
             'vchild2' => $request->query->get('vchild2'),
-            'size' => $request->query->get('size'),
+            'size' => $request->query->get('size'),            
         );
         return $this->render('collections/custom-detail.html.twig', $queryString);
     }
     
     public function customDetailAjaxAction(Request $request)
     {
-        //$user = $this->container->get('security.context')->getToken()->getUser();
-        $userId = 1205;//$user->getId();
         $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
         $collections = json_decode($collectionsJson);
         foreach($collections as $col){
@@ -134,10 +135,16 @@ class ProductsController extends Controller
             'vchild2' => $request->query->get('vchild2'),
             'size' => $request->query->get('size'),
         );
-        return $this->render('collections/partials/custom-detail-ajax.html.twig', array('urlResumen' => $urlResumen, 'urlPrev' => $urlPrev, 'url' => $url, 'nivel' => $nivel, 'user_id' => $userId, 'shirt' => $data, 'size' => $request->query->get('size'), 'queryString' => $queryString));
+        return $this->render('collections/partials/custom-detail-ajax.html.twig', array('urlResumen' => $urlResumen, 'urlPrev' => $urlPrev, 'url' => $url, 'nivel' => $nivel, 'shirt' => $data, 'size' => $request->query->get('size'), 'queryString' => $queryString));
     }
     
     public function completedShirtAction(Request $request){
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userId = $user->getId();
+        
         $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
         $collections = json_decode($collectionsJson);
         foreach($collections as $col){
@@ -176,13 +183,16 @@ class ProductsController extends Controller
         }
         if(!empty($shirtParent)){
             $shirt = $shirtParent->childs[0]->images_final;
+            $vid = $shirtParent->childs[0]->vid;
         }
         if(!empty($shirtChild)){
             $shirt = $shirtChild->childs[0]->images_final;
+            $vid = $shirtChild->childs[0]->vid;
         }
         if(!empty($shirtChild1)){
             $shirt = $shirtChild1->childs[0]->images_final;
+            $vid = $shirtChild1->childs[0]->vid;
         }
-        return $this->render('collections/partials/completed-shirt.html.twig', array('shirt' => $shirt));
+        return $this->render('collections/partials/completed-shirt.html.twig', array('shirt' => $shirt, 'user_id' => $userId, 'vid' => $vid,));
     }
 }
