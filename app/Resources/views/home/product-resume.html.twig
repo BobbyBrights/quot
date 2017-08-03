@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Home{% endblock %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='detail-customization-wrapper no-border'>
+        <h1>La vito 2017 - II</h1>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-6'>
+      <div class='product-resume-image align-center'>
+        {% image '%kernel.root_dir%/Resources/public/images/shirt-resume.png' %}
+          <img src="{{ asset_url }}"/>
+        {% endimage %}
+      </div>
+    </div>
+    <div class='col-md-6'>
+      <div class='product-resume-info-block'>
+        <h2>Rosatta</h2>
+        <h3>Resumen</h3>
+        <div class='product-resume-line'>
+          <div class='row'>
+            <div class='col-md-8 align-left'>
+              Talla S
+            </div>
+            <div class='col-md-4 align-right'>
+              <a>
+                EDITAR
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class='product-resume-line'>
+          <div class='row'>
+            <div class='col-md-8 align-left'>
+              Cuello semi frances
+            </div>
+            <div class='col-md-4 align-right'>
+              <a>
+                EDITAR
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class='product-resume-line'>
+          <div class='row'>
+            <div class='col-md-8 align-left'>
+              Perchera combinada
+            </div>
+            <div class='col-md-4 align-right'>
+              <a>
+                EDITAR
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class='product-resume-line'>
+          <div class='row'>
+            <div class='col-md-8 align-left'>
+              Pu&ntilde;os combinados
+            </div>
+            <div class='col-md-4 align-right'>
+              <a>
+                EDITAR
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class='product-resume-checkout align-right'>
+          <a>
+            Seguir al checkout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+
+{% endblock %}

@@ -2118,3 +2118,85 @@ fieldset[disabled] .btn-danger.active {
     border-bottom: 1px solid #ffbd47;
 }
 /* Product customization end */
+
+/* Product resume */
+.product-resume-image {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.product-resume-info-block {
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 380px;
+}
+
+.product-resume-info-block h2{
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 36px;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.product-resume-info-block h3 {
+  font-family: gothamBook;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.product-resume-line {
+    color: #000000;
+    padding: 10px;
+    border-bottom: 1px solid #e2e2e2;
+    font-family: gothamBook;
+    font-size: 12px;
+    text-align: center;
+}
+
+.product-resume-line a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #e2e2e2;
+}
+
+.product-resume-line a:hover {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #e2e2e2;
+}
+
+.product-resume-checkout {
+  margin-top: 60px;
+}
+
+.product-resume-checkout a{
+  float: right;
+  font-family: gothamBook;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  text-decoration: none;
+  color: #ffbd47;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ffbd47;
+}
+
+.product-resume-checkout a:hover{
+  float: right;
+  font-family: gothamBook;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  text-decoration: none;
+  color: #ffbd47;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ffbd47;
+}
+/* End product resume */

@@ -60,4 +60,9 @@ class HomeController extends Controller
     {
       return $this->render('home/product-customization.html.twig');
     }
+
+    public function productResumeAction()
+    {
+      return $this->render('home/product-resume.html.twig');
+    }
 }

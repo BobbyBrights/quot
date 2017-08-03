@@ -52,6 +52,9 @@ cart-items:
 product-customization:
     path:     /demo/product-customization
     defaults: { _controller: AppBundle:Home:productCustomization }
+product-resume:
+    path:     /demo/product-resume
+    defaults: { _controller: AppBundle:Home:productResume }
 products:
     path:     /colecciones
     defaults: { _controller: AppBundle:Products:collections }
@@ -69,7 +72,7 @@ data-product:
     defaults: { _controller: AppBundle:Products:dataProduct }
 save-purchase:
     path:     /save-purchase
-    defaults: { _controller: AppBundle:Services:savePurchase }    
+    defaults: { _controller: AppBundle:Services:savePurchase }
 save-preorder:
     path:     /save-preorder
     defaults: { _controller: AppBundle:Services:savePreOrder }
