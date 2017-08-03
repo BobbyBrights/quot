@@ -3,12 +3,81 @@
 {% block title %}Quot - Resumen{% endblock %}
 
 {% block body %}
-    <div class='shirt-image'>
-        {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
-          <img src="{{ shirt }}" alt=""/>
-        {% endimage %}
-        <a id="btn_pre_order" data-toggle="modal" data-target="#myModal" href="javascript:void(0);">checkout</a>
-        <div id="custom_detail"></div>
+    <div id="custom_detail"></div>    
+    <div class='row'>
+        <div class='col-md-12'>
+          <div class='detail-customization-wrapper no-border'>
+            <h1>La vito 2017 - II</h1>
+          </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-6'>
+          <div class='product-resume-image align-center'>
+            {% image '%kernel.root_dir%/Resources/public/images/shirt-resume.png' %}
+              <img src="{{ shirt }}"/>
+            {% endimage %}
+          </div>
+        </div>
+        <div class='col-md-6'>
+            <div class='product-resume-info-block'>
+                <h2>Rosatta</h2>
+                <h3>Resumen</h3>
+                <div class='product-resume-line'>
+                    <div class='row'>
+                        <div class='col-md-8 align-left'>
+                          Talla S
+                        </div>
+                        <div class='col-md-4 align-right'>
+                          <a>
+                            EDITAR
+                          </a>
+                        </div>
+                    </div>
+                </div>
+                <div class='product-resume-line'>
+                    <div class='row'>
+                        <div class='col-md-8 align-left'>
+                          Cuello semi frances
+                        </div>
+                        <div class='col-md-4 align-right'>
+                          <a>
+                            EDITAR
+                          </a>
+                        </div>
+                    </div>
+                </div>
+                <div class='product-resume-line'>
+                    <div class='row'>
+                        <div class='col-md-8 align-left'>
+                          Perchera combinada
+                        </div>
+                        <div class='col-md-4 align-right'>
+                          <a>
+                            EDITAR
+                          </a>
+                        </div>
+                    </div>
+                </div>
+                <div class='product-resume-line'>
+                    <div class='row'>
+                        <div class='col-md-8 align-left'>
+                          Pu&ntilde;os combinados
+                        </div>
+                        <div class='col-md-4 align-right'>
+                          <a>
+                            EDITAR
+                          </a>
+                        </div>
+                    </div>
+                </div>
+                <div class='product-resume-checkout align-right'>
+                    <a id="btn_pre_order" data-toggle="modal" data-target="#myModal" href="javascript:void(0);">
+                      Seguir al checkout
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal fade white-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
