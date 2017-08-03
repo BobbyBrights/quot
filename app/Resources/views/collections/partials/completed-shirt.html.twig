@@ -7,8 +7,26 @@
         {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
           <img src="{{ shirt }}" alt=""/>
         {% endimage %}
-        <a id="btn_pre_order" href="javascript:void(0);">checkout</a>
+        <a id="btn_pre_order" data-toggle="modal" data-target="#myModal" href="javascript:void(0);">checkout</a>
         <div id="custom_detail"></div>
+    </div>
+    <div class="modal fade white-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content white-modal-content">
+                <div class='white-modal-wrapper'>
+                    <p>
+                      Importancia y valor a lo individual. Cada una de nuestras camisas es
+                      una edicion limitada de 50 unidades
+                    </p>
+                    <div class='white-modal-links'>
+                        <a href="/resumen-compra">Comprar</a>
+                    </div>
+                    <div class='white-modal-links'>
+                        <a href="/colecciones">Seguir Comprando</a>
+                    </div>  
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
@@ -20,7 +38,7 @@
                 $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
                 $.ajax({
                     url: "/save-preorder",
-                    data: {'title':'prueba camisa', 'description': 'descripcion camisa comprada', 'value': '1200', 'user_id': {{ user_id }}, 'shirt': '{{ shirt }}', 'vid': {{ vid }}},
+                    data: {'size':'M', 'title':'prueba camisa', 'description': 'descripcion camisa comprada', 'value': '1200', 'user_id': {{ user_id }}, 'shirt': '{{ shirt }}', 'vid': {{ vid }}},
                     type: "post",
                     success: function(data){
                         $('#custom_detail').html(data);

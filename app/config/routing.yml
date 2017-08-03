@@ -79,3 +79,6 @@ list-products-orders:
 completed-shirt:
     path:     /resumen-camisa
     defaults: { _controller: AppBundle:Products:completedShirt }
+purchase:
+    path:     /comprar
+    defaults: { _controller: AppBundle:Services:purchase }
