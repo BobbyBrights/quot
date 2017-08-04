@@ -83,17 +83,17 @@ class ServicesController extends Controller
                 $tem['image'] = $pd->getImage();
                 $tem['value'] = $pd->getValue();
                 $totalPurhase = $totalPurhase + $pd->getValue();
-                $reference = $pd->getId();
+                $reference = 'TestPayUquot';//$pd->getId();
                 $products[] = $tem;
             }
         }
-        $string = "FhkmbRHL3nAveKjQ1IKEr6Qh8i~630936~". $reference ."~". $totalPurhase ."~COP";
+        $string = "4Vj8eK4rloUd272L48hsrarnUA~508029~". $reference ."~". $totalPurhase ."~COP";
         return $this->render('services/purchase-sumary.html.twig',                
                 array(
                     'products' => $products,
                     'total' => $totalPurhase,
                     'taxReturnBase' => $totalPurhase - ($totalPurhase*19)/100,
-                    'iva' => $totalPurhase*1.19,
+                    'iva' => $totalPurhase*0.19,
                     'reference' => $reference,
                     'address' => 5000,
                     'signature' => hash( 'sha256', $string ),
