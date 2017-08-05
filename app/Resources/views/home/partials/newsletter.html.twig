@@ -1,18 +1,18 @@
-<div class='row'>
+<div id="newsletter" name="newsletter"  class='row'>
   <div class="col-xs-12 col-sm-12 col-md-12">
     <div class='newsletter'>
-        <a href="../../../../../../../pqrs/cine-colombia/src/PqrsBundle/Form/FiltroPqrsType.php"></a>
       <div class='newsletter-title'>
         <h3>Inscribirse a nuestro newsletter</h3>
       </div>
-        {{ form_start(form) }}
-            {{ form_errors(form) }}
-
-            {{ form_row(form.correo) }}
-
+        {{ form_start(form) }}            
+            {{ form_row(form.email) }}
             {{ form_row(form.save) }}
         {{ form_end(form) }}
-        {#{{ form(form) }}#}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="flash-notice">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
     </div>
   </div>
 </div>
