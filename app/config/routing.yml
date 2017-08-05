@@ -85,3 +85,6 @@ completed-shirt:
 purchase:
     path:     /comprar
     defaults: { _controller: AppBundle:Services:purchase }
+newsletter:
+    path:     /newsletter-send
+    defaults: { _controller: AppBundle:Services:newsletter }
