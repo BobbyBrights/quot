@@ -1,12 +1,18 @@
 <div class='row'>
   <div class="col-xs-12 col-sm-12 col-md-12">
     <div class='newsletter'>
+        <a href="../../../../../../../pqrs/cine-colombia/src/PqrsBundle/Form/FiltroPqrsType.php"></a>
       <div class='newsletter-title'>
         <h3>Inscribirse a nuestro newsletter</h3>
       </div>
-      <form>
-        <input type="text" placeholder="direccion de correo"/>
-      </form>
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            {{ form_row(form.correo) }}
+
+            {{ form_row(form.save) }}
+        {{ form_end(form) }}
+        {#{{ form(form) }}#}
     </div>
   </div>
 </div>

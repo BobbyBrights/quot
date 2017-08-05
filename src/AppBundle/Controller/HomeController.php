@@ -13,7 +13,22 @@ class HomeController extends Controller
         //$homeJson = file_get_contents($this->container->getParameter('json_home'));
         $homeJson = file_get_contents('http://dev-quot.pantheonsite.io/modulos-home');
         $home = json_decode($homeJson);
-        return $this->render('home/index.html.twig', array('home' => $home));
+        $form = $this->createFormBuilder()
+            ->add('correo', 'text', array(
+                'required' => true,
+                'attr' => array(
+                    'placeholder' => 'dirección de correo',
+                ),
+                'label' => false
+            ))            
+            ->add('save', 'submit', array(
+                'label' => 'Inscribirse',
+                'attr' => array(
+                    'class' => 'btn btn-newsletter',
+                )
+            ))
+            ->getForm();
+        return $this->render('home/index.html.twig', array('home' => $home, 'form' => $form->createView()));
     }
 
     public function listAction()

@@ -4,6 +4,6 @@
 
 {% block body %}
     {% for key, module in home %}
-        {{ include ('home/partials/'~ module.title_module|lower ~'.html.twig', {'module': module}) }}
+        {{ include ('home/partials/'~ module.title_module|lower ~'.html.twig', {'module': module, 'form': form}) }}
     {% endfor %}
 {% endblock %}
