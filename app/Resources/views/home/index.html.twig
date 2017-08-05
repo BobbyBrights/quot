@@ -10,9 +10,10 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script>            
+    <script>
         $("#newsletter_send").submit(function(event) {
-            $('#message_form').html('<img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/>');
+            //$('#message_form').html('<img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/>');
+            $('#message_form').show();
             event.preventDefault();
             var $form = $( this ),
             url = $form.attr( 'action' );

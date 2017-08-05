@@ -3,14 +3,27 @@
 {% block title %}Quot - Perzonalización{% endblock %}
 
 {% block body %}
-    <div id="custom_detail"></div>
+    <div id="custom_detail">
+      <div class='row'>
+        <div class='col-md-12'>
+          <div class='user-form-wrapper'>
+            <div class='user-form'>
+              <h1>Cargando...</h1>
+              {% image '%kernel.root_dir%/Resources/public/images/spinner_two.gif' %}
+                <img src="{{ asset_url }}" width='100%'/>
+              {% endimage %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
   {{ parent() }}
   <script>
         $(document).ready(function(){
-            $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
+            //$('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
             $.ajax({
                 url: "/personalizar/detalle-ajax",
                 data: {'vidParent':'{{ vidParent }}', 'vid':'{{ vid }}', 'child':'{{ child }}', 'vchild':'{{ vchild }}', 'child1':'{{ child1 }}', 'vchild1':'{{ vchild1 }}',  'child2':'{{ child2 }}',  'vchild2':'{{ vchild2 }}',  'size':'{{ size }}'},
@@ -20,10 +33,10 @@
                 }
             });
         });
-        
+
         function loadPage(url){
-            
-            $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
+
+            //$('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
             $.ajax({
                 url: url,
                 //data: {'vidParent':'{{ vidParent }}', 'vid':'{{ vid }}', 'child':'{{ child }}', 'vchild':'{{ vchild }}', 'child1':'{{ child1 }}', 'vchild1':'{{ vchild1 }}',  'child2':'{{ child2 }}',  'vchild2':'{{ vchild2 }}',  'size':'{{ size }}'},
@@ -33,7 +46,7 @@
                 }
             });
         }
-        
+
         function changeImg(key, urlNext, urlPrev){
             $('#btn_next').attr('onclick', 'loadPage("' + urlNext + '")');
             $("div[id*='detail_']").css('display', 'none');

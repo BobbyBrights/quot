@@ -631,6 +631,14 @@ fieldset[disabled] .btn-danger.active {
   color: #ffbd47;
 }
 
+.section-link a:active {
+  color: #ffbd47;
+}
+
+.section-link a:focus {
+  color: #ffbd47;
+}
+
 .cart-links {
   text-align: center;
   width: 100%;
@@ -843,7 +851,7 @@ fieldset[disabled] .btn-danger.active {
   float: left;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 11px;
+  font-size: 12px;
   font-family: gothamBook;
 }
 
@@ -897,7 +905,7 @@ fieldset[disabled] .btn-danger.active {
 .info-collection p {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 11px;
+  font-size: 12px;
   font-family: gothamBook;
 }
 
@@ -987,7 +995,7 @@ fieldset[disabled] .btn-danger.active {
 
 .newsletter input{
   background-color: #ffffff;
-  color: #e1e1e1;
+  color: #000000;
   font-family: gothamBook;
   font-size: 13px;
   text-transform: uppercase;
@@ -996,7 +1004,19 @@ fieldset[disabled] .btn-danger.active {
 }
 
 .newsletter input::-webkit-input-placeholder {
-  color: #e1e1e1;
+  color: #000000;
+}
+
+.newsletter button {
+  display: inline;
+}
+
+#message_form {
+  display: inline;
+  padding-left: 10px;
+  font-family: gothamBook;
+  font-size: 12px;
+  color: #ffffff;
 }
 /* End newsletter */
 
@@ -1114,7 +1134,7 @@ fieldset[disabled] .btn-danger.active {
 .promo-block p {
   margin-top: 20px;
   color: #ffffff;
-  font-size: 11px;
+  font-size: 12px;
   font-family: gothamBook;
 }
 /* End city promo */
@@ -1146,7 +1166,7 @@ fieldset[disabled] .btn-danger.active {
 .video-promo-info p {
   margin-top: 20px;
   color: #ffffff;
-  font-size: 11px;
+  font-size: 12px;
   font-family: gothamBook;
   text-align: center;
 }
@@ -1387,7 +1407,7 @@ fieldset[disabled] .btn-danger.active {
 }
 .product-detail-info-block p{
   font-family: gothamBook;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .product-detail-info-block a {

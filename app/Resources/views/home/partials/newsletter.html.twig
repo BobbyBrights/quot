@@ -4,11 +4,15 @@
             <div class='newsletter-title'>
               <h3>Inscribirse a nuestro newsletter</h3>
             </div>
-            <form id="newsletter_send" name="newsletter_send" method="post">            
-                <div><input type="text" id="email" name="email" placeholder="dirección de correo"></div>
-                <div><button type="submit" id="newsletter" name="form[save]" class="btn btn-newsletter">Inscribirse</button></div>
+            <form id="newsletter_send" name="newsletter_send" method="post">
+              <input type="text" id="email" name="email" placeholder="dirección de correo" />
+              <button type="submit" id="newsletter" name="form[save]" class="btn btn-newsletter">Inscribirse</button>
             </form>
-            <div id="message_form" class="flash-notice"></div>
+            <div id="message_form" class="flash-notice" style="display:none">
+              {% image '%kernel.root_dir%/Resources/public/images/spinner.gif' %}
+                <img src="{{ asset_url }}" width='20' height='20'/>
+              {% endimage %}
+            </div>
         </div>
     </div>
 </div>
