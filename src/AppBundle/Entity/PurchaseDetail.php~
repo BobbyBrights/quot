@@ -280,4 +280,28 @@ class PurchaseDetail
     {
         return $this->vid;
     }
+
+    /**
+     * Set quant
+     *
+     * @param integer $quant
+     *
+     * @return PurchaseDetail
+     */
+    public function setQuant($quant)
+    {
+        $this->quant = $quant;
+
+        return $this;
+    }
+
+    /**
+     * Get quant
+     *
+     * @return integer
+     */
+    public function getQuant()
+    {
+        return $this->quant;
+    }
 }

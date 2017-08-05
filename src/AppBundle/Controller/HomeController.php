@@ -41,7 +41,6 @@ class HomeController extends Controller
                             'error', 'Este correo ya esta suscrito.'
                     );
                 return $this->redirect($this->generateUrl('home', array()) . '#newsletter');
-                //return $this->redirectToRoute('home');
             } else {
                 $newsletter->setEmail($email);
                 $newsletterEm = $this->getDoctrine()->getManager();
