@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Purchase;
 use AppBundle\Entity\PurchaseDetail;
+use AppBundle\Entity\Newsletter;
 use Symfony\Component\HttpFoundation\Request;
 
 class ServicesController extends Controller
@@ -98,5 +99,23 @@ class ServicesController extends Controller
                     'address' => 5000,
                     'signature' => hash( 'sha256', $string ),
                 ));
+    }
+    
+    public function newsletterAction(Request $request){
+        $email = $this->get('request')->request->get('email');
+        if($email == ''){
+            return new Response('Debes ingresar un correo');
+        }
+        $emailExist = $this->getDoctrine()->getManager()->getRepository('AppBundle:Newsletter')->findBy(array('email' => $email));
+        if(!empty($emailExist)){
+            return new Response('El correo ' . $email . ' ya se encuentra suscrito');
+        } else{
+            $newsletter = new Newsletter();
+            $newsletter->setEmail($email);
+            $newsletterEm = $this->getDoctrine()->getManager();
+            $newsletterEm->persist($newsletter);
+            $newsletterEm->flush();
+            return new Response('Felicidades!');
+        }
     }
 }

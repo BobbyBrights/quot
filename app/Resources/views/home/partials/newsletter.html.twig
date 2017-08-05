@@ -1,18 +1,14 @@
 <div id="newsletter" name="newsletter"  class='row'>
-  <div class="col-xs-12 col-sm-12 col-md-12">
-    <div class='newsletter'>
-      <div class='newsletter-title'>
-        <h3>Inscribirse a nuestro newsletter</h3>
-      </div>
-        {{ form_start(form) }}            
-            {{ form_row(form.email) }}
-            {{ form_row(form.save) }}
-        {{ form_end(form) }}
-        {% for flashMessage in app.session.flashbag.get('error') %}
-            <div class="flash-notice">
-                {{ flashMessage }}
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class='newsletter'>
+            <div class='newsletter-title'>
+              <h3>Inscribirse a nuestro newsletter</h3>
             </div>
-        {% endfor %}
+            <form id="newsletter_send" name="newsletter_send" method="post">            
+                <div><input type="text" id="email" name="email" placeholder="dirección de correo"></div>
+                <div><button type="submit" id="newsletter" name="form[save]" class="btn btn-newsletter">Inscribirse</button></div>
+            </form>
+            <div id="message_form" class="flash-notice"></div>
+        </div>
     </div>
-  </div>
 </div>

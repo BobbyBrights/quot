@@ -4,6 +4,23 @@
 
 {% block body %}
     {% for key, module in home %}
-        {{ include ('home/partials/'~ module.title_module|lower ~'.html.twig', {'module': module, 'form': form}) }}
+        {{ include ('home/partials/'~ module.title_module|lower ~'.html.twig', {'module': module}) }}
     {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>            
+        $("#newsletter_send").submit(function(event) {
+            $('#message_form').html('<img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/>');
+            event.preventDefault();
+            var $form = $( this ),
+            url = $form.attr( 'action' );
+            var posting = $.post( '/newsletter-send', { email: $('#email').val()} );
+            /* Alerts the results */
+            posting.done(function( data ) {
+                $('#message_form').html(data);
+            });
+        });
+    </script>
 {% endblock %}
