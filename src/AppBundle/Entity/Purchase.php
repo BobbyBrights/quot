@@ -24,6 +24,9 @@ class Purchase
     /** @ORM\Column(name="value", type="string", length=255, nullable=true) */
     protected $value;
     
+    /** @ORM\Column(name="shirt_id", type="integer", length=255, nullable=true) */
+    protected $shirt_id;
+    
     /**
      * @ORM\OneToMany(targetEntity="PurchaseDetail", mappedBy="purchase_detail")
      */
@@ -156,5 +159,29 @@ class Purchase
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set shirtId
+     *
+     * @param integer $shirtId
+     *
+     * @return Purchase
+     */
+    public function setShirtId($shirtId)
+    {
+        $this->shirt_id = $shirtId;
+
+        return $this;
+    }
+
+    /**
+     * Get shirtId
+     *
+     * @return integer
+     */
+    public function getShirtId()
+    {
+        return $this->shirt_id;
     }
 }

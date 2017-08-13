@@ -21,12 +21,12 @@
         </div>
         <div class='col-md-6'>
             <div class='product-resume-info-block'>
-                <h2>Rosatta</h2>
+                <h2>{{ title }}</h2>
                 <h3>Resumen</h3>
                 <div class='product-resume-line'>
                     <div class='row'>
                         <div class='col-md-8 align-left'>
-                          Talla S
+                          Talla {{ size }}
                         </div>
                         <div class='col-md-4 align-right'>
                           <a>
@@ -71,6 +71,14 @@
                         </div>
                     </div>
                 </div>
+                <div class='product-resume-line'>
+                    <div class='row'>
+                        <div class='col-md-8 align-left'>
+                            Cantidad
+                        </div>
+                        <input id="num" type="number" name="num" min="1" max="50" value="1">
+                    </div>
+                </div>
                 <div class='product-resume-checkout align-right'>
                     <a id="btn_pre_order" data-toggle="modal" data-target="#myModal" href="javascript:void(0);">
                       Seguir al checkout
@@ -107,7 +115,17 @@
                 $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
                 $.ajax({
                     url: "/save-preorder",
-                    data: {'size':'M', 'title':'prueba camisa', 'description': 'descripcion camisa comprada', 'value': '1200', 'user_id': {{ user_id }}, 'shirt': '{{ shirt }}', 'vid': {{ vid }}},
+                    data: {
+                            'size': '{{ size }}',
+                            'title':'{{ title }}',
+                            'description': 'descripcion camisa comprada',
+                            'value': '1200',
+                            'user_id': {{ user_id }},
+                            'shirt': '{{ shirt }}',
+                            'vid': {{ vid }},
+                            'quant': $('#num').val(),
+                            'vid_parent': {{ parent_vid }} 
+                        },
                     type: "post",
                     success: function(data){
                         $('#custom_detail').html(data);

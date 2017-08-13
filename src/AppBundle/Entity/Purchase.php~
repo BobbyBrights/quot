@@ -24,6 +24,9 @@ class Purchase
     /** @ORM\Column(name="value", type="string", length=255, nullable=true) */
     protected $value;
     
+    /** @ORM\Column(name="shirt_id", type="integer", length=255, nullable=true) */
+    protected $shirt_id;
+    
     /**
      * @ORM\OneToMany(targetEntity="PurchaseDetail", mappedBy="purchase_detail")
      */

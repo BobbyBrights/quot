@@ -18,6 +18,9 @@ class ProductsController extends Controller
     
     public function customAction(Request $request, $vidParent, $vid, $size)
     {
+        if($size == 'Talla'){
+            $size = 'S';
+        }
         $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
         $collections = json_decode($collectionsJson);
         foreach($collections as $col){
@@ -35,11 +38,11 @@ class ProductsController extends Controller
     
     public function customDetailAction(Request $request)
     {
-        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            throw $this->createAccessDeniedException();
-        }
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $userId = $user->getId();
+        //if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        //    throw $this->createAccessDeniedException();
+        //}
+        //$user = $this->get('security.token_storage')->getToken()->getUser();
+        //$userId = $user->getId();
         $queryString = array(
             'vidParent' => $request->query->get('vidParent'),
             'vid' => $request->query->get('vid'),
@@ -155,6 +158,7 @@ class ProductsController extends Controller
                 $shirtChild2 = array();
                 foreach($col->products as $info){
                     if($info->vid == $request->query->get('vid')){
+                        $parent_vid = $request->query->get('vid');
                         if($request->query->get('child')){
                             foreach($info->childs as $ch){
                                 if($ch->vid == $request->query->get('vchild')){
@@ -184,15 +188,29 @@ class ProductsController extends Controller
         if(!empty($shirtParent)){
             $shirt = $shirtParent->childs[0]->images_final;
             $vid = $shirtParent->childs[0]->vid;
+            $texts = explode('-',$shirtParent->childs[0]->title);
+            $title = $texts[0];
         }
         if(!empty($shirtChild)){
             $shirt = $shirtChild->childs[0]->images_final;
             $vid = $shirtChild->childs[0]->vid;
+            $texts = explode('-', $shirtChild->childs[0]->title);
+            $title = $texts[0];
         }
         if(!empty($shirtChild1)){
             $shirt = $shirtChild1->childs[0]->images_final;
             $vid = $shirtChild1->childs[0]->vid;
+            $texts = explode('-', $shirtChild1->childs[0]->title);
+            $title = $texts[0];
         }
-        return $this->render('collections/partials/completed-shirt.html.twig', array('shirt' => $shirt, 'user_id' => $userId, 'vid' => $vid,));
+        $size = $request->query->get('size');
+        return $this->render('collections/partials/completed-shirt.html.twig', array(
+            'shirt' => $shirt,
+            'user_id' => $userId,
+            'vid' => $vid,
+            'title' => $title,
+            'size' => $size,
+            'parent_vid' => $parent_vid
+        ));
     }
 }
