@@ -3,14 +3,16 @@
     <div id="ancla_{{ data.vid }}" name="ancla_{{ data.vid }}" class='col-md-6'>
         <div id="detail-{{ class }}" class="carousel slide" data-ride="carousel">
           <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="listbox" style="background-image:url({{ data.images_bk }})">
                 {% for key,img in data.images %}
                     {% if key == 0 %}
                         <div class="item active">
                     {% else %}
                         <div class="item">
                     {% endif %}
-                      <img src="{{ data.images_bk }}" width='100%'/>
+                      {% image '%kernel.root_dir%/Resources/public/images/fake-bg.png'%}
+                        <img src="{{ asset_url }}" width='100%'/>
+                      {% endimage %}
                       <div class="product-detail-carousel-caption">
                         <img src="{{ img }}" width='100%'/>
                       </div>
