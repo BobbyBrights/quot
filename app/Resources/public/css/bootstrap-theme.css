@@ -1275,7 +1275,6 @@ fieldset[disabled] .btn-danger.active {
 
 .product-customize-link a:hover {
   text-decoration: none;
-  font-size: 13px;
   color: #000000;
 }
 
@@ -1296,7 +1295,6 @@ fieldset[disabled] .btn-danger.active {
 
 .product-customize-cart a:hover {
   text-decoration: none;
-  font-size: 13px;
   color: #000000;
 }
 
@@ -1359,7 +1357,7 @@ fieldset[disabled] .btn-danger.active {
 }
 
 .product-detail-carousel-right {
-  right: 40% !important;
+  right: 43% !important;
   left: auto;
 }
 
@@ -2211,3 +2209,11 @@ fieldset[disabled] .btn-danger.active {
   border-bottom: 1px solid #ffbd47;
 }
 /* End product resume */
+
+.carousel-control-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+    margin-top: -10px;
+}

@@ -19,11 +19,19 @@
             </div>
             <!-- Controls -->
             <a class="left carousel-control" href="#detail-{{ class }}" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class='carousel-control-arrow'>
+                {% image '%kernel.root_dir%/Resources/public/images/left-arrow.png'%}
+                  <img src="{{ asset_url }}" alt="previous"/>
+                {% endimage %}
+              </span>
                 <span class="sr-only">Previous</span>
             </a>
             <a class="right carousel-control product-detail-carousel-right" href="#detail-{{ class }}" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class='carousel-control-arrow'>
+                {% image '%kernel.root_dir%/Resources/public/images/right-arrow.png'%}
+                  <img src="{{ asset_url }}" alt="right"/>
+                {% endimage %}
+              </span>
                 <span class="sr-only">Next</span>
             </a>
         </div>
