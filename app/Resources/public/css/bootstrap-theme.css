@@ -1592,8 +1592,7 @@ fieldset[disabled] .btn-danger.active {
 .user-form form {
   text-align: justify;
   border-bottom: 1px solid #e2e2e2;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .user-form label{

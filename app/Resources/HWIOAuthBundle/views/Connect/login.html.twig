@@ -21,6 +21,9 @@
               {% if error is defined and error %}
                   <span>{{ error }}</span>
               {% endif %}
+              <div class="input-group align-center">
+                <button type="submit">Entrar</button>
+              </div>
               {% for owner in hwi_oauth_resource_owners() %}
                 {% if owner == 'facebook' %}
                   {% image '%kernel.root_dir%/Resources/public/images/facebook-connect.png' %}
@@ -37,9 +40,6 @@
                   {% endimage %}
                 {% endif %}
               {% endfor %}
-            </div>
-            <div class="input-group align-center">
-              <button type="submit">Entrar</button>
             </div>
           </form>
           <div class="input-group align-left new-user">

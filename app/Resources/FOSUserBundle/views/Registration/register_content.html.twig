@@ -2,6 +2,11 @@
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
     <div class="input-group align-center">
+        <button type="submit">
+          {{ 'registration.submit'|trans }}
+        </button>
+    </div>
+    <div class="input-group align-center">
       {% image '%kernel.root_dir%/Resources/public/images/facebook-connect.png' %}
         <a class='image-link' href="/connect/facebook">
           <img src="{{ asset_url }}" alt="facebook" width="200"/>
@@ -12,10 +17,5 @@
           <img src="{{ asset_url }}" alt="google plus" width="200"/>
         </a><br />
       {% endimage %}
-    </div>
-    <div class="input-group align-center">
-        <button type="submit">
-          {{ 'registration.submit'|trans }}
-        </button>
     </div>
 {{ form_end(form) }}
