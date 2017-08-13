@@ -24,12 +24,21 @@
       <div class="collapse navbar-collapse quot-menu" id="bs-example-navbar-collapse-1">
         <div class="col-lg-9">
           <ul class="section-link nav navbar-nav">
+          {% if path(app.request.attributes.get('_route')) == '/' %}
             <li><a class='main-menu-link' href="#preventa" data-ancla="preventa">Pre-venta</a></li>
             <li><a class='main-menu-link' href="#carousel-example-generic" data-ancla="carousel-example-generic"href="#">Camisas</a></li>
             <li><a class='main-menu-link' href="#collection" data-ancla="collection">Colecci&oacute;n</a></li>
             <li><a class='main-menu-link' href="#video-promo" data-ancla="video-promo">Personalizar</a></li>
             <li><a class='main-menu-link' href="#city-promo" data-ancla="city-promo">Origen</a></li>
             <li><a class='main-menu-link' href="#circulo" data-ancla="circulo">Circulo</a></li>
+          {% else %}
+            <li><a href="/#preventa" data-ancla="preventa">Pre-venta</a></li>
+            <li><a href="/#carousel-example-generic" data-ancla="carousel-example-generic"href="#">Camisas</a></li>
+            <li><a href="/#collection" data-ancla="collection">Colecci&oacute;n</a></li>
+            <li><a href="/#video-promo" data-ancla="video-promo">Personalizar</a></li>
+            <li><a href="/#city-promo" data-ancla="city-promo">Origen</a></li>
+            <li><a href="/#circulo" data-ancla="circulo">Circulo</a></li>
+          {% endif %}
           </ul>
         </div>
         <div class="col-lg-3">
@@ -44,10 +53,27 @@
                 <li><a class='small-link' href='/logout'>Cerrar sesi&oacute;n</a></li>
               </ul>
             </li>
-            <li><a>compras</a></li>
+            <li>
+              <a>
+                <span class="cart-badge badge">4</span>
+                compras
+              </a>
+            </li>
             {% else %}
-              <li><a href='/login'>cuenta</a></li>
-              <li><a>compras</a></li>
+              <li>
+                <a href='/login'>
+                  {% image '%kernel.root_dir%/Resources/public/images/menu-shirt-icon.png' %}
+                    <img src="{{ asset_url }}" alt="account"/>
+                  {% endimage %}
+                  cuenta
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span class="cart-badge badge">4</span>
+                  compras
+                </a>
+              </li>
             {% endif %}
           </ul>
         </div>

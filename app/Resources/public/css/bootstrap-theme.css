@@ -624,6 +624,12 @@ fieldset[disabled] .btn-danger.active {
   color: #ffbd47;
 }
 
+.cart-badge {
+  display: inline !important;
+  background-color: #151E21 !important;
+  border: 1px solid #ffffff;
+}
+
 .cart-links {
   text-align: center;
   width: 100%;
