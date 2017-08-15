@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse quot-menu" id="bs-example-navbar-collapse-1">
         <div class="col-lg-9">
           <ul class="section-link nav navbar-nav">
-          {% if path(app.request.attributes.get('_route')) == '/' %}
+          {% if path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == '/' %}
             <li><a class='main-menu-link' href="#preventa" data-ancla="preventa">Pre-venta</a></li>
             <li><a class='main-menu-link' href="#carousel-example-generic" data-ancla="carousel-example-generic"href="#">Camisas</a></li>
             <li><a class='main-menu-link' href="#collection" data-ancla="collection">Colecci&oacute;n</a></li>
