@@ -35,36 +35,36 @@ class ServicesController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
-        //$user = $this->get('security.token_storage')->getToken()->getUser();
-        //$userId = $user->getId();
-        //$shirtPreOrder = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array(
-        //    'user_id' => $userId,
-        //    'vid' => $this->get('request')->request->get('vid'),
-        //));
-        
         $purchaseEm = $this->getDoctrine()->getManager();
-        //if(!empty($shirtPreOrder)){
-        //    $quantPre = $shirtPreOrder[0]->getQuant(); 
-        //    $shirtPreOrder[0]->setQuant($quantPre + 1);
-        //    $idPreOrder = $shirtPreOrder[0]->getId();
-        //    $purchaseEm->persist($shirtPreOrder[0]);
-        //    $purchaseEm->flush();
-        //} else{        
-            $purchaseDetail = new PurchaseDetail();
-            $purchaseDetail->setUserId($this->get('request')->request->get('user_id'));
-            $purchaseDetail->setDescription($this->get('request')->request->get('description'));
-            $purchaseDetail->setTitle($this->get('request')->request->get('title'));
-            $purchaseDetail->setImage($this->get('request')->request->get('shirt'));
-            $purchaseDetail->setValue($this->get('request')->request->get('value'));
-            $purchaseDetail->setSize($this->get('request')->request->get('size'));
-            $purchaseDetail->setQuant($this->get('request')->request->get('quant'));
-            $purchaseDetail->setVid($this->get('request')->request->get('vid'));
-            $purchaseDetail->setStatus(0);
-            $purchaseEm->persist($purchaseDetail);
-            $purchaseEm->flush();
-            $idPreOrder = $purchaseDetail->getId();
-        //}
-        return new Response('salvando preorder ' . $idPreOrder);
+        $purchaseDetail = new PurchaseDetail();
+        $purchaseDetail->setUserId($this->get('request')->request->get('user_id'));
+        $purchaseDetail->setDescription($this->get('request')->request->get('description'));
+        $purchaseDetail->setTitle($this->get('request')->request->get('title'));
+        $purchaseDetail->setImage($this->get('request')->request->get('shirt'));
+        $purchaseDetail->setValue($this->get('request')->request->get('value'));
+        $purchaseDetail->setSize($this->get('request')->request->get('size'));
+        $purchaseDetail->setQuant($this->get('request')->request->get('quant'));
+        $purchaseDetail->setVid($this->get('request')->request->get('vid'));
+        $purchaseDetail->setStatus(0);
+        $purchaseEm->persist($purchaseDetail);
+        $purchaseEm->flush();
+        
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userId = $user->getId();
+        $shirtPreOrder = $purchaseEm->getRepository('AppBundle:PurchaseDetail')->findBy(array(
+            'user_id' => $userId,
+            'status' => 0,
+        ));
+        $count = 0;
+        
+        if(!empty($shirtPreOrder)){
+            foreach ($shirtPreOrder as $pre){
+                $count = (int)$pre->getQuant() + $count;
+            }
+        }
+        $this->get('session')->set('shirtCount', $count);
+        
+        return new Response($count);
     }
     
     public function listProductsOrderAction(Request $request){
