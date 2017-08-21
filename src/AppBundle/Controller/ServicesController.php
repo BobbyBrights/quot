@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Purchase;
 use AppBundle\Entity\PurchaseDetail;
 use AppBundle\Entity\Newsletter;
+use AppBundle\Entity\Address;
 use Symfony\Component\HttpFoundation\Request;
 
 class ServicesController extends Controller
@@ -73,6 +74,13 @@ class ServicesController extends Controller
         }
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $userId = $user->getId();
+        
+        $address = $this->getDoctrine()->getManager()->getRepository('AppBundle:Address')->findBy(array('user_address' => $userId));
+        if(empty($address)){
+            return $this->redirectToRoute('address');
+        } else{
+            $addressLocation = $address[0]->getAddress();
+        }
         $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId));
         $products = array();
         $totalPurhase = 0;
@@ -81,11 +89,20 @@ class ServicesController extends Controller
                 $tem['title'] = $title = $pd->getTitle();
                 $tem['description'] = $pd->getDescription();
                 $tem['image'] = $pd->getImage();
-                $tem['value'] = $pd->getValue();
-                $totalPurhase = $totalPurhase + $pd->getValue();
+                $tem['value'] = $pd->getValue();                
+                if(isset($products[$pd->getVid()])){
+                    $tem['quant'] = $products[$pd->getVid()]['quant'] + $pd->getQuant();
+                } else{
+                    $tem['quant'] = $pd->getQuant();
+                }
+                $tem['vid'] = $pd->getVid();  
+                $subTotal = $pd->getValue() * $pd->getQuant();
+                $totalPurhase = $totalPurhase + $subTotal;
                 $reference = 'TestPayUquot';//$pd->getId();
-                $products[] = $tem;
+                $products[$pd->getVid()] = $tem;
             }
+        } else{
+            return $this->redirectToRoute('products');
         }
         $string = "4Vj8eK4rloUd272L48hsrarnUA~508029~". $reference ."~". $totalPurhase ."~COP";
         return $this->render('services/purchase-sumary.html.twig',                
@@ -97,6 +114,7 @@ class ServicesController extends Controller
                     'reference' => $reference,
                     'address' => 5000,
                     'signature' => hash( 'sha256', $string ),
+                    'address' => $addressLocation,
                 ));
     }
     
@@ -116,5 +134,20 @@ class ServicesController extends Controller
             $newsletterEm->flush();
             return new Response('Felicidades!');
         }
+    }
+
+    public function saveAddressAction(Request $request){
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $address = new Address();
+        $address->setName($this->get('request')->request->get('name'));
+        $address->setAddress($this->get('request')->request->get('address'));
+        $address->setCity($this->get('request')->request->get('city'));
+        $address->setState($this->get('request')->request->get('state'));
+        $address->setPhone($this->get('request')->request->get('phone'));
+        $address->setUserAddress($user);
+        $addressEm = $this->getDoctrine()->getManager();
+        $addressEm->persist($address);
+        $addressEm->flush();
+        return $this->redirectToRoute('list-products-orders');
     }
 }

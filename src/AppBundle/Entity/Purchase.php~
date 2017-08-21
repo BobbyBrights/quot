@@ -160,4 +160,28 @@ class Purchase
     {
         return $this->status;
     }
+
+    /**
+     * Set shirtId
+     *
+     * @param integer $shirtId
+     *
+     * @return Purchase
+     */
+    public function setShirtId($shirtId)
+    {
+        $this->shirt_id = $shirtId;
+
+        return $this;
+    }
+
+    /**
+     * Get shirtId
+     *
+     * @return integer
+     */
+    public function getShirtId()
+    {
+        return $this->shirt_id;
+    }
 }

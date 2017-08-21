@@ -88,3 +88,9 @@ purchase:
 newsletter:
     path:     /newsletter-send
     defaults: { _controller: AppBundle:Services:newsletter }
+address:
+    path:     /direccion-envio
+    defaults: { _controller: AppBundle:User:address }
+address_save:
+    path:     /save-address
+    defaults: { _controller: AppBundle:Services:saveAddress }

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Resumen de compra{% endblock %}
+{% block body %}
+    <div>
+        Direccion de envio
+        <form method="post" action="/save-address">
+            Nombre
+            <input name="name" type="text" value=""/>
+            Direccion
+            <input name="address" type="text" value=""/>
+            Ciudad
+            <input name="city" type="text" value=""/>
+            Departamento
+            <input name="state" type="text" value=""/>
+            Telefono
+            <input name="phone" type="text" value=""/>
+            
+            <input name="Submit" type="submit"  value="Guardar" >
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+<?php
+// src/AppBundle/Entity/User.php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="address")
+ */
+class Address
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /** @ORM\Column(name="name", type="string", length=255, nullable=true) */
+    protected $name;
+
+    /** @ORM\Column(name="address", type="string", length=255, nullable=true) */
+   protected $address;
+
+   /** @ORM\Column(name="city", type="string", length=255, nullable=true) */
+   protected $city;
+
+   /** @ORM\Column(name="departament", type="string", length=255, nullable=true) */
+   protected $departament;
+   
+   /** @ORM\Column(name="phone", type="string", length=255, nullable=true) */
+   protected $phone;
+   
+   /**
+     * @ORM\OneToOne(targetEntity="User", inversedBy="address")
+     * @ORM\JoinColumn(name="user_address", referencedColumnName="id", nullable=TRUE)
+     */
+    private $user_address;   
+}

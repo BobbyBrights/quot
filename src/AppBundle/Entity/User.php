@@ -30,6 +30,11 @@ class User extends BaseUser
 
    /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
    protected $google_access_token;
+   
+    /**
+     * @ORM\OneToOne(targetEntity="Address", mappedBy="user_address")
+     */
+    private $address;
 
     public function __construct()
     {
@@ -91,5 +96,29 @@ class User extends BaseUser
     public function getGoogleAccessToken()
     {
         return $this->google_access_token;
+    }
+
+    /**
+     * Set address
+     *
+     * @param \AppBundle\Entity\Address $address
+     *
+     * @return User
+     */
+    public function setAddress(\AppBundle\Entity\Address $address = null)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return \AppBundle\Entity\Address
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }
