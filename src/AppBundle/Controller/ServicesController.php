@@ -74,6 +74,7 @@ class ServicesController extends Controller
         }
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $userId = $user->getId();
+        $userEmail = $user->getEmail();
         
         $address = $this->getDoctrine()->getManager()->getRepository('AppBundle:Address')->findBy(array('user_address' => $userId));
         if(empty($address)){
@@ -98,23 +99,30 @@ class ServicesController extends Controller
                 $tem['vid'] = $pd->getVid();  
                 $subTotal = $pd->getValue() * $pd->getQuant();
                 $totalPurhase = $totalPurhase + $subTotal;
-                $reference = 'TestPayUquot';//$pd->getId();
+                $reference = 'quot_test' . $pd->getId();
                 $products[$pd->getVid()] = $tem;
             }
         } else{
             return $this->redirectToRoute('products');
         }
-        $string = "4Vj8eK4rloUd272L48hsrarnUA~508029~". $reference ."~". $totalPurhase ."~COP";
+        $merchatId = '508029';
+        $accountId = '512321';
+        $apiKey = '4Vj8eK4rloUd272L48hsrarnUA';
+        $iva = 0.19;
+        $string = $apiKey . "~". $merchatId ."~". $reference ."~". (int)$totalPurhase ."~COP";
         return $this->render('services/purchase-sumary.html.twig',                
                 array(
                     'products' => $products,
                     'total' => $totalPurhase,
-                    'taxReturnBase' => $totalPurhase - ($totalPurhase*19)/100,
-                    'iva' => $totalPurhase*0.19,
+                    'taxReturnBase' => $totalPurhase - ($totalPurhase*$iva),
+                    'iva' => $totalPurhase*$iva,
                     'reference' => $reference,
-                    'address' => 5000,
-                    'signature' => hash( 'sha256', $string ),
+                    'signature' => hash( 'md5', $string ),
                     'address' => $addressLocation,
+                    'merchatId' => $merchatId,
+                    'apiKey' => $apiKey,
+                    'accountId' => $accountId,
+                    'email' => $userEmail,
                 ));
     }
     
@@ -149,5 +157,60 @@ class ServicesController extends Controller
         $addressEm->persist($address);
         $addressEm->flush();
         return $this->redirectToRoute('list-products-orders');
+    }
+    
+    public function resultCompraAction(Request $request){
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userId = $user->getId();
+        $purchaseOld = $this->getDoctrine()->getManager()->getRepository('AppBundle:Purchase')->findBy(array(
+            'user_id' => $userId,
+            'reference_pol' => $request->query->get('reference_pol'),
+            'transaction_id_pay' => $request->query->get('transactionId')
+        ));
+        $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId));
+        if(empty($purchaseOld)){
+            $purchase = new Purchase();
+            $purchase->setUserId($userId);
+            $purchase->setValue($request->query->get('TX_VALUE'));
+            $purchase->setStatus($request->query->get('polTransactionState'));
+            $purchase->setReferencePol($request->query->get('reference_pol'));
+            $purchase->setTransactionIdPay($request->query->get('transactionId'));
+            $purchaseEm = $this->getDoctrine()->getManager();
+            $purchaseEm->persist($purchase);
+            $purchaseEm->flush();
+            
+            foreach($purchaseDetail as $dt){
+                $dt->setPurchaseDetail($purchase);
+                $dt->setStatus($request->query->get('polTransactionState'));
+                $purchaseEm->persist($dt);
+                $purchaseEm->flush();
+            }
+        }        
+        //$idPurchase = $purchase->getId();        
+        $totalPurhase = 0;
+        if(!empty($purchaseDetail)){
+            foreach($purchaseDetail as $pd){
+                $tem['title'] = $title = $pd->getTitle();
+                $tem['description'] = $pd->getDescription();
+                $tem['image'] = $pd->getImage();
+                $tem['value'] = $pd->getValue();                
+                if(isset($products[$pd->getVid()])){
+                    $tem['quant'] = $products[$pd->getVid()]['quant'] + $pd->getQuant();
+                } else{
+                    $tem['quant'] = $pd->getQuant();
+                }
+                $tem['vid'] = $pd->getVid();  
+                $subTotal = $pd->getValue() * $pd->getQuant();
+                $totalPurhase = $totalPurhase + $subTotal;
+                $reference = 'quot_test' . $pd->getId();
+                $products[$pd->getVid()] = $tem;
+            }
+        }
+        //print'<pre>';var_dump(array_values($products));print'</pre>';die;
+        return $this->render('services/purchase-sumary-pay.html.twig',                
+                array(
+                    'products' => array_values($products)
+                ));
+        
     }
 }

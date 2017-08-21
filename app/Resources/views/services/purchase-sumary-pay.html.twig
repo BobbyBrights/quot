@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Resumen Compra{% endblock %}
+
+{% block body %}
+    <div class='row'>
+        <h3>LA ORDER ESTA REGISTRADA</h3>
+        <div class='col-md-12'>
+            <div class='product-to-cart-wrapper'>
+                {% for shirt in products %}                
+                    <div class='row'>
+                        <div class='col-md-6'>
+                            <div class='row'>
+                                <div class='col-md-5'>
+                                    <div class='product-teaser product-to-cart-shirt'>
+                                        <a class='shirt-block'>
+                                            <div class='shirt-image'>
+                                                {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
+                                                  <img width="180" heigth="180" src="{{ shirt.image }}" alt="cellphone"/>
+                                                {% endimage %}
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class='col-md-7 product-to-cart-detail'>
+                                    <h2>{{ shirt.title }}</h2>
+                                    <span>${{ shirt.value }}</span>
+                                    <div class='product-to-cart-table'>
+                                        <div class='row'>
+                                            <div class='col-md-6'>
+                                                <h4>Entrega</h4>
+                                                <p>fecha entrega</p>
+                                            </div>
+                                            <div class='col-md-6 align-right'></div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class='col-md-6'>
+                                                <h4>CONFIRMACION</h4>
+                                                <p>confirmacion</p>
+                                            </div>
+                                            <div class='col-md-6 align-right'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='detail-wrapper'>
+                <h1>La vito 2017 - II</h1>
+                <div class="owl-carousel">
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                    {{ include('home/partials/product-teaser.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>    
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+    $(document).ready(function(){
+        
+        $(".owl-carousel").owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:false
+                },
+                600:{
+                    items:3,
+                    nav:false
+                },
+                1000:{
+                    items:5,
+                    nav:false,
+                    loop:false
+                }
+            }
+        });
+    });
+  </script>
+{% endblock %}

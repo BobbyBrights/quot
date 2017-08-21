@@ -94,3 +94,6 @@ address:
 address_save:
     path:     /save-address
     defaults: { _controller: AppBundle:Services:saveAddress }
+result_compra:
+    path:     /resultado-compra
+    defaults: { _controller: AppBundle:Services:resultCompra }

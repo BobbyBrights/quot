@@ -8,23 +8,22 @@
         <div class='user-form-wrapper'>
             <div class='user-form'>
                 <h1>Compras</h1>
-                <form method="post" action="https://sandbox.gateway.payulatam.com/ppp-web-gateway/">
-                    <input name="merchantId" type="hidden" value="508029"/>
-                    <input name="accountId" type="hidden" value="512321"/>
+                <form method="post" action="https://sandbox.gateway.payulatam.com/ppp-web-gateway">
+                    <input name="merchantId" type="hidden" value="{{ merchatId }}"/>
+                    <input name="accountId" type="hidden" value="{{ accountId }}"/>
                     <input name="description" type="hidden" value="Compra productos QUOT"/>
                     <input name="referenceCode" type="hidden" value="{{ reference }}"/>
                     <input name="amount" type="hidden" value="{{ total }}"/>
                     <input name="tax" type="hidden" value="{{ iva }}"/>
                     <input name="taxReturnBase" type="hidden" value="{{ taxReturnBase }}"/>
+                    <input name="currency" type="hidden" value="COP"/>
+                    <input name="signature" value="{{ signature }}" type="hidden"/>
+                    <input name="test" value="1" type="hidden"/>
+                    <input name="buyerEmail" type="hidden"  value="{{ email }}" >
                     <input name="shippingAddress" value="{{ address }}" type="hidden"/>
                     <input name="shippingCity" value="Bogota" type="hidden"/>
                     <input name="shippingCountry" value="CO" type="hidden"/>
-                    <input name="currency" type="hidden" value="COP"/>
-                    <input name="approvedResponseUrl" type="hidden" value="http://www.quot.co/resultcompra"/>
-                    <input name="declinedResponseUrl" type="hidden" value="http://www.quot.co/resultcompra"/>
-                    <input name="pendingResponseUrl" type="hidden" value="http://www.quot.co/resultcompra"/>
-                    <input name="signature" value="{{ signature }}" type="hidden"/>
-                    <input name="test" type="hidden"  value="1" >
+                    <input name="responseUrl" type="hidden" value="http://127.0.0.1:8000/resultado-compra"/>                    
                     
                     {% for prod in products%}
                         {{ include('services/partials/cart-item.html.twig', {'product': prod}) }}
@@ -51,7 +50,7 @@
                         </p>
                     </div>
                     <div class="input-group align-center margin-top-40">
-                        <input name="Submit"        type="submit"  value="Comprar" >
+                        <input name="Submit" type="submit"  value="Comprar" >
                     </div>
                 </form>
             </div>

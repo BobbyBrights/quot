@@ -37,7 +37,12 @@ class Purchase
      */
     protected $status;
     
-
+    /** @ORM\Column(name="transaction_id_pay", type="integer", length=255, nullable=true) */
+    protected $transaction_id_pay;
+    
+    /** @ORM\Column(name="reference_pol", type="integer", length=255, nullable=true) */
+    protected $reference_pol;
+    
     /**
      * Get id
      *
