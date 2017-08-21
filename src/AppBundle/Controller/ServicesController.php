@@ -202,11 +202,10 @@ class ServicesController extends Controller
                 $tem['vid'] = $pd->getVid();  
                 $subTotal = $pd->getValue() * $pd->getQuant();
                 $totalPurhase = $totalPurhase + $subTotal;
-                $reference = 'quot_test' . $pd->getId();
                 $products[$pd->getVid()] = $tem;
             }
         }
-        //print'<pre>';var_dump(array_values($products));print'</pre>';die;
+        $this->get('session')->set('shirtCount', 0);
         return $this->render('services/purchase-sumary-pay.html.twig',                
                 array(
                     'products' => array_values($products)
