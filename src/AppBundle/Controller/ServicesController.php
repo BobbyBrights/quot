@@ -186,7 +186,7 @@ class ServicesController extends Controller
                 $purchaseEm->flush();
             }
         }        
-        //$idPurchase = $purchase->getId();        
+        $products = array();       
         $totalPurhase = 0;
         if(!empty($purchaseDetail)){
             foreach($purchaseDetail as $pd){
