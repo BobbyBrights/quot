@@ -213,4 +213,8 @@ class ProductsController extends Controller
             'parent_vid' => $parent_vid
         ));
     }
+    
+    public function moduleTransAction(){
+        return $this->render('collections/module-trans.html.twig');
+    }
 }

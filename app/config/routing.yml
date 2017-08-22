@@ -97,3 +97,6 @@ address_save:
 result_compra:
     path:     /resultado-compra
     defaults: { _controller: AppBundle:Services:resultCompra }
+module_trans:
+    path:     /module-trans
+    defaults: { _controller: AppBundle:Products:moduleTrans }

@@ -47,48 +47,37 @@
             </div>
         </div>
     </div>
-    <div class='row'>
-        <div class='col-md-12'>
-            <div class='detail-wrapper'>
-                <h1>La vito 2017 - II</h1>
-                <div class="owl-carousel">
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                </div>
-            </div>
-        </div>
-    </div>    
+    <div id="trans_module" class='row'></div>
 {% endblock %}
 
 {% block javascripts %}
   {{ parent() }}
   <script>
     $(document).ready(function(){
-        
-        $(".owl-carousel").owlCarousel({
-            loop:true,
-            margin:10,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:1,
-                    nav:false
-                },
-                600:{
-                    items:3,
-                    nav:false
-                },
-                1000:{
-                    items:5,
-                    nav:false,
-                    loop:false
-                }
+        $('#trans_module').load('/module-trans', function(responseTxt, statusTxt){
+            if(statusTxt == "success"){
+                $(".owl-carousel").owlCarousel({
+                    loop:true,
+                    margin:10,
+                    responsiveClass:true,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:false
+                        },
+                        600:{
+                            items:3,
+                            nav:false
+                        },
+                        1000:{
+                            items:5,
+                            nav:false,
+                            loop:false
+                        }
+                    }
+                });
             }
-        });
+        });        
     });
   </script>
 {% endblock %}

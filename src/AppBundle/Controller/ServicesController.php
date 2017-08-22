@@ -160,6 +160,9 @@ class ServicesController extends Controller
     }
     
     public function resultCompraAction(Request $request){
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $userId = $user->getId();
         $purchaseOld = $this->getDoctrine()->getManager()->getRepository('AppBundle:Purchase')->findBy(array(
