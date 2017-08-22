@@ -1,0 +1,30 @@
+<div class='product-teaser'>
+    <a class='shirt-block'>
+        <div class='shirt-image'>
+            {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
+                <img src="{{ products.images.0 }}" alt=""/>
+            {% endimage %}
+        </div>
+        <h4>{{ products.title }}</h4>
+    </a>
+    <div class='product-price'>
+        <div class='row'>
+            <div class='col-md-6'>
+              ${{ products.price }}
+            </div>
+            <div class='col-md-6 align-right'>
+                <div id="div_{{ products.vid }}" class="dd wrapper-dropdown-5" tabindex="1">
+                    <span>Talla</span>
+                    <ul class="dropdown">
+                        {% for size in sizes %}
+                          <li><a>{{ size }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='product-stock'>
+      20 de 50
+    </div>
+</div>

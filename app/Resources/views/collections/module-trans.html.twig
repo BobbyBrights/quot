@@ -1,13 +1,13 @@
 <div class='col-md-12'>
-    <div class='detail-wrapper'>
-        <h1>La vito 2017 - II</h1>
-        <div class="owl-carousel">
-            {{ include('home/partials/product-teaser.html.twig') }}
-            {{ include('home/partials/product-teaser.html.twig') }}
-            {{ include('home/partials/product-teaser.html.twig') }}
-            {{ include('home/partials/product-teaser.html.twig') }}
-            {{ include('home/partials/product-teaser.html.twig') }}
-            {{ include('home/partials/product-teaser.html.twig') }}
+    {% for session in collections %}
+        <div class='detail-wrapper'>
+            <h1>{{ session.title_collection }}</h1>
+            <div class="owl-carousel">
+                {% for coll in session.products %}
+                    {% set sizes = coll.sizes|split(',') %}
+                    {{ include('collections/partials/product-teaser-trans.html.twig', {'products': coll, 'sizes': sizes }) }}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endfor %}
 </div>

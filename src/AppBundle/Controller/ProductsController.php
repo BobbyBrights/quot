@@ -215,6 +215,9 @@ class ProductsController extends Controller
     }
     
     public function moduleTransAction(){
-        return $this->render('collections/module-trans.html.twig');
+        $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
+        $collections = json_decode($collectionsJson);
+        $collections = array_values($collections);
+        return $this->render('collections/module-trans.html.twig', array('collections' => $collections));
     }
 }

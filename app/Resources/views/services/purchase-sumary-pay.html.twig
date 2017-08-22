@@ -53,9 +53,33 @@
 {% block javascripts %}
   {{ parent() }}
   <script>
+        function DropDown(el) {
+            this.dd = el;
+            this.initEvents();
+        }
+        DropDown.prototype = {
+            initEvents : function() {
+              var obj = this;
+
+              obj.dd.on('click', function(event){
+                $(this).toggleClass('active');
+                event.stopPropagation();
+              });
+            }
+        }
     $(document).ready(function(){
         $('#trans_module').load('/module-trans', function(responseTxt, statusTxt){
             if(statusTxt == "success"){
+                var dd = new DropDown( $('.dd') );
+                $(document).click(function() {
+                  // all dropdowns
+                  $('.wrapper-dropdown-5').removeClass('active');
+                });
+
+                $('.wrapper-dropdown-5 ul.dropdown li a').click(function() {
+                  $(this).parents('div').children('span').text($(this).text());
+                });
+                
                 $(".owl-carousel").owlCarousel({
                     loop:true,
                     margin:10,
