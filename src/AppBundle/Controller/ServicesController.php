@@ -82,7 +82,7 @@ class ServicesController extends Controller
         } else{
             $addressLocation = $address[0]->getAddress();
         }
-        $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId));
+        $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId, 'status' => 0));
         $products = array();
         $totalPurhase = 0;
         if(!empty($purchaseDetail)){
@@ -170,7 +170,7 @@ class ServicesController extends Controller
             'reference_pol' => $request->query->get('reference_pol'),
             'transaction_id_pay' => $request->query->get('transactionId')
         ));
-        $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId));
+        $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId, 'status' => 0));
         if(empty($purchaseOld)){
             $purchase = new Purchase();
             $purchase->setUserId($userId);
