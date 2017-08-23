@@ -65,21 +65,7 @@
             </div>
         </div>
     </div>
-    <div class='row'>
-        <div class='col-md-12'>
-            <div class='detail-wrapper'>
-                <h1>La vito 2017 - II</h1>
-                <div class="owl-carousel">
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                    {{ include('home/partials/product-teaser.html.twig') }}
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="trans_module" class='row'></div>
     <div class="modal fade white-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content white-modal-content">
@@ -102,28 +88,55 @@
 {% block javascripts %}
   {{ parent() }}
   <script>
-    $(document).ready(function(){
-        
-        $(".owl-carousel").owlCarousel({
-            loop:true,
-            margin:10,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:1,
-                    nav:false
-                },
-                600:{
-                    items:3,
-                    nav:false
-                },
-                1000:{
-                    items:5,
-                    nav:false,
-                    loop:false
-                }
+        function DropDown(el) {
+            this.dd = el;
+            this.initEvents();
+        }
+        DropDown.prototype = {
+            initEvents : function() {
+              var obj = this;
+
+              obj.dd.on('click', function(event){
+                $(this).toggleClass('active');
+                event.stopPropagation();
+              });
             }
-        });
+        }
+    $(document).ready(function(){
+        $('#trans_module').load('/module-trans', function(responseTxt, statusTxt){
+            if(statusTxt == "success"){
+                var dd = new DropDown( $('.dd') );
+                $(document).click(function() {
+                  // all dropdowns
+                  $('.wrapper-dropdown-5').removeClass('active');
+                });
+
+                $('.wrapper-dropdown-5 ul.dropdown li a').click(function() {
+                  $(this).parents('div').children('span').text($(this).text());
+                });
+                
+                $(".owl-carousel").owlCarousel({
+                    loop:true,
+                    margin:10,
+                    responsiveClass:true,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:false
+                        },
+                        600:{
+                            items:3,
+                            nav:false
+                        },
+                        1000:{
+                            items:5,
+                            nav:false,
+                            loop:false
+                        }
+                    }
+                });
+            }
+        });        
     });
   </script>
 {% endblock %}
