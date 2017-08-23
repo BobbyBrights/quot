@@ -7,7 +7,7 @@
     <div class='row'>
         <div class='col-md-12'>
           <div class='detail-customization-wrapper no-border'>
-            <h1>La vito 2017 - II</h1>
+            <h1>{{ title_collection }}</h1>
           </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
             <div class='product-resume-info-block'>
                 <h2>{{ title }}</h2>
                 <h3>Resumen</h3>
-                <div class='product-resume-line'>
+                <!--<div class='product-resume-line'>
                     <div class='row'>
                         <div class='col-md-8 align-left'>
                           Talla {{ size }}
@@ -34,14 +34,14 @@
                           </a>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class='product-resume-line'>
                     <div class='row'>
                         <div class='col-md-8 align-left'>
-                          Cuello semi frances
+                          {{ neck }}
                         </div>
                         <div class='col-md-4 align-right'>
-                          <a>
+                          <a href="{{ urlNeck }}">
                             EDITAR
                           </a>
                         </div>
@@ -50,10 +50,10 @@
                 <div class='product-resume-line'>
                     <div class='row'>
                         <div class='col-md-8 align-left'>
-                          Perchera combinada
+                          {{ fists }}
                         </div>
                         <div class='col-md-4 align-right'>
-                          <a>
+                          <a href="{{ urlFist }}">
                             EDITAR
                           </a>
                         </div>
@@ -62,10 +62,10 @@
                 <div class='product-resume-line'>
                     <div class='row'>
                         <div class='col-md-8 align-left'>
-                          Pu&ntilde;os combinados
+                          {{ button }}
                         </div>
                         <div class='col-md-4 align-right'>
-                          <a>
+                          <a href="{{ urlButton }}">
                             EDITAR
                           </a>
                         </div>

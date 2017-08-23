@@ -28,7 +28,8 @@
     {% endfor %}
     <div class='col-md-6'>
         <div class='product-custom-info-block'>
-            <h2>{{ shirt.title }}</h2>
+            {% set array_title = shirt.title|split('-') %}
+            <h2>{{ array_title.0 }}</h2>
             <!--<h3>Cuello</h3>-->
             <div class='product-custom-options'>
                 <ul>
@@ -67,7 +68,7 @@
                                 <a id="btn_next" onclick="loadPage('{{ url }}');" href="javascript:void(0);" class=''>Siguiente</a>
                             {% else %}
                                 <a id="btn_prev" onclick="loadPage('{{ urlPrev }}');" href="javascript:void(0);" class=''>Anterior</a>
-                                <a id="btn_next" href="{{ urlResumen }}" class=''>Siguiente</a>
+                                <a id="btn_next_f" href="{{ urlResumen }}&com=0" class=''>Siguiente</a>
                             {% endif %}
                         </div>
                     </div>

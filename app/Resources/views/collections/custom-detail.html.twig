@@ -23,7 +23,6 @@
   {{ parent() }}
   <script>
         $(document).ready(function(){
-            //$('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
             $.ajax({
                 url: "/personalizar/detalle-ajax",
                 data: {'vidParent':'{{ vidParent }}', 'vid':'{{ vid }}', 'child':'{{ child }}', 'vchild':'{{ vchild }}', 'child1':'{{ child1 }}', 'vchild1':'{{ vchild1 }}',  'child2':'{{ child2 }}',  'vchild2':'{{ vchild2 }}',  'size':'{{ size }}'},
@@ -35,11 +34,8 @@
         });
 
         function loadPage(url){
-
-            //$('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
             $.ajax({
                 url: url,
-                //data: {'vidParent':'{{ vidParent }}', 'vid':'{{ vid }}', 'child':'{{ child }}', 'vchild':'{{ vchild }}', 'child1':'{{ child1 }}', 'vchild1':'{{ vchild1 }}',  'child2':'{{ child2 }}',  'vchild2':'{{ vchild2 }}',  'size':'{{ size }}'},
                 type: "get",
                 success: function(data){
                     $('#custom_detail').html(data);
@@ -51,22 +47,23 @@
             $('#btn_next').attr('onclick', 'loadPage("' + urlNext + '")');
             $("div[id*='detail_']").css('display', 'none');
             $("#detail_" + key).css('display', 'block');
-            aux = key - 1;
-            if(aux == -1){
-                aux = 0;
+            if($('#radio01').is(':checked')){
+                $("#detail_" + key + " #combination_1").css('display', 'block');
+            } else{
+                $("#detail_" + key + " #combination_0").css('display', 'block');
             }
-            $("#detail_" + key +" #combination_" + aux).css('display', 'block');
         }
         
         function changeCom(id){
             var hrefCom = $('#final_shirt').attr('href');
-            console.log(id);
             if(id == '1'){                
                 var hrefFinal = hrefCom.replace("&com=0", "&com=1");
                 $('#final_shirt').attr('href', hrefFinal);
+                $('#btn_next_f').attr('href', hrefFinal);
             } else{
                 var hrefFinal = hrefCom.replace("&com=1", "&com=0");
                 $('#final_shirt').attr('href', hrefFinal);
+                $('#btn_next_f').attr('href', hrefFinal);
             }
             $("div[id*='combination_']").css('display', 'none');
             $("#combination_" + id).css('display', 'block');
