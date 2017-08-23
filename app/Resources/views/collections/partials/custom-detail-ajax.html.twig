@@ -17,10 +17,10 @@
         {% endif %}
         <div id="detail_{{ key }}" style="{{ style }}" class='col-md-6 align-center'>
             {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
-            <div id="combination_1">
+            <div id="combination_0">
                 <img src="{{ dt.images_detail.1 }}" width='70%'/>
             </div>
-            <div style="display:none" id="combination_2">
+            <div style="display:none" id="combination_1">
                 <img src="{{ dt.images_detail.2 }}" width='70%'/>
             </div>
             {% endimage %}
@@ -53,9 +53,9 @@
             <p>{{ shirt.description }}</p>
             <h3>Combinacion</h3>
             <div class='custom-radio'>
-                <input onclick="changeCom(2);" type="radio" id="radio01" name="radio" />
+                <input onclick="changeCom(1);" type="radio" id="radio01" name="radio" />
                 <label for="radio01"><span></span>Si</label>
-                <input onclick="changeCom(1);" type="radio" id="radio02" name="radio" />
+                <input onclick="changeCom(0);" type="radio" id="radio02" name="radio" />
                 <label for="radio02"><span></span>No</label>
             </div>
                 <div class='row'>

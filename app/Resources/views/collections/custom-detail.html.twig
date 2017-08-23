@@ -51,12 +51,17 @@
             $('#btn_next').attr('onclick', 'loadPage("' + urlNext + '")');
             $("div[id*='detail_']").css('display', 'none');
             $("#detail_" + key).css('display', 'block');
+            aux = key - 1;
+            if(aux == -1){
+                aux = 0;
+            }
+            $("#detail_" + key +" #combination_" + aux).css('display', 'block');
         }
-        ""
+        
         function changeCom(id){
             var hrefCom = $('#final_shirt').attr('href');
             console.log(id);
-            if(id == '2'){                
+            if(id == '1'){                
                 var hrefFinal = hrefCom.replace("&com=0", "&com=1");
                 $('#final_shirt').attr('href', hrefFinal);
             } else{
