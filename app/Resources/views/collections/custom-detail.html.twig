@@ -52,5 +52,19 @@
             $("div[id*='detail_']").css('display', 'none');
             $("#detail_" + key).css('display', 'block');
         }
+        ""
+        function changeCom(id){
+            var hrefCom = $('#final_shirt').attr('href');
+            console.log(id);
+            if(id == '2'){                
+                var hrefFinal = hrefCom.replace("&com=0", "&com=1");
+                $('#final_shirt').attr('href', hrefFinal);
+            } else{
+                var hrefFinal = hrefCom.replace("&com=1", "&com=0");
+                $('#final_shirt').attr('href', hrefFinal);
+            }
+            $("div[id*='combination_']").css('display', 'none');
+            $("#combination_" + id).css('display', 'block');
+        }
   </script>
 {% endblock %}

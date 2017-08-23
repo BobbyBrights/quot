@@ -205,7 +205,7 @@ class ProductsController extends Controller
         }
         $size = $request->query->get('size');
         return $this->render('collections/partials/completed-shirt.html.twig', array(
-            'shirt' => $shirt,
+            'shirt' => $shirt[$request->query->get('com')],
             'user_id' => $userId,
             'vid' => $vid,
             'title' => $title,

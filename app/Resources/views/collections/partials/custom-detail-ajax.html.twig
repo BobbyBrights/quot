@@ -17,14 +17,19 @@
         {% endif %}
         <div id="detail_{{ key }}" style="{{ style }}" class='col-md-6 align-center'>
             {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
+            <div id="combination_1">
                 <img src="{{ dt.images_detail.1 }}" width='70%'/>
+            </div>
+            <div style="display:none" id="combination_2">
+                <img src="{{ dt.images_detail.2 }}" width='70%'/>
+            </div>
             {% endimage %}
         </div>
     {% endfor %}
     <div class='col-md-6'>
         <div class='product-custom-info-block'>
-            <h2>Rosatta</h2>
-            <h3>Cuello</h3>
+            <h2>{{ shirt.title }}</h2>
+            <!--<h3>Cuello</h3>-->
             <div class='product-custom-options'>
                 <ul>
                     {% set resumen = '' %}
@@ -35,7 +40,7 @@
                             {% set url_child = url ~ '&child' ~ nivel ~ '=' ~ child ~ '&vchild' ~ nivel ~ '=' ~ vchild %}
                         {% endif %}
                         <li>
-                            <div class='customization-box'>
+                            <div id="btn_customizer_{{ key }}" class='customization-box'>
                                 {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
                                     <img onclick="changeImg({{ key }}, '{{ url_child }}');" src="{{ dt.images.0 }}"/>
                                 {% endimage %}
@@ -45,15 +50,12 @@
                 </ul>
             </div>
             <h3>Descripcion</h3>
-            <p>
-              Importancia y valor a lo individual. Cada una de nuestras camisas
-              es una edicion limitada de 50 unidades
-            </p>
+            <p>{{ shirt.description }}</p>
             <h3>Combinacion</h3>
             <div class='custom-radio'>
-                <input type="radio" id="radio01" name="radio" />
+                <input onclick="changeCom(2);" type="radio" id="radio01" name="radio" />
                 <label for="radio01"><span></span>Si</label>
-                <input type="radio" id="radio02" name="radio" />
+                <input onclick="changeCom(1);" type="radio" id="radio02" name="radio" />
                 <label for="radio02"><span></span>No</label>
             </div>
                 <div class='row'>
@@ -71,10 +73,18 @@
                     </div>
                     <div class='col-md-6 align-right'>
                         <div class='product-step-resume'>
-                            <a href="{{ urlResumen }}">Ver resumen</a>
+                            <a id="final_shirt" href="{{ urlResumen }}&com=0">Ver resumen</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 </div>
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('#btn_customizer_0 img').trigger('click');
+            document.getElementById("radio02").checked = true;
+        });
+    </script>
+{% endblock %}
