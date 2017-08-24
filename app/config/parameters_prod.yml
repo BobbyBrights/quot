@@ -10,4 +10,4 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
-    json_home: http://dev-quot.pantheonsite.io/modulos-home
+    json_home: http://34.230.4.103:8088/productos

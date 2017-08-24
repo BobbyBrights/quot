@@ -10,7 +10,7 @@ class ProductsController extends Controller
 {
     public function collectionsAction()
     {
-        $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
+        $collectionsJson = file_get_contents($this->getParameter('json_home'));
         $collections = json_decode($collectionsJson);
         $collections = array_values($collections);
         return $this->render('collections/index.html.twig', array('collections' => $collections));
@@ -21,7 +21,7 @@ class ProductsController extends Controller
         if($size == 'Talla'){
             $size = 'S';
         }
-        $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
+        $collectionsJson = file_get_contents($this->getParameter('json_home'));
         $collections = json_decode($collectionsJson);
         foreach($collections as $col){
             if($col->vid == $vidParent){
@@ -59,7 +59,7 @@ class ProductsController extends Controller
     
     public function customDetailAjaxAction(Request $request)
     {
-        $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
+        $collectionsJson = file_get_contents($this->getParameter('json_home'));
         $collections = json_decode($collectionsJson);
         foreach($collections as $col){
             if($col->vid == $request->query->get('vidParent')){
@@ -148,7 +148,7 @@ class ProductsController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $userId = $user->getId();
         
-        $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
+        $collectionsJson = file_get_contents($this->getParameter('json_home'));
         $collections = json_decode($collectionsJson);
         foreach($collections as $col){            
             if($col->vid == $request->query->get('vidParent')){
@@ -241,7 +241,7 @@ class ProductsController extends Controller
     }
     
     public function moduleTransAction(){
-        $collectionsJson = file_get_contents('http://dev-quot.pantheonsite.io/productos');
+        $collectionsJson = file_get_contents($this->getParameter('json_home'));
         $collections = json_decode($collectionsJson);
         $collections = array_values($collections);
         return $this->render('collections/module-trans.html.twig', array('collections' => $collections));
