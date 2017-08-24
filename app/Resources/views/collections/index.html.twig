@@ -10,6 +10,7 @@
                     <div class='detail-wrapper'>
                       <h1>{{ col.title_collection }}</h1>
                         <div class="owl-carousel">
+                            {% set dataCount = col.products %}
                             {% for base in col.products %}
                                 {{ include('collections/partials/product-teaser.html.twig', {'data': base, 'vid_parent': col.vid }) }}
                             {% endfor %}
@@ -31,52 +32,66 @@
 {% block javascripts %}
   {{ parent() }}
   <script>
-
     function generateLink(vid_parent, vid){
-      var size = $('.div_' + vid).children('span').text();
-      window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
+        var size = $('.div_' + vid).children('span').text();
+        window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
     }
-
+    
     function generateLinkFromDetail(vid_parent, vid){
-      var size = $('#div_' + vid).children('span').text();
-      window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
+        var size = $('#div_' + vid).children('span').text();
+        window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
     }
 
     function DropDown(el) {
-      this.dd = el;
-      this.initEvents();
+        this.dd = el;
+        this.initEvents();
     }
     DropDown.prototype = {
-      initEvents : function() {
-        var obj = this;
-
-        obj.dd.on('click', function(event){
-          $(this).toggleClass('active');
-          event.stopPropagation();
-        });
-      }
+        initEvents : function() {
+            var obj = this;
+            obj.dd.on('click', function(event){
+                $(this).toggleClass('active');
+                event.stopPropagation();
+            });
+        }
     }
-
+    
+    function countShirt(vid_parent){
+        $.ajax({
+            url: "/count-shirt",
+            data: {'vidParent': vid_parent },
+            type: "get",
+            success: function(data){
+                $('#count_shirt_'+vid_parent).html(data);
+            }
+        });
+    }
     $(document).ready(function(){
+        countArray = {{ collections|json_encode|raw }};
+        products = countArray[0]['products'];
+        console.log(products);
+        products.forEach(function(product) {
+            countShirt(product.vid);
+        });
+        
+        var dd = new DropDown( $('.dd') );
 
-      var dd = new DropDown( $('.dd') );
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-5').removeClass('active');
+        });
 
-      $(document).click(function() {
-        // all dropdowns
-        $('.wrapper-dropdown-5').removeClass('active');
-      });
+        $('.wrapper-dropdown-5 ul.dropdown li a').click(function() {
+            $(this).parents('div').children('span').text($(this).text());
+        });
 
-      $('.wrapper-dropdown-5 ul.dropdown li a').click(function() {
-        $(this).parents('div').children('span').text($(this).text());
-      });
-
-      $(".product-teaser").hover(function(){
-        $(this).children('.product-custom product-customize-link a').trigger('mouseenter');;
-        $(this).children('.product-custom product-customize-cart a').trigger('mouseenter');
-      },function(){
-        $(this).children('.product-custom product-customize-link a').trigger('mouseenter');
-        $(this).children('.product-custom product-customize-cart a').trigger('mouseenter');
-      });
+        $(".product-teaser").hover(function(){
+            $(this).children('.product-custom product-customize-link a').trigger('mouseenter');;
+            $(this).children('.product-custom product-customize-cart a').trigger('mouseenter');
+        },function(){
+            $(this).children('.product-custom product-customize-link a').trigger('mouseenter');
+            $(this).children('.product-custom product-customize-cart a').trigger('mouseenter');
+        });
 
       $('#detail-1').carousel();
       $('#detail-2').carousel();

@@ -37,10 +37,10 @@ class Purchase
      */
     protected $status;
     
-    /** @ORM\Column(name="transaction_id_pay", type="integer", length=255, nullable=true) */
+    /** @ORM\Column(name="transaction_id_pay", type="string", length=255, nullable=true) */
     protected $transaction_id_pay;
     
-    /** @ORM\Column(name="reference_pol", type="integer", length=255, nullable=true) */
+    /** @ORM\Column(name="reference_pol", type="string", length=255, nullable=true) */
     protected $reference_pol;
     
     /**
@@ -188,5 +188,53 @@ class Purchase
     public function getShirtId()
     {
         return $this->shirt_id;
+    }
+
+    /**
+     * Set transactionIdPay
+     *
+     * @param integer $transactionIdPay
+     *
+     * @return Purchase
+     */
+    public function setTransactionIdPay($transactionIdPay)
+    {
+        $this->transaction_id_pay = $transactionIdPay;
+
+        return $this;
+    }
+
+    /**
+     * Get transactionIdPay
+     *
+     * @return integer
+     */
+    public function getTransactionIdPay()
+    {
+        return $this->transaction_id_pay;
+    }
+
+    /**
+     * Set referencePol
+     *
+     * @param integer $referencePol
+     *
+     * @return Purchase
+     */
+    public function setReferencePol($referencePol)
+    {
+        $this->reference_pol = $referencePol;
+
+        return $this;
+    }
+
+    /**
+     * Get referencePol
+     *
+     * @return integer
+     */
+    public function getReferencePol()
+    {
+        return $this->reference_pol;
     }
 }

@@ -39,6 +39,9 @@ class PurchaseDetail
     /** @ORM\Column(name="vid", type="integer", length=255, nullable=true) */
     protected $vid;
     
+    /** @ORM\Column(name="vid_parent", type="integer", length=255, nullable=true) */
+    protected $vid_parent;
+    
     /** @ORM\Column(name="quant", type="integer", length=255, nullable=true) */
     protected $quant;
     

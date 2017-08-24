@@ -39,6 +39,9 @@ class PurchaseDetail
     /** @ORM\Column(name="vid", type="integer", length=255, nullable=true) */
     protected $vid;
     
+    /** @ORM\Column(name="vid_parent", type="integer", length=255, nullable=true) */
+    protected $vid_parent;
+    
     /** @ORM\Column(name="quant", type="integer", length=255, nullable=true) */
     protected $quant;
     
@@ -303,5 +306,29 @@ class PurchaseDetail
     public function getQuant()
     {
         return $this->quant;
+    }
+
+    /**
+     * Set vidParent
+     *
+     * @param integer $vidParent
+     *
+     * @return PurchaseDetail
+     */
+    public function setVidParent($vidParent)
+    {
+        $this->vid_parent = $vidParent;
+
+        return $this;
+    }
+
+    /**
+     * Get vidParent
+     *
+     * @return integer
+     */
+    public function getVidParent()
+    {
+        return $this->vid_parent;
     }
 }

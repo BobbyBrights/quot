@@ -100,3 +100,6 @@ result_compra:
 module_trans:
     path:     /module-trans
     defaults: { _controller: AppBundle:Products:moduleTrans }
+count_shirt:
+    path:     /count-shirt
+    defaults: { _controller: AppBundle:Services:countShirt }

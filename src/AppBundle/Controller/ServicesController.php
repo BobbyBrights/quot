@@ -46,6 +46,7 @@ class ServicesController extends Controller
         $purchaseDetail->setSize($this->get('request')->request->get('size'));
         $purchaseDetail->setQuant($this->get('request')->request->get('quant'));
         $purchaseDetail->setVid($this->get('request')->request->get('vid'));
+        $purchaseDetail->setVidParent($this->get('request')->request->get('vid_parent'));
         $purchaseDetail->setStatus(0);
         $purchaseEm->persist($purchaseDetail);
         $purchaseEm->flush();
@@ -214,5 +215,18 @@ class ServicesController extends Controller
                     'products' => array_values($products)
                 ));
         
+    }
+    
+    public function countShirtAction(Request $request){
+        $count = 0;
+        $vid = $request->query->get('vidParent');
+        $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('status' => 4, 'vid_parent' => $vid));
+        if($purchaseDetail){
+            foreach ($purchaseDetail as $pre){
+                $count = (int)$pre->getQuant() + $count;            
+            }
+        }
+        $this->get('session')->set('countShirt_' . $vid, $count);
+        return new Response($count . ' de 50');
     }
 }

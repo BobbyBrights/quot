@@ -22,8 +22,9 @@
         </div>
       </div>
     </div>
-    <div class='product-stock'>
-      20 de 50
+    <div id="count_shirt_{{ data.vid }}" class='product-stock'>
+        {% set count = 'countShirt_' ~  data.vid %}
+        {{ app.session.get(count) }} de 50
     </div>
     <div class="product-custom">
       <div class="product-customize-link">
