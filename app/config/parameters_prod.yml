@@ -11,4 +11,4 @@ parameters:
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
     json_productos: http://34.230.4.103:8088/productos
-    json_home: http://34.230.4.103:8088/productos
+    json_home: http://34.230.4.103:8088/modulos-home
