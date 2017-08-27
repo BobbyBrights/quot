@@ -202,9 +202,9 @@ class ProductsController extends Controller
             $texts = explode('-', $shirtChild->childs[0]->title);
             $textsAux = explode('-',$shirtParent->childs[0]->title);
             $title = $texts[0];
-            $neck = (isset($texts[1])) ? $texts[1] : $textsAux[1];
-            $fists = (isset($texts[2])) ? $texts[2] : $textsAux[2];
-            $button = (isset($texts[3])) ? $texts[3] : $textsAux[3];            
+            $neck = (isset($texts[1])) ? $texts[1] : '';//$textsAux[1];
+            $fists = (isset($texts[2])) ? $texts[2] : '';//$textsAux[2];
+            $button = (isset($texts[3])) ? $texts[3] : '';//$textsAux[3];            
         }
         if(!empty($shirtChild1)){
             $shirt = $shirtChild1->childs[0]->images_final;

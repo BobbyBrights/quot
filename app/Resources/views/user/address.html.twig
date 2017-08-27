@@ -2,21 +2,38 @@
 
 {% block title %}Quot - Resumen de compra{% endblock %}
 {% block body %}
-    <div>
-        Direccion de envio
-        <form method="post" action="/save-address">
-            Nombre
-            <input name="name" type="text" value=""/>
-            Direccion
-            <input name="address" type="text" value=""/>
-            Ciudad
-            <input name="city" type="text" value=""/>
-            Departamento
-            <input name="state" type="text" value=""/>
-            Telefono
-            <input name="phone" type="text" value=""/>
-            
-            <input name="Submit" type="submit"  value="Guardar" >
-        </form>
-    </div>
+    <div class='row'>
+        <div class='col-md-12'>
+          <div class='user-form-wrapper'>
+            <div class='user-form'>
+              <h1>Cuenta</h1>
+              <form method="post" action="/save-address">
+                <label for="name">Nombre</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="name" aria-describedby="basic-addon3">
+                </div>
+                <label for="address">Dirección completa</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="address" aria-describedby="basic-addon3">
+                </div>
+                <label for="city">Contraseña</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="city" aria-describedby="basic-addon3">
+                </div>
+                <label for="state">Departamento</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="state" aria-describedby="basic-addon3">
+                </div>
+                <label for="phone">Teléfono</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="phone" name="phone" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group new-user-link">
+                  <input name="Submit" type="submit"  value="Siguiente" >
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 {% endblock %}
