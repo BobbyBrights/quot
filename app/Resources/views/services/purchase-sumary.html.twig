@@ -23,7 +23,7 @@
                     <input name="shippingAddress" value="{{ address }}" type="hidden"/>
                     <input name="shippingCity" value="Bogota" type="hidden"/>
                     <input name="shippingCountry" value="CO" type="hidden"/>
-                    <input name="responseUrl" type="hidden" value="http://127.0.0.1:8000/resultado-compra"/>                    
+                    <input name="responseUrl" type="hidden" value="{{ urlSite }}/resultado-compra"/>                    
                     
                     {% for prod in products%}
                         {{ include('services/partials/cart-item.html.twig', {'product': prod}) }}

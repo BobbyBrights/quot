@@ -83,6 +83,7 @@ class ServicesController extends Controller
         } else{
             $addressLocation = $address[0]->getAddress();
         }
+        $urlSite = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
         $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId, 'status' => 0));
         $products = array();
         $totalPurhase = 0;
@@ -124,6 +125,7 @@ class ServicesController extends Controller
                     'apiKey' => $apiKey,
                     'accountId' => $accountId,
                     'email' => $userEmail,
+                    'urlSite' => $urlSite,
                 ));
     }
     
