@@ -191,7 +191,10 @@ class ServicesController extends Controller
                 $purchaseEm->persist($dt);
                 $purchaseEm->flush();
             }
-        }        
+        } else{
+            print $idPurchaseOld = $purchaseOld[0]->getId();
+            $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId, 'purchase_detail' => $purchaseOld[0]));
+        }
         $products = array();       
         $totalPurhase = 0;
         if(!empty($purchaseDetail)){
