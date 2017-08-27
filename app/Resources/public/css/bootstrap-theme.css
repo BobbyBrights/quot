@@ -2216,3 +2216,13 @@ fieldset[disabled] .btn-danger.active {
     display: inline-block;
     margin-top: -10px;
 }
+
+.success_order {
+  font-family: gothamBook;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #3aab78;
+  letter-spacing: 1.5px;
+  padding-left: 20px;
+  font-weight: bold;
+}
