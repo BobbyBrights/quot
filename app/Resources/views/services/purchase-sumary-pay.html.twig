@@ -4,48 +4,48 @@
 
 {% block body %}
     <div class='row'>
-        <h3>LA ORDER ESTA REGISTRADA</h3>
-        <div class='col-md-12'>
-            <div class='product-to-cart-wrapper'>
-                {% for shirt in products %}                
-                    <div class='row'>
-                        <div class='col-md-6'>
-                            <div class='row'>
-                                <div class='col-md-5'>
-                                    <div class='product-teaser product-to-cart-shirt'>
-                                        <a class='shirt-block'>
-                                            <div class='shirt-image'>
-                                                {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
-                                                  <img width="180" heigth="180" src="{{ shirt.image }}" alt="cellphone"/>
-                                                {% endimage %}
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class='col-md-7 product-to-cart-detail'>
-                                    <h2>{{ shirt.title }}</h2>
-                                    <span>${{ shirt.value }}</span>
-                                    <div class='product-to-cart-table'>
-                                        <div class='row'>
-                                            <div class='col-md-6'>
-                                                <h4>Entrega</h4>
-                                                <p>fecha entrega</p>
-                                            </div>
-                                        </div>
-                                        <div class='row'>
-                                            <div class='col-md-6'>
-                                                <h4>CONFIRMACION</h4>
-                                                <p>confirmacion</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+      <h3 class='success_order'>La orden esta registrada</h3>
+      <div class='col-md-12'>
+        <div class='product-to-cart-wrapper'>
+          {% for shirt in products %}
+            <div class='row'>
+              <div class='col-md-6'>
+                <div class='row'>
+                  <div class='col-md-5'>
+                    <div class='product-teaser product-to-cart-shirt'>
+                      <a class='shirt-block'>
+                        <div class='shirt-image'>
+                          {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
+                            <img width="180" heigth="180" src="{{ shirt.image }}" alt="cellphone"/>
+                          {% endimage %}
                         </div>
-                    </div>                
-                {% endfor %}
+                      </a>
+                    </div>
+                  </div>
+                  <div class='col-md-7 product-to-cart-detail'>
+                      <h2>{{ shirt.title }}</h2>
+                      <span>${{ shirt.value }}</span>
+                      <div class='product-to-cart-table'>
+                          <div class='row'>
+                            <div class='col-md-6'>
+                              <h4>Entrega</h4>
+                              <p>fecha entrega</p>
+                            </div>
+                          </div>
+                          <div class='row'>
+                            <div class='col-md-6'>
+                              <h4>CONFIRMACION</h4>
+                              <p>confirmacion</p>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          {% endfor %}
         </div>
+      </div>
     </div>
     <div id="trans_module" class='row'></div>
 {% endblock %}
@@ -79,7 +79,7 @@
                 $('.wrapper-dropdown-5 ul.dropdown li a').click(function() {
                   $(this).parents('div').children('span').text($(this).text());
                 });
-                
+
                 $(".owl-carousel").owlCarousel({
                     loop:true,
                     margin:10,
@@ -101,7 +101,7 @@
                     }
                 });
             }
-        });        
+        });
     });
   </script>
 {% endblock %}
