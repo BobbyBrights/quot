@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Resumen Compra{% endblock %}
+
+{% block body %}
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='product-to-cart-wrapper'>
+                {% for shirt in products %}
+                    <div class='row'>
+                        <div class='col-md-6'>
+                            <div class='row'>
+                                <div class='col-md-5'>
+                                    <div class='product-teaser product-to-cart-shirt'>
+                                        <a class='shirt-block'>
+                                            <div class='shirt-image'>
+                                                {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
+                                                <img width="180"height="180"  src="{{ shirt.image }}" alt="cellphone"/>
+                                                {% endimage %}
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class='col-md-7 product-to-cart-detail'>
+                                    <h2>{{ shirt.title }}</h2>
+                                    <span>${{ shirt.value }}</span>
+                                    <div class='product-to-cart-table'>
+                                        <div class='row'>
+                                            <div class='col-md-6'>
+                                                <h4>Talla {{ shirt.size }}</h4>
+                                                <p>
+                                                    Cuello semi-frances
+                                                    puño redondo
+                                                </p>
+                                            </div>
+                                            <div class='col-md-6 align-right'>
+                                                <h4>DETALLES</h4>
+                                                <p>
+                                                    Botones rojos
+                                                    hilo rojo
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class='col-md-6'>
+                                                <h4>Combinacion</h4>
+                                                <p>
+                                                    Pechera
+                                                    Puños
+                                                </p>
+                                            </div>
+                                            <div class='col-md-6 align-right'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='product-to-cart-stock'>
+                                        20 de 50
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-md-6'>
+                            <div class='product-to-cart-links'>
+                                <a href="/personalizar/detalle?vidParent={{ shirt.parent_vid }}&vid={{ shirt.vid }}&size={{ shirt.size }}">Editar</a>
+                                <a href="/resumen-compra">Agregar a compras</a>
+                            </div>  
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div id="trans_module" class='row'></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function DropDown(el) {
+            this.dd = el;
+            this.initEvents();
+        }
+        DropDown.prototype = {
+            initEvents: function () {
+                var obj = this;
+
+                obj.dd.on('click', function (event) {
+                    $(this).toggleClass('active');
+                    event.stopPropagation();
+                });
+            }
+        }
+        $(document).ready(function () {
+            $('#trans_module').load('/module-trans', function (responseTxt, statusTxt) {
+                if (statusTxt == "success") {
+                    var dd = new DropDown($('.dd'));
+                    $(document).click(function () {
+                        // all dropdowns
+                        $('.wrapper-dropdown-5').removeClass('active');
+                    });
+
+                    $('.wrapper-dropdown-5 ul.dropdown li a').click(function () {
+                        $(this).parents('div').children('span').text($(this).text());
+                    });
+
+                    $(".owl-carousel").owlCarousel({
+                        loop: true,
+                        margin: 10,
+                        responsiveClass: true,
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: false
+                            },
+                            600: {
+                                items: 3,
+                                nav: false
+                            },
+                            1000: {
+                                items: 5,
+                                nav: false,
+                                loop: false
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+{% endblock %}

@@ -2,59 +2,59 @@
 
 {% block title %}Quot - Resumen de compra{% endblock %}
 {% block body %}
-<!-- 4379-2639 -->
-<div class='row'>
-    <div class='col-md-12'>
-        <div class='user-form-wrapper'>
-            <div class='user-form'>
-                <h1>Compras</h1>
-                <form method="post" action="https://sandbox.gateway.payulatam.com/ppp-web-gateway">
-                    <input name="merchantId" type="hidden" value="{{ merchatId }}"/>
-                    <input name="accountId" type="hidden" value="{{ accountId }}"/>
-                    <input name="description" type="hidden" value="Compra productos QUOT"/>
-                    <input name="referenceCode" type="hidden" value="{{ reference }}"/>
-                    <input name="amount" type="hidden" value="{{ total }}"/>
-                    <input name="tax" type="hidden" value="{{ iva }}"/>
-                    <input name="taxReturnBase" type="hidden" value="{{ taxReturnBase }}"/>
-                    <input name="currency" type="hidden" value="COP"/>
-                    <input name="signature" value="{{ signature }}" type="hidden"/>
-                    <input name="test" value="1" type="hidden"/>
-                    <input name="buyerEmail" type="hidden"  value="{{ email }}" >
-                    <input name="shippingAddress" value="{{ address }}" type="hidden"/>
-                    <input name="shippingCity" value="Bogota" type="hidden"/>
-                    <input name="shippingCountry" value="CO" type="hidden"/>
-                    <input name="responseUrl" type="hidden" value="{{ urlSite }}/resultado-compra"/>                    
-                    
-                    {% for prod in products%}
-                        {{ include('services/partials/cart-item.html.twig', {'product': prod}) }}
-                    {% endfor %}
-                    <div class='row invoice-block'>
-                        <div class='col-md-9 align-right'>
-                          Total
+    <!-- 4379-2639 -->
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='user-form-wrapper'>
+                <div class='user-form'>
+                    <h1>Compras</h1>
+                    <form method="post" action="https://sandbox.gateway.payulatam.com/ppp-web-gateway">
+                        <input name="merchantId" type="hidden" value="{{ merchatId }}"/>
+                        <input name="accountId" type="hidden" value="{{ accountId }}"/>
+                        <input name="description" type="hidden" value="Compra productos QUOT"/>
+                        <input name="referenceCode" type="hidden" value="{{ reference }}"/>
+                        <input name="amount" type="hidden" value="{{ total }}"/>
+                        <input name="tax" type="hidden" value="{{ iva }}"/>
+                        <input name="taxReturnBase" type="hidden" value="{{ taxReturnBase }}"/>
+                        <input name="currency" type="hidden" value="COP"/>
+                        <input name="signature" value="{{ signature }}" type="hidden"/>
+                        <input name="test" value="1" type="hidden"/>
+                        <input name="buyerEmail" type="hidden"  value="{{ email }}" >
+                        <input name="shippingAddress" value="{{ address }}" type="hidden"/>
+                        <input name="shippingCity" value="Bogota" type="hidden"/>
+                        <input name="shippingCountry" value="CO" type="hidden"/>
+                        <input name="responseUrl" type="hidden" value="{{ urlSite }}/resultado-compra"/>                    
+
+                        {% for prod in products%}
+                            {{ include('services/partials/cart-item.html.twig', {'product': prod}) }}
+                        {% endfor %}
+                        <div class='row invoice-block'>
+                            <div class='col-md-9 align-right'>
+                                Total
+                            </div>
+                            <div class='col-md-3 align-right'>
+                                ${{ total }}
+                            </div>
                         </div>
-                        <div class='col-md-3 align-right'>
-                          ${{ total }}
+                        <div class='row invoice-block'>
+                            <h4>Direcci&oacute;n de env&iacute;o</h4>
+                            <p>
+                                {{ address }}
+                            </p>
                         </div>
-                    </div>
-                    <div class='row invoice-block'>
-                        <h4>Direcci&oacute;n de env&iacute;o</h4>
-                        <p>
-                          {{ address }}
-                        </p>
-                    </div>
-                    <div class='row invoice-block'>
-                        <h4>Modo de pago</h4>
-                        <p>
-                          Al dar click en comprar, se redigira al sitio de nuestro
-                          servidor de pagos autorizado
-                        </p>
-                    </div>
-                    <div class="input-group align-center margin-top-40">
-                        <input name="Submit" type="submit"  value="Comprar" >
-                    </div>
-                </form>
+                        <div class='row invoice-block'>
+                            <h4>Modo de pago</h4>
+                            <p>
+                                Al dar click en comprar, se redigira al sitio de nuestro
+                                servidor de pagos autorizado
+                            </p>
+                        </div>
+                        <div class="input-group align-center margin-top-40">
+                            <input name="Submit" type="submit"  value="Comprar" >
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

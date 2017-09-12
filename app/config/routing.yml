@@ -103,3 +103,6 @@ module_trans:
 count_shirt:
     path:     /count-shirt
     defaults: { _controller: AppBundle:Services:countShirt }
+cart-purchase:
+    path:     /carro-compras
+    defaults: { _controller: AppBundle:Services:cartPurchase }

@@ -234,4 +234,66 @@ class ServicesController extends Controller
         $this->get('session')->set('countShirt_' . $vid, $count);
         return new Response($count . ' de 50');
     }
+    
+    public function cartPurchaseAction(Request $request){
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userId = $user->getId();
+        $userEmail = $user->getEmail();
+        
+        $address = $this->getDoctrine()->getManager()->getRepository('AppBundle:Address')->findBy(array('user_address' => $userId));
+        if(empty($address)){
+            return $this->redirectToRoute('address');
+        } else{
+            $addressLocation = $address[0]->getAddress();
+        }
+        $urlSite = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+        $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId, 'status' => 0));
+        $products = array();
+        $totalPurhase = 0;
+        if(!empty($purchaseDetail)){
+            foreach($purchaseDetail as $pd){
+                $tem['title'] = $title = $pd->getTitle();
+                $tem['description'] = $pd->getDescription();
+                $tem['image'] = $pd->getImage();
+                $tem['value'] = $pd->getValue();                
+                $tem['size'] = $pd->getSize();                
+                if(isset($products[$pd->getVid()])){
+                    $tem['quant'] = $products[$pd->getVid()]['quant'] + $pd->getQuant();
+                } else{
+                    $tem['quant'] = $pd->getQuant();
+                }
+                $tem['vid'] = $pd->getVid();  
+                $tem['parent_vid'] = $pd->getVidParent();  
+                $subTotal = $pd->getValue() * $pd->getQuant();
+                $totalPurhase = $totalPurhase + $subTotal;
+                $reference = 'quot_test' . $pd->getId();
+                $products[$pd->getVid()] = $tem;
+            }
+        } else{
+            return $this->redirectToRoute('products');
+        }
+        $merchatId = '508029';
+        $accountId = '512321';
+        $apiKey = '4Vj8eK4rloUd272L48hsrarnUA';
+        $iva = 0.19;
+        $string = $apiKey . "~". $merchatId ."~". $reference ."~". (int)$totalPurhase ."~COP";
+        return $this->render('services/cart-purchase.html.twig',                
+                array(
+                    'products' => $products,
+                    'total' => $totalPurhase,
+                    'taxReturnBase' => $totalPurhase - ($totalPurhase*$iva),
+                    'iva' => $totalPurhase*$iva,
+                    'reference' => $reference,
+                    'signature' => hash( 'md5', $string ),
+                    'address' => $addressLocation,
+                    'merchatId' => $merchatId,
+                    'apiKey' => $apiKey,
+                    'accountId' => $accountId,
+                    'email' => $userEmail,
+                    'urlSite' => $urlSite,
+                ));
+    }
 }
