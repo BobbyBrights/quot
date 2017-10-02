@@ -1,0 +1,67 @@
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <!--<ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+  </ol>-->
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      {% image '%kernel.root_dir%/Resources/public/images/rocks_bg.png' %}
+        <img src="{{ asset_url }}" alt=""/>
+      {% endimage %}
+      <div class="carousel-caption">
+        {% image '%kernel.root_dir%/Resources/public/images/shirt-bg.png' %}
+          <div class='product-wrapper' style="background-image:url({{asset_url}}); background-position: center">
+            <div class='product-caption'>
+              <h3>El Felo</h3>
+              <p>De la ciudad al oceano</p>
+            </div>
+            <div class='product-links'>
+              <a>
+                Personalizar
+              </a>
+              <a>
+                Comprar
+              </a>
+            </div>
+          </div>
+        {% endimage %}
+      </div>
+    </div>
+    <div class="item">
+      {% image '%kernel.root_dir%/Resources/public/images/rocks_bg.png' %}
+        <img src="{{ asset_url }}" alt=""/>
+      {% endimage %}
+      <div class="carousel-caption">
+        {% image '%kernel.root_dir%/Resources/public/images/shirt-bg.png' %}
+          <div class='product-wrapper' style="background-image:url({{asset_url}}); background-position: center">
+            <div class='product-caption'>
+              <h3>El Felo</h3>
+              <p>De la ciudad al oceano</p>
+            </div>
+            <div class='product-links'>
+              <a>
+                Personalizar
+              </a>
+              <a>
+                Comprar
+              </a>
+            </div>
+          </div>
+        {% endimage %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

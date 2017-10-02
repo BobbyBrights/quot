@@ -10,8 +10,12 @@ class HomeController extends Controller
     public function indexAction(Request $request)
     {
         $homeJson = file_get_contents($this->container->getParameter('json_home'));
-        $home = json_decode($homeJson);        
+        $home = json_decode($homeJson);
         return $this->render('home/index.html.twig', array('home' => $home));
+    }
+
+    public function newHomeAction() {
+      return $this->render('home/new_home.html.twig');
     }
 
     public function listAction()

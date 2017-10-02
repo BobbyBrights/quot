@@ -585,7 +585,7 @@ fieldset[disabled] .btn-danger.active {
 }
 /*# sourceMappingURL=bootstrap-theme.css.map */
 .quot-container {
-  margin-top: 120px;
+  margin-top: 110px;
 }
 
 /* Menu */
@@ -663,7 +663,7 @@ fieldset[disabled] .btn-danger.active {
   padding-bottom: 30px;
   padding-left: 70px;
   padding-right: 70px;
-  background-color: #151E21;
+  background-color: #0F2235;
   color: #DAE1E7;
   font-size: 12px;
   font-family: gothamBook;
@@ -806,14 +806,27 @@ fieldset[disabled] .btn-danger.active {
 }
 
 .promo-container {
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-left: 5%;
+  padding-right: 10%;
+  text-align: center;
 }
 
 .promo-container h2 {
   font-family: questaGrande;
   text-transform: capitalize;
   font-size: 40px;
+  margin-bottom: 0px;
+}
+
+.promo-container h3 {
+  font-family: questaGrande;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #ffbd47;
+  font-family: gothamBook;
+  margin-top: 0;
+  font-weight: bold;
+  letter-spacing: 1.5px;
 }
 
 .promo-container h4 {
@@ -842,8 +855,24 @@ fieldset[disabled] .btn-danger.active {
   float: left;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 12px;
+  font-size: 14px;
   font-family: gothamBook;
+  text-align: left;
+  line-height: 18px;
+}
+
+.promo-container ul {
+  font-size: 13px;
+  font-family: gothamBook;
+  text-align: left;
+  line-height: 20px;
+  list-style: none;
+}
+
+.promo-container li::before {
+  content: "• ";
+  color: #009045;
+  font-size: 20px;
 }
 
 .promo-container a {
@@ -957,7 +986,24 @@ fieldset[disabled] .btn-danger.active {
   padding-right:20px;
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: #ae8d5f
+  background-color: #0C1823;
+}
+
+.newsletter button {
+  text-transform: uppercase;
+  background-color: #FBBD1B;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: none;
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  float: right;
+  font-family: gothamBook;
+  margin-left: 10px;
 }
 
 .newsletter-title {
@@ -1043,34 +1089,49 @@ fieldset[disabled] .btn-danger.active {
 }
 
 .product-links {
+  width: 100%;
   vertical-align: middle;
   height: 20%;
 }
 
-.product-single-link {
-    float: right;
-    display: inline;
-    color: #000000;
-    text-align: center;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #000000;
-    display: inline-block;
-    margin-left: 20px;
+.product-links a {
+  text-transform: uppercase;
+  background-color: #0F2235;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border: 1px solid #FBBD1B;
+  color: #FBBD1B;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  float: right;
+  margin-top: 30px;
+  margin-right: 2.5%;
+  margin-bottom: 20px;
+  font-family: gothamBook;
+  text-decoration: none;
 }
 
-.product-single-link a {
-    font-family: gothamBook;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 0;
-    text-decoration: none;
-    color: #000000;
-}
-
-.product-single-link a:hover {
-    text-decoration: none;
-    color: #000000;
+.product-links a:hover {
+  text-transform: uppercase;
+  background-color: #FBBD1B;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  float: right;
+  margin-top: 30px;
+  margin-right: 2.5%;
+  margin-bottom: 20px;
+  font-family: gothamBook;
+  text-decoration: none
 }
 /* End product carousel */
 
@@ -1096,6 +1157,18 @@ fieldset[disabled] .btn-danger.active {
 .promo-block {
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.promo-block h3 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #000000;
+  font-size: 13px;
+  font-family: gothamBook;
 }
 
 .promo-block h4 {
@@ -1124,9 +1197,11 @@ fieldset[disabled] .btn-danger.active {
 
 .promo-block p {
   margin-top: 20px;
-  color: #ffffff;
-  font-size: 12px;
+  color: #000000;
+  font-size: 15px;
+  line-height: 19px;
   font-family: gothamBook;
+  text-align: left;
 }
 /* End city promo */
 
@@ -2225,4 +2300,134 @@ fieldset[disabled] .btn-danger.active {
   letter-spacing: 1.5px;
   padding-left: 20px;
   font-weight: bold;
+}
+
+.couture {
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  border: 5px solid #ffffff;
+  text-align: center;
+}
+
+.couture h2 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 40px;
+  color: #000000;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+.promo-container button {
+  text-transform: uppercase;
+  background-color: #FBBD1B;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 60px;
+  padding-right: 60px;
+  border: none;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  float: right;
+  margin-top: 30px;
+  font-family: gothamBook;
+}
+
+.is-personal-info {
+    position: relative;
+    min-height: 80%;
+    text-align: center;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 150px;
+    margin-bottom: 100px;
+    z-index: 10;
+}
+
+.is-personal-info h3 {
+    font-family: questaGrande;
+    text-transform: capitalize;
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.is-personal-info p {
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 12px;
+  font-family: gothamBook;
+  text-align: center;
+}
+
+.is-personal-info-button button {
+  text-transform: uppercase;
+  background-color: #0F2235;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border: 1px solid #FBBD1B;
+  color: #FBBD1B;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  float: right;
+  margin-top: 30px;
+  margin-right: 2.5%;
+  margin-bottom: 20px;
+  font-family: gothamBook;
+}
+
+
+.materials {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.materials h2 {
+  font-family: questaGrande;
+  text-transform: capitalize;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.materials p {
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-family: gothamBook;
+  text-align: left;
+  line-height: 18px;
+}
+
+.materials button {
+    text-transform: uppercase;
+    background-color: #FBBD1B;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    border: none;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    float: right;
+    margin-top: 30px;
+    font-family: gothamBook;
+}
+
+.club_bg {
+  float:right;
 }

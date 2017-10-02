@@ -25,6 +25,9 @@ google_login:
 home:
     path:     /
     defaults: { _controller: AppBundle:Home:index }
+new_home:
+    path: /new_home
+    defaults: { _controller: AppBundle:Home:newHome }
 product_list:
     path:     /demo/product-list
     defaults: { _controller: AppBundle:Home:list }
