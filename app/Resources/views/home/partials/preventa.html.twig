@@ -1,8 +1,20 @@
 <div id="preventa" name="preventa" class="row">
-    <div class="col-lg-6">
-        {{ include('home/partials/promo-image.html.twig', {'src_image': module.imagen.src, 'alt': module.imagen.alt }) }}
+    <div class="col-lg-7">
+        {% image '%kernel.root_dir%/Resources/public/images/banner1_home.png' %}
+        <img src="{{ module.imagen.src }}" alt="banner"/>
+        {% endimage %}
     </div>
-    <div class="col-lg-6">
-        {{ include('home/partials/promo-text.html.twig', {'title': module.title, 'description': module.field_descripcion, 'text': module.texts }) }}
+    <div class="col-lg-5">
+        <div class='promo-container'>
+            <h2>{{ module.title }}</h2>
+            <h3>fiorire 2017-II</h3>
+            <p>
+                {{ module.field_descripcion }}
+                <ul>
+                    {{ module.texts|replace({'<h4>': "<li>", "</h4><p>" : "", "</p>": "</li>"})|raw }}
+                </ul>
+            </p>
+            <button onclick="window.location.href='{{ path('products') }}'">Comprar</button>
+        </div>
     </div>
 </div>
