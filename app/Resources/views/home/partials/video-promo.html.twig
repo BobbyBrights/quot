@@ -1,18 +1,16 @@
-<div id="video-promo" name="video-promo" class='row'>
-    <div class='col-md-12'>
-        <div class='video-promo'>
-            <div class='video-promo-info'>
+{% image '%kernel.root_dir%/Resources/public/images/machine_bg.png' %}
+<div name="is_personal" id="is_personal" class='row' style="background-image:url({{ asset_url }}); background-position: center">
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='is-personal-info'>
                 <h3>{{ module.title }}</h3>
                 <p>{{ module.field_descripcion }}</p>
             </div>
-            <div class='video-promo-links'>
-                <div class='video-single-link'>
-                    <a href="{{ path('products') }}">Personalizar</a>
-                </div>
+            <div class='is-personal-info-button'>
+                <button onclick="window.location.href='{{ path('products') }}'">Personalizar</button>
             </div>
-            <video class='video-full' autoplay loop muted plays-inline>
-                <source src="{{ module.video }}" type="video/mp4">
-            </video>
         </div>
     </div>
 </div>
+{% endimage %}
+

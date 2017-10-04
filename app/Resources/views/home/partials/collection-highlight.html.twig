@@ -1,38 +1,14 @@
-{% image '%kernel.root_dir%/Resources/public/images/back-producto.jpg' %}
-  <div name="collection" id="collection" class='row' style="background-image:url({{ module.imagen.src }}); background-position: center">
-    <div class="visible-xs-block visible-sm-block">
-      <div class="info-collection">
-        <h2>{{ module.title }}</h2>
-        {%if module.field_descripcion is defined %}
-            <h4>{{ module.field_descripcion }}</h4>
-        {% endif %}
-        {%if module.texts is defined %}
-            {{ module.texts|raw }}
-        {% endif %}
-      </div>
-      <div class='link-collection'>
-        <a>ver la coleccion</a>
-      </div>
-    </div>
-    <div class="visible-md-block visible-lg-block">
-        <div class="row">
-            <div class="col-md-6">
-            </div>
-            <div class="col-md-6">
-                <div class="info-collection">
-                    <h2>{{ module.title }}</h2>
-                    {%if module.field_descripcion is defined %}
-                        <h4>{{ module.field_descripcion }}</h4>
-                    {% endif %}
-                    {%if module.texts is defined %}
-                        {{ module.texts|raw }}
-                    {% endif %}
-                </div>
-                <div class='link-collection'>
-                    <a href="{{ path('products') }}">ver la coleccion</a>
-                </div>
-            </div>
+{% image '%kernel.root_dir%/Resources/public/images/ring_bg.png' %}
+<div style="background-image:url({{ asset_url }}); background-position: center">
+    <div class='row materials'>
+        <div class='col-md-7'>
+        </div>
+        <div class='col-md-5'>
+            <h2>Los mejores materiales</h2>
+            <p>{{ module.field_descripcion }}</p>
+            <button onclick="window.location.href='{{ path('products') }}'">Comprar</button>
         </div>
     </div>
-  </div>
+</div>
 {% endimage %}
+

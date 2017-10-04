@@ -1,8 +1,15 @@
-<div id="circulo" name="circulo" class="row">
-    <div class="col-lg-6">
-        {{ include('home/partials/promo-text.html.twig', {'title': module.title, 'description': module.field_descripcion, 'text': module.texts }) }}
+<div id="club" name="club" class="row">
+    <div class='col-md-5'>
+        <div class="promo-container">
+            <h2>{{ module.title }}</h2>
+            <p>{{ module.field_descripcion }}</p>
+            <button onclick="window.location.href='{{ path('products') }}'">Hacer parte</button>
+        </div>
     </div>
-    <div class="col-lg-6">
-        {{ include('home/partials/promo-image.html.twig', {'src_image': module.imagen.src, 'alt': module.imagen.alt }) }}
+    <div class='col-md-7'>
+        {% image '%kernel.root_dir%/Resources/public/images/club_bg.png' %}
+        <img class='club_bg' src="{{ module.imagen.src }}" alt="banner"/>
+        {% endimage %}
     </div>
 </div>
+
