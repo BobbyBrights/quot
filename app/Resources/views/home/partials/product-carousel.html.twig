@@ -21,16 +21,16 @@
                     <div class="carousel-caption">
                         {% image '%kernel.root_dir%/Resources/public/images/shirt-bg.png' %}
                             <div class='product-wrapper' style="background-image:url({{ module.imagen[aux].src }}); background-position: center">
-                                <div class='product-caption'>
+                                <div class='row product-caption'>
                                     <h3>{{ module.imagen[aux1].alt }}</h3>
                                     <p>{{ module.imagen[aux].alt }}</p>
                                 </div>
-                                <div class='product-links'>
-                                    <div class='product-single-link'>
-                                        <a href="{{ path('products') }}">Personalizar</a>
+                                <div class='row product-links'>
+                                    <div class='col-md-6 col-lg-6 col-xs-12 col-sm-12 product-single-link'>
+                                      <a href="{{ path('products') }}">Personalizar</a>
                                     </div>
-                                        <div class='product-single-link'>
-                                        <a href="{{ path('products') }}">Comprar</a>
+                                    <div class='col-md-6 col-lg-6 col-xs-12 col-sm-12 product-single-link'>
+                                      <a href="{{ path('products') }}">Comprar</a>
                                     </div>
                                 </div>
                             </div>
