@@ -13,11 +13,19 @@
     </div>
     <div class='row'>
         <div class='col-md-6'>
-          <div class='product-resume-image align-center'>
-            {% image '%kernel.root_dir%/Resources/public/images/shirt-resume.png' %}
-              <img src="{{ shirt }}"/>
-            {% endimage %}
-          </div>
+              <div class='product-resume-image align-center'>
+                    {% image '%kernel.root_dir%/Resources/public/images/shirt-resume.png' %}
+                      <img src="{{ shirt }}"/>
+                    {% endimage %}
+              </div>
+            <div>
+                imágenes detalle
+                <ul>
+                    {% for imgs in imagesThumb %}
+                        <li><img src="{{ imgs }}"/></li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
         <div class='col-md-6'>
             <div class='product-resume-info-block'>
@@ -44,6 +52,18 @@
                           <a href="{{ urlNeck }}">
                             EDITAR
                           </a>
+                        </div>
+                    </div>
+                </div>
+                <div class='product-resume-line'>
+                    <div class='row'>
+                        <div class='col-md-8 align-left'>
+                            {{ port }}
+                        </div>
+                        <div class='col-md-4 align-right'>
+                            <a href="{{ urlFist }}">
+                                EDITAR
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -96,7 +116,7 @@
                       una edicion limitada de 50 unidades
                     </p>
                     <div class='white-modal-links'>
-                        <a href="/resumen-compra">Comprar</a>
+                        <a href="/carro-compras">Comprar</a>
                     </div>
                     <div class='white-modal-links'>
                         <a href="/colecciones">Seguir Comprando</a>
@@ -118,8 +138,8 @@
                     data: {
                             'size': '{{ size }}',
                             'title':'{{ title }}',
-                            'description': 'descripcion camisa comprada',
-                            'value': '1200',
+                            'description': {{ neck ~ port ~ fists ~ button }},
+                            'value': {{ price }},
                             'user_id': {{ user_id }},
                             'shirt': '{{ shirt }}',
                             'vid': {{ vid }},

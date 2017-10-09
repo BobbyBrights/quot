@@ -193,8 +193,11 @@ class ProductsController extends Controller
             $texts = explode('-',$shirtParent->childs[0]->title);
             $title = $texts[0];
             $neck = (isset($texts[1])) ? $texts[1] : '';
-            $fists = (isset($texts[2])) ? $texts[2] : '';
-            $button = (isset($texts[3])) ? $texts[3] : '';            
+            $port = (isset($texts[2])) ? $texts[2] : '';
+            $fists = (isset($texts[3])) ? $texts[3] : '';
+            $button = (isset($texts[4])) ? $texts[4] : '';
+            $imagenThumb = $shirtParent->childs[0]->images[1];
+            $price = $shirt->price;
         }
         if(!empty($shirtChild)){
             $shirt = $shirtChild->childs[0]->images_final;
@@ -203,23 +206,41 @@ class ProductsController extends Controller
             $textsAux = explode('-',$shirtParent->childs[0]->title);
             $title = $texts[0];
             $neck = (isset($texts[1])) ? $texts[1] : '';//$textsAux[1];
-            $fists = (isset($texts[2])) ? $texts[2] : '';//$textsAux[2];
-            $button = (isset($texts[3])) ? $texts[3] : '';//$textsAux[3];            
+            $port = (isset($texts[2])) ? $texts[2] : '';
+            $fists = (isset($texts[3])) ? $texts[3] : '';
+            $button = (isset($texts[4])) ? $texts[4] : '';
+            $imagenThumb1 = $shirtChild->childs[0]->images[1];
         }
         if(!empty($shirtChild1)){
             $shirt = $shirtChild1->childs[0]->images_final;
             $vid = $shirtChild1->childs[0]->vid;
             $texts = explode('-', $shirtChild1->childs[0]->title);
+            $title = $texts[0];
+            $neck = (isset($texts[1])) ? $texts[1] : '';//$textsAux[1];
+            $port = (isset($texts[2])) ? $texts[2] : '';
+            $fists = (isset($texts[3])) ? $texts[3] : '';
+            $button = (isset($texts[4])) ? $texts[4] : '';
+            $imagenThumb2 = $shirtChild1->childs[0]->images[1];
+            
+        }
+        if(!empty($shirtChild2)){
+            $shirt = $shirtChild2->childs[0]->images_final;
+            $vid = $shirtChild2->childs[0]->vid;
+            $texts = explode('-', $shirtChild2->childs[0]->title);
             $textsAux = explode('-', $shirtChild->childs[0]->title);
             $title = $texts[0];
             $neck = (isset($texts[1])) ? $texts[1] : $textsAux[1];
-            $fists = (isset($texts[2])) ? $texts[2] : $textsAux[2];
-            $button = (isset($texts[3])) ? $texts[3] : $textsAux[3];
-            
+            $port = (isset($texts[2])) ? $texts[2] : $textsAux[2];
+            $fists = (isset($texts[3])) ? $texts[3] : $textsAux[3];
+            $button = (isset($texts[4])) ? $texts[4] : $textsAux[4];
+            $imagenThumb3 = $shirtChild2->childs[0]->images[1];
+
         }
+        $imagesThumb = array($imagenThumb, $imagenThumb1, $imagenThumb2, $imagenThumb3);
         $size = $request->query->get('size');
         $urlNeck = '/personalizar/detalle?vidParent=' . $request->query->get('vidParent') . '&vid=' . $request->query->get('vid') . '&size=' . $request->query->get('size');
-        $urlFist = $urlNeck . '&child=' . $request->query->get('child') . '&vchild=' . $request->query->get('vchild');
+        $urlPort = $urlNeck . '&child=' . $request->query->get('child') . '&vchild=' . $request->query->get('vchild');
+        $urlFist = $urlPort . '&child=' . $request->query->get('child') . '&vchild=' . $request->query->get('vchild');
         $urlButton = $urlFist . '&child1=' . $request->query->get('child1') . '&vchild1=' . $request->query->get('vchild1');
         
         return $this->render('collections/partials/completed-shirt.html.twig', array(
@@ -229,14 +250,19 @@ class ProductsController extends Controller
             'title' => $title,
             'neck' => $neck,
             'fists' => $fists,
+            'port' => $port,
             'button' => $button,
             'size' => $size,
             'parent_vid' => $parent_vid,
             'url' => $url,
             'urlNeck' => $urlNeck,
+            'urlPort' => $urlPort,
             'urlFist' => $urlFist,
             'urlButton' => $urlButton,
             'title_collection' => $titleCollection,
+            'imagesThumb' => $imagesThumb,
+            'price' => $price,
+
         ));
     }
     
