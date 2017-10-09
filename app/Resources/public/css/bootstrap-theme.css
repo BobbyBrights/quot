@@ -608,20 +608,20 @@ fieldset[disabled] .btn-danger.active {
 
 .section-link a {
   color: #E1E1E1;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .section-link a:hover {
-  color: #ffbd47;
+  color: #FBBD1B;
 }
 
 .section-link a:active {
-  color: #ffbd47;
+  color: #FBBD1B;
 }
 
 .section-link a:focus {
-  color: #ffbd47;
+  color: #FBBD1B;
 }
 
 .cart-badge {
@@ -691,7 +691,8 @@ fieldset[disabled] .btn-danger.active {
 }
 
 .deliver-info {
-  padding-right: 80px;
+  padding-right: 1rem;
+  margin-bottom: 2rem;
 }
 
 .deliver-info p {
@@ -1030,6 +1031,10 @@ fieldset[disabled] .btn-danger.active {
   display: inline-block;
 }
 
+.display_block {
+  display: block !important;
+}
+
 .newsletter input{
   background-color: #ffffff;
   color: #000000;
@@ -1091,7 +1096,7 @@ fieldset[disabled] .btn-danger.active {
 .product-links {
   width: 100%;
   vertical-align: middle;
-  height: 20%;
+  /*height: 20%;*/
 }
 
 .product-links a {
@@ -1106,12 +1111,12 @@ fieldset[disabled] .btn-danger.active {
   color: #FBBD1B;
   font-size: 12px;
   letter-spacing: 1.5px;
-  float: right;
-  margin-top: 30px;
   margin-right: 2.5%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   font-family: gothamBook;
   text-decoration: none;
+  display: block;
 }
 
 .product-links a:hover {
@@ -1126,10 +1131,9 @@ fieldset[disabled] .btn-danger.active {
   color: #FFFFFF;
   font-size: 12px;
   letter-spacing: 1.5px;
-  float: right;
-  margin-top: 30px;
   margin-right: 2.5%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   font-family: gothamBook;
   text-decoration: none
 }
@@ -2329,14 +2333,14 @@ fieldset[disabled] .btn-danger.active {
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-left: 50px;
+  padding-right: 50px;
   border: none;
   color: #ffffff;
   font-size: 12px;
   letter-spacing: 1.5px;
-  float: right;
   margin-top: 30px;
+  margin-bottom: 2rem;
   font-family: gothamBook;
 }
 
@@ -2378,7 +2382,6 @@ fieldset[disabled] .btn-danger.active {
   color: #FBBD1B;
   font-size: 12px;
   letter-spacing: 1.5px;
-  float: right;
   margin-top: 30px;
   margin-right: 2.5%;
   margin-bottom: 20px;
@@ -2423,7 +2426,6 @@ fieldset[disabled] .btn-danger.active {
     color: #ffffff;
     font-size: 12px;
     letter-spacing: 1.5px;
-    float: right;
     margin-top: 30px;
     font-family: gothamBook;
 }

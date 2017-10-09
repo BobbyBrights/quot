@@ -1,18 +1,36 @@
 <div id="newsletter" name="newsletter"  class='row'>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class='newsletter'>
-            <div class='newsletter-title'>
-              <h3>Inscribirse a nuestro newsletter</h3>
-            </div>
-            <form id="newsletter_send" name="newsletter_send" method="post">
-              <input type="text" id="email" name="email" placeholder="dirección de correo" />
-              <button type="submit" id="newsletter" name="form[save]" class="btn btn-newsletter">Inscribirse</button>
-            </form>
-            <div id="message_form" class="flash-notice" style="display:none">
-              {% image '%kernel.root_dir%/Resources/public/images/spinner.gif' %}
-                <img src="{{ asset_url }}" width='20' height='20'/>
-              {% endimage %}
-            </div>
-        </div>
+  <div class="col-md-12 col-lg-12 visible-md-block visible-lg-block">
+    <div class='newsletter'>
+      <div class='newsletter-title'>
+        <h3>Inscribirse a nuestro newsletter</h3>
+      </div>
+      <form id="newsletter_send" name="newsletter_send" method="post">
+        <input type="text" id="email" name="email" placeholder="dirección de correo" />
+        <button type="submit" id="newsletter" name="form[save]" class="btn btn-newsletter">Inscribirse</button>
+      </form>
+      <div id="message_form" class="flash-notice" style="display:none">
+        {% image '%kernel.root_dir%/Resources/public/images/spinner.gif' %}
+          <img src="{{ asset_url }}" width='20' height='20'/>
+        {% endimage %}
+      </div>
     </div>
+  </div>
+  <div class="col-xs-12 col-sm-12 visible-xs-block visible-sm-block">
+    <div class='newsletter'>
+      <div class='newsletter-title align-center' style="width:100%">
+        <h3>Inscribirse a nuestro newsletter</h3>
+      </div>
+      <form id="newsletter_send" name="newsletter_send" method="post" class='display_block'>
+        <input type="text" id="email" name="email" placeholder="dirección de correo" style="width:100%"/><br />
+        <button type="submit" id="newsletter" name="form[save]" class="btn btn-newsletter" style="width:100%;margin-top:10px">
+          Inscribirse
+        </button>
+      </form><br/>
+      <div id="message_form" class="flash-notice" style="display:none">
+        {% image '%kernel.root_dir%/Resources/public/images/spinner.gif' %}
+          <img src="{{ asset_url }}" width='20' height='20'/>
+        {% endimage %}
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class='row brand-logo'>
-      <div class="col-lg-12">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <a href="/">
           {% image '%kernel.root_dir%/Resources/public/images/logo_new.png'%}
             <img src="{{ asset_url }}" alt="Quot" width='121' height='40'/>
@@ -22,7 +22,7 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse quot-menu" id="bs-example-navbar-collapse-1">
-        <div class="col-lg-9">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
           <ul class="section-link nav navbar-nav">
           {% if path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == '/' %}
             <li><a class='main-menu-link' href="#preventa" data-ancla="preventa">Pre-venta</a></li>
@@ -41,7 +41,7 @@
           {% endif %}
           </ul>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
           <ul class="cart-links nav navbar-nav">
             {% if is_granted("ROLE_USER") %}
             <li class="dropdown">

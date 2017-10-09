@@ -1,14 +1,16 @@
 <div id="club" name="club" class="row">
-    <div class='col-md-5'>
+    <div class='col-md-5 col-lg-5 col-sm-12 col-xs-12'>
         <div class="promo-container">
             <h2>{{ module.title }}</h2>
             <p>{{ module.field_descripcion }}</p>
-            <button onclick="window.location.href='{{ path('products') }}'">Hacer parte</button>
+            <button onclick="window.location.href='{{ path('products') }}'">
+              Hacer parte
+            </button>
         </div>
     </div>
-    <div class='col-md-7'>
+    <div class='col-md-7 col-lg-5 col-sm-12 col-xs-12'>
         {% image '%kernel.root_dir%/Resources/public/images/club_bg.png' %}
-        <img class='club_bg' src="{{ module.imagen.src }}" alt="banner"/>
+        <img  src="{{ module.imagen.src }}" alt="banner" class="img-responsive"/>
         {% endimage %}
     </div>
 </div>

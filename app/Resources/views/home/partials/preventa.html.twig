@@ -1,20 +1,27 @@
 <div id="preventa" name="preventa" class="row">
-    <div class="col-lg-7">
-        {% image '%kernel.root_dir%/Resources/public/images/banner1_home.png' %}
-        <img src="{{ module.imagen.src }}" alt="banner"/>
-        {% endimage %}
+    <div class="col-lg-7 col-md-7 col-xs-12 col-sm-12">
+      <img src="{{ module.imagen.src }}" alt="banner" class="img-responsive"/>
     </div>
-    <div class="col-lg-5">
-        <div class='promo-container'>
-            <h2>{{ module.title }}</h2>
-            <h3>fiorire 2017-II</h3>
-            <p>
-                {{ module.field_descripcion }}
-                <ul>
-                    {{ module.texts|replace({'<h4>': "<li>", "</h4><p>" : "", "</p>": "</li>"})|raw }}
-                </ul>
-            </p>
-            <button onclick="window.location.href='{{ path('products') }}'">Comprar</button>
+    <div class="col-lg-5 col-md-5 col-xs-12 col-sm-12">
+      <div class='row promo-container'>
+        <div class='row'>
+          <div class='col-lg-12 col-md-12'>
+              <h2>{{ module.title }}</h2>
+              <h3>fiorire 2017-II</h3>
+              <p>
+                  {{ module.field_descripcion }}
+                  <ul>
+                      {{ module.texts|replace({'<h4>': "<li>", "</h4><p>" : "", "</p>": "</li>"})|raw }}
+                  </ul>
+              </p>
+          </div>
         </div>
+        <div class='row'>
+          <div class="col-xs-12 col-sm-12  col-md-5 col-md-offset-7 col-lg-5 col-lg-offset-7">
+            <button onclick="window.location.href='{{ path('products') }}'">Comprar</button>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
+
