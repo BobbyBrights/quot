@@ -197,7 +197,7 @@ class ProductsController extends Controller
             $fists = (isset($texts[3])) ? $texts[3] : '';
             $button = (isset($texts[4])) ? $texts[4] : '';
             $imagenThumb = $shirtParent->childs[0]->images[1];
-            $price = $shirt->price;
+            $price = $shirtParent->price;
         }
         if(!empty($shirtChild)){
             $shirt = $shirtChild->childs[0]->images_final;
