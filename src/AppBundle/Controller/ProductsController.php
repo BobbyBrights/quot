@@ -10,10 +10,18 @@ class ProductsController extends Controller
 {
     public function collectionsAction()
     {
+        $userId = 0;
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $userId = $user->getId();
+        }
+        if(!isset($_SESSION['user_anonimo'])){
+            $_SESSION['user_anonimo'] = time() . '_quot_anomino';
+        }
         $collectionsJson = file_get_contents($this->container->getParameter('json_productos'));
         $collections = json_decode($collectionsJson);
         $collections = array_values($collections);
-        return $this->render('collections/index.html.twig', array('collections' => $collections));
+        return $this->render('collections/index.html.twig', array('collections' => $collections, 'user_anonimo' => $_SESSION['user_anonimo'], 'userId' => $userId));
     }
     
     public function customAction(Request $request, $vidParent, $vid, $size)
@@ -189,50 +197,68 @@ class ProductsController extends Controller
         $url = '';
         if(!empty($shirtParent)){
             $shirt = $shirtParent->childs[0]->images_final;
+            $shirt_compra = $shirtParent->childs[0]->images_compra[0];
+            if($request->query->get('com') == 1){
+                $shirt = $shirtParent->childs[0]->images_final_combinacion;
+                $shirt_compra = $shirtParent->childs[0]->images_compra[1];
+            }
             $vid = $shirtParent->childs[0]->vid;
             $texts = explode('-',$shirtParent->childs[0]->title);
             $title = $texts[0];
-            $neck = (isset($texts[1])) ? $texts[1] : '';
-            $port = (isset($texts[2])) ? $texts[2] : '';
-            $fists = (isset($texts[3])) ? $texts[3] : '';
-            $button = (isset($texts[4])) ? $texts[4] : '';
+            $neck = $shirtParent->childs[0]->detail_text[0]->value;
+            $port = $shirtParent->childs[0]->detail_text[1]->value;
+            $fists = $shirtParent->childs[0]->detail_text[2]->value;
+            $button = $shirtParent->childs[0]->detail_text[3]->value;
             $imagenThumb = $shirtParent->childs[0]->images[1];
             $price = $shirtParent->price;
         }
         if(!empty($shirtChild)){
             $shirt = $shirtChild->childs[0]->images_final;
+            $shirt_compra = $shirtChild->childs[0]->images_compra[0];
+            if($request->query->get('com') == 1){
+                $shirt = $shirtChild->childs[0]->images_final_combinacion;
+                $shirt_compra = $shirtParent->childs[0]->images_compra[1];
+            }
             $vid = $shirtChild->childs[0]->vid;
             $texts = explode('-', $shirtChild->childs[0]->title);
-            $textsAux = explode('-',$shirtParent->childs[0]->title);
             $title = $texts[0];
-            $neck = (isset($texts[1])) ? $texts[1] : '';//$textsAux[1];
-            $port = (isset($texts[2])) ? $texts[2] : '';
-            $fists = (isset($texts[3])) ? $texts[3] : '';
-            $button = (isset($texts[4])) ? $texts[4] : '';
+            $neck = $shirtChild->childs[0]->detail_text[0]->value;
+            $port = $shirtChild->childs[0]->detail_text[1]->value;
+            $fists = $shirtChild->childs[0]->detail_text[2]->value;
+            $button = $shirtChild->childs[0]->detail_text[3]->value;
             $imagenThumb1 = $shirtChild->childs[0]->images[1];
         }
         if(!empty($shirtChild1)){
             $shirt = $shirtChild1->childs[0]->images_final;
+            $shirt_compra = $shirtChild1->childs[0]->images_compra[0];
+            if($request->query->get('com') == 1){
+                $shirt = $shirtChild1->childs[0]->images_final_combinacion;
+                $shirt_compra = $shirtChild1->childs[0]->images_compra[1];
+            }
             $vid = $shirtChild1->childs[0]->vid;
             $texts = explode('-', $shirtChild1->childs[0]->title);
             $title = $texts[0];
-            $neck = (isset($texts[1])) ? $texts[1] : '';//$textsAux[1];
-            $port = (isset($texts[2])) ? $texts[2] : '';
-            $fists = (isset($texts[3])) ? $texts[3] : '';
-            $button = (isset($texts[4])) ? $texts[4] : '';
+            $neck = $shirtChild1->childs[0]->detail_text[0]->value;
+            $port = $shirtChild1->childs[0]->detail_text[1]->value;
+            $fists = $shirtChild1->childs[0]->detail_text[2]->value;
+            $button = $shirtChild1->childs[0]->detail_text[3]->value;
             $imagenThumb2 = $shirtChild1->childs[0]->images[1];
             
         }
         if(!empty($shirtChild2)){
             $shirt = $shirtChild2->childs[0]->images_final;
+            $shirt_compra = $shirtChild2->childs[0]->images_compra[0];
+            if($request->query->get('com') == 1){
+                $shirt = $shirtChild2->childs[0]->images_final_combinacion;
+                $shirt_compra = $shirtChild2->childs[0]->images_compra[1];
+            }
             $vid = $shirtChild2->childs[0]->vid;
             $texts = explode('-', $shirtChild2->childs[0]->title);
-            $textsAux = explode('-', $shirtChild->childs[0]->title);
             $title = $texts[0];
-            $neck = (isset($texts[1])) ? $texts[1] : $textsAux[1];
-            $port = (isset($texts[2])) ? $texts[2] : $textsAux[2];
-            $fists = (isset($texts[3])) ? $texts[3] : $textsAux[3];
-            $button = (isset($texts[4])) ? $texts[4] : $textsAux[4];
+            $neck = $shirtChild2->childs[0]->detail_text[0]->value;
+            $port = $shirtChild2->childs[0]->detail_text[1]->value;
+            $fists = $shirtChild2->childs[0]->detail_text[2]->value;
+            $button = $shirtChild2->childs[0]->detail_text[3]->value;
             $imagenThumb3 = $shirtChild2->childs[0]->images[1];
 
         }
@@ -242,9 +268,14 @@ class ProductsController extends Controller
         $urlPort = $urlNeck . '&child=' . $request->query->get('child') . '&vchild=' . $request->query->get('vchild');
         $urlFist = $urlPort . '&child=' . $request->query->get('child') . '&vchild=' . $request->query->get('vchild');
         $urlButton = $urlFist . '&child1=' . $request->query->get('child1') . '&vchild1=' . $request->query->get('vchild1');
-        
+
+        $anonimo = false;
+        if(isset($_SESSION['user_anonimo'])){
+            $anonimo = $_SESSION['user_anonimo'];
+        }
+
         return $this->render('collections/partials/completed-shirt.html.twig', array(
-            'shirt' => $shirt[$request->query->get('com')],
+            'shirt' => $shirt,
             'user_id' => $userId,
             'vid' => $vid,
             'title' => $title,
@@ -262,6 +293,8 @@ class ProductsController extends Controller
             'title_collection' => $titleCollection,
             'imagesThumb' => $imagesThumb,
             'price' => $price,
+            'user_anonimo' => $anonimo,
+            'shirt_thum' => $shirt_compra
 
         ));
     }

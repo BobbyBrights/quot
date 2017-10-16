@@ -97,11 +97,38 @@
                 alert('elija talla');
                 event.stopPropagation();
             } else {
-                $('#link_modal').attr('href', '/personalizar/detalle?vidParent=' + ids[0] + '&vid=' + ids[1] + '&size');
+                /*$('#link_modal').attr('href', '/personalizar/detalle?vidParent=' + ids[0] + '&vid=' + ids[1] + '&size');
                 $('#link_modal_cart').attr('href', '/carro-compras');
                 $('#link_modal_cart').attr('name', ids[0] + '-' + ids[1] + '-' + ids[2] + '-' + ids[3]);
-                $('#link_modal_cart').attr('rel', description);
-                }
+                $('#link_modal_cart').attr('rel', description);*/
+                img = $('#shirt_img_' + ids[1]).attr('src');
+                shirt_thum = $('#shirt_img_' + ids[1]).attr('src');
+                $.ajax({
+                    url: "/save-preorder",
+                    data: {
+                        'size': $('.div_' + ids[1]).children('span').text(),
+                        'title': ids[2],
+                        'description': description,
+                        'value': ids[3],
+                        'user_id': {{ userId }},
+                        'shirt': img,
+                        'vid': ids[1] ,
+                        'quant': 1,
+                        'vid_parent': ids[0],
+                        'anonimo' : '{{ user_anonimo }}',
+                        'shirt_thum': shirt_thum
+                    },
+                    type: "post",
+                    success: function(data){
+                        $('#alert-compra').fadeIn(1500);
+                        setTimeout(function() {
+                            $('#alert-compra').fadeOut(1500);
+                        },2000);
+                        $('#custom_detail').html('');
+                        $('#purchase_count').html(data);
+                    }
+                });
+            }
         });
         
         $('#link_modal_cart').click(function(){
@@ -110,25 +137,6 @@
             info = data.split('-');
             img = $('#shirt_img_' + ids[1]).attr('src');
             $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
-            $.ajax({
-                url: "/save-preorder",
-                data: {
-                    'size': $('.div_' + ids[1]).children('span').text(),
-                    'title': ids[2],
-                    'description': description,
-                    'value': ids[3],
-                    'user_id': 1,
-                    'shirt': img,
-                    'vid': ids[1] ,
-                    'quant': 1,
-                    'vid_parent': ids[0]
-                },
-                type: "post",
-                success: function(data){
-                    $('#custom_detail').html('');
-                    $('#purchase_count').html(data);
-                }
-            });
         });
         
         countArray = {{ collections|json_encode|raw }};

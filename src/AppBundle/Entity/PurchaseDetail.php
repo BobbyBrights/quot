@@ -56,6 +56,12 @@ class PurchaseDetail
      **/
     protected $purchase_detail;
 
+    /** @ORM\Column(name="user_anonimo", type="string", length=255, nullable=true) */
+    protected $user_anonimo;
+
+    /** @ORM\Column(name="shirt_thum", type="string", length=255, nullable=true) */
+    protected $shirt_thum;
+
     
 
     /**
@@ -330,5 +336,53 @@ class PurchaseDetail
     public function getVidParent()
     {
         return $this->vid_parent;
+    }
+
+    /**
+     * Set userAnonimo
+     *
+     * @param string $userAnonimo
+     *
+     * @return PurchaseDetail
+     */
+    public function setUserAnonimo($userAnonimo)
+    {
+        $this->user_anonimo = $userAnonimo;
+
+        return $this;
+    }
+
+    /**
+     * Get userAnonimo
+     *
+     * @return string
+     */
+    public function getUserAnonimo()
+    {
+        return $this->user_anonimo;
+    }
+
+    /**
+     * Set shirtThum
+     *
+     * @param string $shirtThum
+     *
+     * @return PurchaseDetail
+     */
+    public function setShirtThum($shirtThum)
+    {
+        $this->shirt_thum = $shirtThum;
+
+        return $this;
+    }
+
+    /**
+     * Get shirtThum
+     *
+     * @return string
+     */
+    public function getShirtThum()
+    {
+        return $this->shirt_thum;
     }
 }

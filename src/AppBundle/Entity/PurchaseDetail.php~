@@ -56,6 +56,12 @@ class PurchaseDetail
      **/
     protected $purchase_detail;
 
+    /** @ORM\Column(name="user_anonimo", type="string", length=255, nullable=true) */
+    protected $user_anonimo;
+
+    /** @ORM\Column(name="shirt_thum", type="string", length=255, nullable=true) */
+    protected $shirt_thum;
+
     
 
     /**
@@ -306,5 +312,53 @@ class PurchaseDetail
     public function getQuant()
     {
         return $this->quant;
+    }
+
+    /**
+     * Set vidParent
+     *
+     * @param integer $vidParent
+     *
+     * @return PurchaseDetail
+     */
+    public function setVidParent($vidParent)
+    {
+        $this->vid_parent = $vidParent;
+
+        return $this;
+    }
+
+    /**
+     * Get vidParent
+     *
+     * @return integer
+     */
+    public function getVidParent()
+    {
+        return $this->vid_parent;
+    }
+
+    /**
+     * Set userAnonimo
+     *
+     * @param string $userAnonimo
+     *
+     * @return PurchaseDetail
+     */
+    public function setUserAnonimo($userAnonimo)
+    {
+        $this->user_anonimo = $userAnonimo;
+
+        return $this;
+    }
+
+    /**
+     * Get userAnonimo
+     *
+     * @return string
+     */
+    public function getUserAnonimo()
+    {
+        return $this->user_anonimo;
     }
 }

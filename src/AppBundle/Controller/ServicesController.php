@@ -33,9 +33,10 @@ class ServicesController extends Controller
     }
     
     public function savePreOrderAction(Request $request){
-        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            throw $this->createAccessDeniedException();
-        }
+        //if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        //    throw $this->createAccessDeniedException();
+        //}
+        //$anonimo = false;
         $purchaseEm = $this->getDoctrine()->getManager();
         $purchaseDetail = new PurchaseDetail();
         $purchaseDetail->setUserId($this->get('request')->request->get('user_id'));
@@ -47,16 +48,26 @@ class ServicesController extends Controller
         $purchaseDetail->setQuant($this->get('request')->request->get('quant'));
         $purchaseDetail->setVid($this->get('request')->request->get('vid'));
         $purchaseDetail->setVidParent($this->get('request')->request->get('vid_parent'));
+        $purchaseDetail->setUserAnonimo($this->get('request')->request->get('anonimo'));
+        $purchaseDetail->setShirtThum($this->get('request')->request->get('shirt_thum'));
         $purchaseDetail->setStatus(0);
         $purchaseEm->persist($purchaseDetail);
         $purchaseEm->flush();
-        
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $userId = $user->getId();
-        $shirtPreOrder = $purchaseEm->getRepository('AppBundle:PurchaseDetail')->findBy(array(
-            'user_id' => $userId,
-            'status' => 0,
-        ));
+
+        if($this->get('request')->request->get('user_id') == 0){
+            $anonimo = $this->get('request')->request->get('anonimo');
+            $shirtPreOrder = $purchaseEm->getRepository('AppBundle:PurchaseDetail')->findBy(array(
+                'user_anonimo' => $anonimo,
+                'status' => 0,
+            ));
+        } else {
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $userId = $user->getId();
+            $shirtPreOrder = $purchaseEm->getRepository('AppBundle:PurchaseDetail')->findBy(array(
+                'user_id' => $userId,
+                'status' => 0,
+            ));
+        }
         $count = 0;
         
         if(!empty($shirtPreOrder)){
@@ -76,7 +87,15 @@ class ServicesController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $userId = $user->getId();
         $userEmail = $user->getEmail();
-        
+
+        $purchaseDetailAnonimo = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_anonimo' => $_SESSION['user_anonimo'], 'status' => 0));
+        if(!empty($purchaseDetailAnonimo)){
+            foreach($purchaseDetailAnonimo as $an){
+                $an->setUserId($userId);
+            }
+            $this->getDoctrine()->getManager()->flush();
+        }
+
         $address = $this->getDoctrine()->getManager()->getRepository('AppBundle:Address')->findBy(array('user_address' => $userId));
         if(empty($address)){
             return $this->redirectToRoute('address');
@@ -91,7 +110,7 @@ class ServicesController extends Controller
             foreach($purchaseDetail as $pd){
                 $tem['title'] = $title = $pd->getTitle();
                 $tem['description'] = $pd->getDescription();
-                $tem['image'] = $pd->getImage();
+                $tem['image'] = $pd->getShirtThum();
                 $tem['value'] = $pd->getValue();                
                 if(isset($products[$pd->getVid()])){
                     $tem['quant'] = $products[$pd->getVid()]['quant'] + $pd->getQuant();
@@ -236,28 +255,28 @@ class ServicesController extends Controller
     }
     
     public function cartPurchaseAction(Request $request){
-        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            throw $this->createAccessDeniedException();
+        $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_anonimo' => $_SESSION['user_anonimo'], 'status' => 0));
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $userId = $user->getId();
+            $userEmail = $user->getEmail();
+            //$purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId, 'status' => 0));
         }
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $userId = $user->getId();
-        $userEmail = $user->getEmail();
-        
-        $address = $this->getDoctrine()->getManager()->getRepository('AppBundle:Address')->findBy(array('user_address' => $userId));
+
+        /*$address = $this->getDoctrine()->getManager()->getRepository('AppBundle:Address')->findBy(array('user_address' => $userId));
         if(empty($address)){
             return $this->redirectToRoute('address');
         } else{
             $addressLocation = $address[0]->getAddress();
-        }
+        }*/
         $urlSite = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-        $purchaseDetail = $this->getDoctrine()->getManager()->getRepository('AppBundle:PurchaseDetail')->findBy(array('user_id' => $userId, 'status' => 0));
         $products = array();
         $totalPurhase = 0;
         if(!empty($purchaseDetail)){
             foreach($purchaseDetail as $pd){
                 $tem['title'] = $title = $pd->getTitle();
                 $tem['description'] = $pd->getDescription();
-                $tem['image'] = $pd->getImage();
+                $tem['image'] = $pd->getShirtThum();
                 $tem['value'] = $pd->getValue();                
                 $tem['size'] = $pd->getSize();                
                 if(isset($products[$pd->getVid()])){
@@ -288,11 +307,11 @@ class ServicesController extends Controller
                     'iva' => $totalPurhase*$iva,
                     'reference' => $reference,
                     'signature' => hash( 'md5', $string ),
-                    'address' => $addressLocation,
+                    //'address' => $addressLocation,
                     'merchatId' => $merchatId,
                     'apiKey' => $apiKey,
                     'accountId' => $accountId,
-                    'email' => $userEmail,
+                    //'email' => $userEmail,
                     'urlSite' => $urlSite,
                 ));
     }

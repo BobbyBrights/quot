@@ -42,7 +42,7 @@ class Purchase
     
     /** @ORM\Column(name="reference_pol", type="string", length=255, nullable=true) */
     protected $reference_pol;
-    
+
     /**
      * Get id
      *

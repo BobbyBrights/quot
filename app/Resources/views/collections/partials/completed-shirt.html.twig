@@ -15,7 +15,7 @@
         <div class='col-md-6'>
               <div class='product-resume-image align-center'>
                     {% image '%kernel.root_dir%/Resources/public/images/shirt-resume.png' %}
-                      <img src="{{ shirt }}"/>
+                  <img src="{{ shirt.0 }}" id="mousemove"/>
                     {% endimage %}
               </div>
             <div>
@@ -130,7 +130,13 @@
 {% block javascripts %}
   {{ parent() }}
   <script>
-        $(document).ready(function(){            
+      jQuery.fn.threesixty=function(t){return t=t||{},t.images=t.images||[],t.method=t.method||"click",t.cycle=t.cycle||1,t.resetMargin=t.resetMargin||0,t.direction=t.direction||"forward",t.sensibility=t.sensibility||.35*t.cycle,t.autoscrollspeed=t.autoscrollspeed||500,"backward"==t.direction&&t.images.reverse(),this.each(function(){function e(t){$("#debug").text("left:"+t.pageX);var e=r.data("refLocY")-r.data("refTouchY")+t.pageY,a=r.data("refLocX")-r.data("refTouchX")+t.pageX;a>0&&(a=0),r.parent().width()+Math.abs(a)>r.width()&&(a=-1*r.width()+r.parent().width()),e>0&&(e=0),r.parent().height()+Math.abs(e)>r.height()&&(e=-1*r.height()+r.parent().height()),r.css({left:a,top:e})}var a=[],r=$(this);$(function(){var e=[],a=$("<div>");a.css({height:r.height(),width:r.width(),overflow:"hidden",position:"relative"}),r.wrap(a).css({position:"relative",top:0,left:0}),a=r.parent();var i,o=$("<div></div>").css({width:a.width()-200,height:10,backgroundColor:"black",position:"absolute",bottom:60,left:100}).addClass("progressBg"),s=$("<div></div>").css({width:0,height:10,backgroundColor:"white",position:"absolute",bottom:60,left:100}).data("progress",0).addClass("progressBar");try{i=$("<div></div>").css({cursor:"wait",width:r.width(),background:"RGBA(0,0,0,0.7)",height:r.height(),position:"absolute",top:0,left:0}).addClass("overlay")}catch(t){i=$("<div></div>").css({cursor:"wait",width:r.width(),height:r.height(),backgroundColor:"black",filter:"alpha(opacity=70)",position:"absolute",top:0,left:0}).addClass("overlay")}i.click(function(t){t.preventDefault(),t.stopPropagation()}),i.mousedown(function(t){t.preventDefault(),t.stopPropagation()}),a.append(i).append(o).append(s),r.css({cursor:"all-scroll"});var d=0,n=!1;$.each(t.images,function(a,i){var o=$("<img>").attr("src",i).load(function(){a>r.data("tempIndex")&&(r.data("tempIndex",a),r.attr("src",$(this).attr("src")));var e=r.parent().find(".progressBar");d++;var i=r.parent().find(".progressBg").width(),o=d/t.images.length*i;e.stop(!0,!0).animate({width:o},250),d==t.images.length-1&&(n=!0,r.parent().find(".overlay, .progressBar, .progressBg").remove())});e.push(o)})});for(var i=1;i<=t.cycle;i++)for(var o=0;o<t.images.length;o++)a.push(t.images[o]);r.data("currentIndex",0).data("tempIndex",0),r.data("scaled",!1),r.data("touchCount",0);r.height();var s=r.width();if(r.mousemove(function(i){if(!1==!!r.data("refTouchX")&&(r.data("refTouchX",i.pageX),r.data("refTouchY",i.pageY),r.data("refLocX",parseInt(r.css("left"))),r.data("refLocY",parseInt(r.css("top")))),i.preventDefault(),"1"!=r.data("enabled")&&"mousemove"!=t.method);else{i.preventDefault&&i.preventDefault();var o=i;if(0==r.data("scaled")){var d=o.pageX-r.data("refTouchX");stripeSize=Math.floor(s/a.length);var n=r.data("currentIndex")+Math.floor(d*t.sensibility/stripeSize);if(n<0&&(n=a.length-1,r.data("currentIndex",n)),(n%=a.length)==r.data("currentIndex"))return;r.attr("src",a[n]),r.data("tempIndex",n)}else e(o)}}),"click"==t.method&&(r.mousedown(function(t){t.preventDefault(),r.data("enabled","1")}),$("body").mouseup(function(t){t.preventDefault(),r.data("enabled","0"),r.data("currentIndex",r.data("tempIndex"))})),"auto"==t.method){var d=t.autoscrollspeed,n=0;window.setInterval(function(){r.attr("src",a[++n%a.length])},d)}})};
+
+      $(document).ready(function(){
+          arr = {{ shirt|json_encode|raw }};
+          console.log(arr);
+          $("#mousemove").threesixty({images:arr, method:'click', 'cycle':3, direction:"backward"});
+
             $('#btn_pre_order').click(function(){
                 $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
                 $.ajax({
@@ -138,13 +144,15 @@
                     data: {
                             'size': '{{ size }}',
                             'title':'{{ title }}',
-                            'description': {{ neck ~ port ~ fists ~ button }},
+                            'description': '{{ neck ~ port ~ fists ~ button }}',
                             'value': {{ price }},
                             'user_id': {{ user_id }},
-                            'shirt': '{{ shirt }}',
+                            'shirt': '{{ shirt.0 }}',
                             'vid': {{ vid }},
                             'quant': $('#num').val(),
-                            'vid_parent': {{ parent_vid }} 
+                            'vid_parent': {{ parent_vid }},
+                            'anonimo': '{{ user_anonimo }}',
+                            'shirt_thum': '{{ shirt_thum }}'
                         },
                     type: "post",
                     success: function(data){
