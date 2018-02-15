@@ -1,0 +1,117 @@
+body{
+	padding: 0 10% 10% 10%;
+}
+h1{
+	height: auto;
+	 display: inline;
+    font-size: 1em;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+h1 svg{
+	display: block;
+	margin: auto;
+	margin: 10px auto 30px auto;
+}
+section.pre-back{
+	 background: url('../images/pre-back.jpg') no-repeat center center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0 10%;
+    padding: 65px 0;
+} 
+
+.pre-back .container{
+	background: #fff;
+	width: 30%;
+	margin: auto;
+	padding: 30px 40px;
+
+}
+
+.pre-back div h1{
+	font-family: 'QuestaGrande' , 'serif';
+	font-size: 2.625em;
+	color: #1D3649;
+	border-bottom: 1px solid #1D3649;
+	text-align: center;
+	font-weight: normal;
+	display: block;
+}
+section.pre-back div h2{
+	font-family: 'Gotham' , 'sans-serif';
+	font-size: 0.75em;
+	color: #D89F2E;
+	text-align: center;
+	display: block;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 0.35em;
+}
+section.pre-back div p{
+	font-family: 'Questa','sans-serif';
+	font-size: 1.07em;
+	color: #1D3649;
+	margin: 35px 0 0;
+}
+section.pre-back input{
+	background-color: #f2f2f2;
+	height: 40px;
+	margin: 25px auto;
+	width: 100%;
+	border: none;
+	font-family: 'QuestaGrande','serif';
+	color: #1D3649;
+	font-size: 1.8em;
+	text-align: center;
+}
+.pre-back .container a{
+	padding: 15px 0;
+	text-align: center;
+	background-color: #D89F2E;
+	color: #FFF;
+	width: 206px;
+	display: block;
+	text-transform: uppercase;
+	font-family: 'Gotham' , 'sans-serif';
+	text-decoration: none;
+	font-size: 0.75em;
+	letter-spacing: 0.35em;
+	margin: auto;
+	cursor: pointer;
+	border: 1px solid #fff;
+}
+.pre-back .container a:hover{
+	background-color: #FFF;
+	color: #D89F2E;
+	border: 1px solid #D89F2E;
+
+}
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 667px) {
+
+section.pre-back{
+	 background: url('../images/pre-back.jpg') no-repeat center center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0 3%;
+    padding: 45px 0;
+} 
+h1 svg{
+	margin: 10px auto 20px auto;
+}
+.pre-back .container{
+	width: 75%;
+	padding: 20px 30px;
+}
+section.pre-back div p{
+	font-size: 1em;
+	margin: 25px 0 0;
+}

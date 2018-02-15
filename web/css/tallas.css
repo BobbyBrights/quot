@@ -1,0 +1,61 @@
+body{
+	/*padding: 0 10% 10% 10%;*/
+}
+h1{
+	height: auto;
+	 display: inline;
+    font-size: 1em;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+h1 svg{
+	display: block;
+	margin: auto;
+	margin: 10px auto 30px auto;
+}
+section.sizechart{
+	text-align: center;
+    margin: 0 10%;
+	background-color: #fff;
+} 
+section.sizechart img{
+	width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+.pre-back .container{
+	background: #fff;
+	width: 30%;
+	margin: auto;
+	padding: 30px 40px;}
+
+.container-fluid.quot-container{
+	width: 85%;
+}
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 667px) {
+
+section.pre-back{
+	 background: url('../images/pre-back.jpg') no-repeat center center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0 3%;
+    padding: 45px 0;
+} 
+h1 svg{
+	margin: 10px auto 20px auto;
+}
+.pre-back .container{
+	width: 75%;
+	padding: 20px 30px;
+}
+section.pre-back div p{
+	font-size: 1em;
+	margin: 25px 0 0;
+}

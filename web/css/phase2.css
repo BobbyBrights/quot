@@ -1,0 +1,248 @@
+ @font-face {
+   font-family:'gothamBook';
+   src: url('../fonts/gotham-book.otf');
+   font-weight: normal;
+ }
+ @font-face {
+   font-family:'gothamMedium';
+   src: url('../fonts/gotham-medium.otf');
+   font-weight: normal;
+ }
+ @font-face {
+   font-family:'questaGrande';
+   src: url('../fonts/questa-grande.otf');
+   font-weight: normal;
+ }
+body{
+	font-size: 16px;
+}
+.user-profile{
+	padding: 0 5%;
+}
+.profile-first{
+	overflow: hidden;
+}
+
+.user-profile h1{
+	font-family:'gothamMedium';
+	font-size: 0.75em;
+	color: #008F45;
+	letter-spacing: 2.5px;
+	text-transform: uppercase;
+	font-weight: normal;	
+}
+.user-profile h3{
+	font-family:'gothamBook';
+	font-size: 0.75em;
+	color: #171E21;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+.user-profile p, .user-profile td, .landing-membership p, .landing-membership td {
+	font-family:'gothamBook';
+	font-size: 12px;
+	color: #171E21;
+	margin: 5px 0;
+	text-transform: none;
+}
+.user-profile ul{
+	padding: 0;
+}
+.user-profile li{
+	list-style: none;
+	font-family:'gothamBook';
+	font-size: 0.75em;
+	color: #171E21;
+	text-transform: uppercase;
+	text-align: left;
+	border-bottom: 1px solid #dfdfdf;
+	padding: 1em 0;
+}
+
+.user-profile button, .landing-membership button{
+	font-family:'gothamBook';
+	font-size: 0.75em;
+	letter-spacing: 2.5px;
+	text-transform: uppercase;
+	padding: 15px 0;
+	cursor: pointer;
+}
+
+.status h2, .benefits h2, .landing-membership h2{
+	font-family:'questaGrande';
+	font-size: 2.625em;
+	color: #1D3649;
+	font-weight: normal;
+	margin: 20px 0;
+}
+.benefits h2{
+	font-size: 1.8em;
+}
+.status .member h3{
+	color: #D89F2E;	
+}
+.status .member p{
+	color: #c4c4c4;	
+}
+.user-profile section{
+	width: 30%;
+	float: left;
+	padding: 1.25em;
+	overflow: hidden;
+}
+.user-profile .status {
+	border-bottom: 1px solid #dfdfdf;
+	width: 100%;
+}
+
+.personal-info button, .measures button{
+	width: 100%;
+	background: #fff;
+	border: 1px solid #1D3649;
+	color: #1D3649;
+}
+.personal-info button:hover, .measures button:hover{
+	background: #1D3649;
+	border: 1px solid #FFF;
+	font-family:'gothamBook';
+	color: #FFF;
+}
+
+.purchases h1{
+	-webkit-margin-before: 1em;
+    -webkit-margin-after: 3em;
+}
+
+.purchases div.img-compra{
+	width: 27%;
+	height: 100px;
+	padding: 10px;
+	float: left;
+	display: block;
+	margin: 0 10px 0 0;
+}
+
+.purchases div.img-compra img{
+	width: 118px;
+	height: 120px;
+	padding: 10px;
+	float: left;
+}
+.purchases div.txt-compra{
+	float: right;
+	width: 55%;
+}
+.measures p{
+	float: right;
+	text-align: right;
+}
+
+.status.not-member {
+	width: 33%;
+}
+.status.not-member div{
+	border-top: 1px solid #dfdfdf;
+	padding: 15px 0 10px 0;
+}
+.not-member button, .landing-membership button{
+	width: 100%;
+	background: #D89F2E;
+	border: 1px solid #FFF;
+	color: #FFF;
+
+}
+.not-member button:hover, .landing-membership button:hover{
+	width: 100%;
+	background: #FFF;
+	border: 1px solid #D89F2E;
+	color: #D89F2E;
+
+}
+.user-profile section.benefits{
+	width: 40%;
+	background: #f8f8f8;
+	padding: 0.5em 1.25em;
+	margin: 0 5%;
+}
+
+.benefits table{
+	width: 100%;
+	padding: 1em 0;
+}
+.benefits thead, .landing-membership thead{
+	font-family: 'gothamMedium';
+	font-size: 0.65em;
+	text-transform: uppercase;
+	padding: 0 0 15px 0;
+	text-align: left;
+}
+
+.benefits td.benefits01, .landing-membership td.benefits01{
+	width: 43%
+}
+.benefits td.benefits02, .landing-membership td.benefits02{
+	width: 35%;
+	color: #939697;
+}
+.benefits td.benefits03, .landing-membership td.benefits03{
+	width: 30%;
+	color: #008F45;
+}
+.measures.not-member p{
+	text-align: left;
+	float: none;
+}
+.landing-membership {
+	width: 33%;
+	background: #fff;
+	padding: 20px;
+	margin: 0 auto;
+}
+.landing-membership h2{
+	text-align: center;
+}
+.landing-membership .total{
+	border-top: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+	padding: 10px;
+}
+.landing-membership .total span{
+	font-family: 'gothamMedium';
+	margin: 0 5px 0 0;
+}
+.landing-membership h3{
+	font-family:'gothamMedium';
+	font-size: 0.75em;
+	color: #939697;
+	letter-spacing: 2.5px;
+	text-transform: uppercase;
+	font-weight: normal;	
+}
+.landing-membership p {
+	margin: 20px 0 30px 0;
+}
+.landing-membership div{
+	width: 100%
+}
+.landing-membership div img{
+	margin: 0 auto;
+    display: block;
+    background-size: cover;
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 667px) {
+
+.user-profile section, .status.not-member, .user-profile section.benefits, {
+	width: 100%;
+	float: none;
+	padding: 1.25em 0;
+}
+.user-profile td{
+	font-size: 11px;
+}
+.landing-membership {
+	width: 80%;
+}
+}

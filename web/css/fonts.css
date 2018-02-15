@@ -1,0 +1,20 @@
+@font-face {
+	font-family: 'Gotham';
+	src: url('Gotham-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Questa';
+	src: url('C2-questa_regular.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'QuestaGrande';
+	src: url('2-questa_grande_regular_31-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
