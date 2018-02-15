@@ -10,6 +10,9 @@
         <h1>
           {{ 'header.register' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}
         </h1>
+        <div class='row social-login'>
+          
+        </div>
         {{ form_start(form, {'action': path('hwi_oauth_connect_registration', {'key': key}), 'attr': {'class': 'hwi_oauth_registration_register'}}) }}
           {{ form_widget(form) }}
           <div class="input-group align-center">

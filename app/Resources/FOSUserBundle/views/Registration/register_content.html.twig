@@ -1,21 +1,30 @@
 {% trans_default_domain 'FOSUserBundle' %}
+<span class="line">
+  <h2><span>registrese usando</span></h2>
+</span>  
+<div class='row social-login'>
+  <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+    {% image '%kernel.root_dir%/Resources/public/images/fb-login-icon.png' %}
+      <a class='image-link' href="/connect/facebook">
+        <img src="{{ asset_url }}" alt='facebook'/>
+        Facebook
+      </a>
+    {% endimage %}  
+  </div>
+  <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+    {% image '%kernel.root_dir%/Resources/public/images/google-login-icon.png' %}
+      <a class='image-link' href="/connect/google">
+        <img src="{{ asset_url }}" alt='google'}/>
+        Gmail
+      </a>
+    {% endimage %}
+  </div>
+</div>
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
     <div class="input-group align-center">
         <button type="submit">
           {{ 'registration.submit'|trans }}
         </button>
-    </div>
-    <div class="input-group align-center">
-      {% image '%kernel.root_dir%/Resources/public/images/facebook-connect.png' %}
-        <a class='image-link' href="/connect/facebook">
-          <img src="{{ asset_url }}" alt="facebook" width="200"/>
-        </a><br />
-      {% endimage %}
-      {% image '%kernel.root_dir%/Resources/public/images/google-plus.png' %}
-        <a class='image-link' href="/connect/google">
-          <img src="{{ asset_url }}" alt="google plus" width="200"/>
-        </a><br />
-      {% endimage %}
     </div>
 {{ form_end(form) }}
