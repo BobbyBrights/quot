@@ -12,22 +12,46 @@
         </div>
     </div>
     <div class='row'>
-        <div class='col-md-6'>
-              <div class='product-resume-image align-center'>
-                    {% image '%kernel.root_dir%/Resources/public/images/shirt-resume.png' %}
-                  <img src="{{ shirt.0 }}" id="mousemove"/>
+        <div class='col-lg-5 col-md-5 col-sm-12 col-xs-12 align-center'>
+            <div id="360_img">
+                <div class='control_360_left'>
+                    {% image '%kernel.root_dir%/Resources/public/images/left-360-icon.png' %}
+                        <img src="{{ asset_url }}"/>
                     {% endimage %}
-              </div>
-            <div>
-                imágenes detalle
-                <ul>
-                    {% for imgs in imagesThumb %}
-                        <li><img src="{{ imgs }}"/></li>
+                </div>
+                <div class='control_360_right'>
+                    {% image '%kernel.root_dir%/Resources/public/images/right-360-icon.png' %}
+                        <img src="{{ asset_url }}"/>
+                    {% endimage %}
+                </div>
+                <div class='product-resume-image' id='product'>
+                    {% for sh in shirt %}
+                        <img src="{{ sh }}" id=""/>
                     {% endfor %}
-                </ul>
+                </div>
+                <div class='rotate_icon'>
+                    <p>Da vuelta a tu camisa arrastrando hacia los lados</p>
+                    {#{% image '%kernel.root_dir%/Resources/public/images/rotate-icon-1.png' %}
+                        <img src="{{ asset_url }}" width='50' height='50'/>
+                    {% endimage %}#}
+                </div>
+            </div>
+            <div id="zoom_img" class="product-resume-image" style="display: none;">
             </div>
         </div>
-        <div class='col-md-6'>
+        <div class='col-lg-2 col-md-2 col-sm-12 col-xs-12 circled-options align-center'>
+          <ul>
+              <li id="thum360_0">
+                  <img id="thum_zoom_0" style="border: solid;" class='img-circle' src="/images/img-360.jpeg" height="100" width="100"/>
+              </li>
+              {% for key, imgs in imagesThumb %}
+                  <li id="thum_{{ key }}">
+                      <img name="zoom_{{ key }}" class='img-circle' src="{{ imgs }}" height="100" width="100"/>
+                  </li>
+              {% endfor %}
+          </ul>
+        </div>
+        <div class='col-lg-5 col-md-5 col-sm-12 col-xs-12 '>
             <div class='product-resume-info-block'>
                 <h2>{{ title }}</h2>
                 <h3>Resumen</h3>
@@ -45,10 +69,10 @@
                 </div>-->
                 <div class='product-resume-line'>
                     <div class='row'>
-                        <div class='col-md-8 align-left'>
+                        <div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 align-left'>
                           {{ neck }}
                         </div>
-                        <div class='col-md-4 align-right'>
+                        <div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 align-right'>
                           <a href="{{ urlNeck }}">
                             EDITAR
                           </a>
@@ -57,10 +81,10 @@
                 </div>
                 <div class='product-resume-line'>
                     <div class='row'>
-                        <div class='col-md-8 align-left'>
+                        <div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 align-left'>
                             {{ port }}
                         </div>
-                        <div class='col-md-4 align-right'>
+                        <div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 align-right'>
                             <a href="{{ urlFist }}">
                                 EDITAR
                             </a>
@@ -69,22 +93,10 @@
                 </div>
                 <div class='product-resume-line'>
                     <div class='row'>
-                        <div class='col-md-8 align-left'>
+                        <div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 align-left'>
                           {{ fists }}
                         </div>
-                        <div class='col-md-4 align-right'>
-                          <a href="{{ urlFist }}">
-                            EDITAR
-                          </a>
-                        </div>
-                    </div>
-                </div>
-                <div class='product-resume-line'>
-                    <div class='row'>
-                        <div class='col-md-8 align-left'>
-                          {{ button }}
-                        </div>
-                        <div class='col-md-4 align-right'>
+                        <div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 align-right'>
                           <a href="{{ urlButton }}">
                             EDITAR
                           </a>
@@ -93,15 +105,32 @@
                 </div>
                 <div class='product-resume-line'>
                     <div class='row'>
-                        <div class='col-md-8 align-left'>
+                        <div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 align-left'>
+                          {{ button }}
+                        </div>
+                        <div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 align-right'>
+                          <a href="{{ urlPnl }}">
+                            EDITAR
+                          </a>
+                        </div>
+                    </div>
+                </div>
+                <div class='product-resume-line'>
+                    <div class='row'>
+                        <div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 align-left'>
                             Cantidad
                         </div>
-                        <input id="num" type="number" name="num" min="1" max="50" value="1">
+                        <div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 align-right'>
+                            <input id="num" type="number" name="num" min="1" max="50" value="1">
+                        </div>    
                     </div>
                 </div>
                 <div class='product-resume-checkout align-right'>
-                    <a id="btn_pre_order" data-toggle="modal" data-target="#myModal" href="javascript:void(0);">
+                    <!--<a id="btn_pre_order" data-toggle="modal" data-target="#myModal" href="javascript:void(0);">
                       Agregar a compras
+                    </a>-->
+                    <a id="btn_pre_order" href="javascript:void(0);">
+                        Agregar a compras
                     </a>
                 </div>
             </div>
@@ -110,17 +139,16 @@
     <div class="modal fade white-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content white-modal-content">
-                <div class='white-modal-wrapper'>
+                <div class='white-modal-wrapper-1'>
                     <p>
-                      Importancia y valor a lo individual. Cada una de nuestras camisas es
-                      una edicion limitada de 50 unidades
+                        ¿Quieres ver mas camisas, o ir a tu carro de compras?
                     </p>
-                    <div class='white-modal-links'>
-                        <a href="/carro-compras">Comprar</a>
+                    <div class='white-modal-links-1'>
+                        <a href="{{ path('products') }}">Seguir comprando</a>
                     </div>
-                    <div class='white-modal-links'>
-                        <a href="/colecciones">Seguir Comprando</a>
-                    </div>  
+                    <div class='white-modal-links-1'>
+                        <a href="{{ path('cart-purchase') }}">Ir a mis compras</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -129,40 +157,235 @@
 
 {% block javascripts %}
   {{ parent() }}
-  <script>
-      jQuery.fn.threesixty=function(t){return t=t||{},t.images=t.images||[],t.method=t.method||"click",t.cycle=t.cycle||1,t.resetMargin=t.resetMargin||0,t.direction=t.direction||"forward",t.sensibility=t.sensibility||.35*t.cycle,t.autoscrollspeed=t.autoscrollspeed||500,"backward"==t.direction&&t.images.reverse(),this.each(function(){function e(t){$("#debug").text("left:"+t.pageX);var e=r.data("refLocY")-r.data("refTouchY")+t.pageY,a=r.data("refLocX")-r.data("refTouchX")+t.pageX;a>0&&(a=0),r.parent().width()+Math.abs(a)>r.width()&&(a=-1*r.width()+r.parent().width()),e>0&&(e=0),r.parent().height()+Math.abs(e)>r.height()&&(e=-1*r.height()+r.parent().height()),r.css({left:a,top:e})}var a=[],r=$(this);$(function(){var e=[],a=$("<div>");a.css({height:r.height(),width:r.width(),overflow:"hidden",position:"relative"}),r.wrap(a).css({position:"relative",top:0,left:0}),a=r.parent();var i,o=$("<div></div>").css({width:a.width()-200,height:10,backgroundColor:"black",position:"absolute",bottom:60,left:100}).addClass("progressBg"),s=$("<div></div>").css({width:0,height:10,backgroundColor:"white",position:"absolute",bottom:60,left:100}).data("progress",0).addClass("progressBar");try{i=$("<div></div>").css({cursor:"wait",width:r.width(),background:"RGBA(0,0,0,0.7)",height:r.height(),position:"absolute",top:0,left:0}).addClass("overlay")}catch(t){i=$("<div></div>").css({cursor:"wait",width:r.width(),height:r.height(),backgroundColor:"black",filter:"alpha(opacity=70)",position:"absolute",top:0,left:0}).addClass("overlay")}i.click(function(t){t.preventDefault(),t.stopPropagation()}),i.mousedown(function(t){t.preventDefault(),t.stopPropagation()}),a.append(i).append(o).append(s),r.css({cursor:"all-scroll"});var d=0,n=!1;$.each(t.images,function(a,i){var o=$("<img>").attr("src",i).load(function(){a>r.data("tempIndex")&&(r.data("tempIndex",a),r.attr("src",$(this).attr("src")));var e=r.parent().find(".progressBar");d++;var i=r.parent().find(".progressBg").width(),o=d/t.images.length*i;e.stop(!0,!0).animate({width:o},250),d==t.images.length-1&&(n=!0,r.parent().find(".overlay, .progressBar, .progressBg").remove())});e.push(o)})});for(var i=1;i<=t.cycle;i++)for(var o=0;o<t.images.length;o++)a.push(t.images[o]);r.data("currentIndex",0).data("tempIndex",0),r.data("scaled",!1),r.data("touchCount",0);r.height();var s=r.width();if(r.mousemove(function(i){if(!1==!!r.data("refTouchX")&&(r.data("refTouchX",i.pageX),r.data("refTouchY",i.pageY),r.data("refLocX",parseInt(r.css("left"))),r.data("refLocY",parseInt(r.css("top")))),i.preventDefault(),"1"!=r.data("enabled")&&"mousemove"!=t.method);else{i.preventDefault&&i.preventDefault();var o=i;if(0==r.data("scaled")){var d=o.pageX-r.data("refTouchX");stripeSize=Math.floor(s/a.length);var n=r.data("currentIndex")+Math.floor(d*t.sensibility/stripeSize);if(n<0&&(n=a.length-1,r.data("currentIndex",n)),(n%=a.length)==r.data("currentIndex"))return;r.attr("src",a[n]),r.data("tempIndex",n)}else e(o)}}),"click"==t.method&&(r.mousedown(function(t){t.preventDefault(),r.data("enabled","1")}),$("body").mouseup(function(t){t.preventDefault(),r.data("enabled","0"),r.data("currentIndex",r.data("tempIndex"))})),"auto"==t.method){var d=t.autoscrollspeed,n=0;window.setInterval(function(){r.attr("src",a[++n%a.length])},d)}})};
+    <script src="http://www.elevateweb.co.uk/wp-content/themes/radial/jquery.elevatezoom.min.js"></script>
+    <script>
 
-      $(document).ready(function(){
-          arr = {{ shirt|json_encode|raw }};
-          console.log(arr);
-          $("#mousemove").threesixty({images:arr, method:'click', 'cycle':3, direction:"backward"});
+        function zoom(id) {
+            $("#" + id).elevateZoom({
+                zoomType: "inner",
+                cursor: "crosshair"
+            });
+        }
+        $(document).ready(function(){
 
+            $('li[id^="thum_"]').click(function(){
+                $('#thum_zoom_0').css('border', '');
+                $('li[id^="thum_"]').children().css('border', '');
+                $('#360_img').css('display', 'none');
+                $('#zoom_img').css('display', 'block');
+                img = $(this).children().css('border', 'solid');
+                img = $(this).children().attr('src');
+                rel = $(this).children().attr('name');
+                img1 = img.replace('thumbnail', 'medium');
+                img = img.replace('thumbnail', 'large_zoom');
+                $('#zoom_img').html('<img data-zoom-image="' + img + '" id="' + rel + '" src="'+ img1 +'"/>');
+                zoom(rel);
+            });
+
+            $('#thum360_0').click(function () {
+                $('li[id^="thum_"]').children().css('border', '');
+                $('#thum_zoom_0').css('border', 'solid');
+                $('#zoom_img').css('display', 'none');
+                $('#360_img').css('display', 'block');
+            });
+
+            jQuery('#product').j360();
             $('#btn_pre_order').click(function(){
                 $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
                 $.ajax({
                     url: "/save-preorder",
                     data: {
-                            'size': '{{ size }}',
-                            'title':'{{ title }}',
-                            'description': '{{ neck ~ port ~ fists ~ button }}',
-                            'value': {{ price }},
-                            'user_id': {{ user_id }},
-                            'shirt': '{{ shirt.0 }}',
-                            'vid': {{ vid }},
-                            'quant': $('#num').val(),
-                            'vid_parent': {{ parent_vid }},
-                            'anonimo': '{{ user_anonimo }}',
-                            'shirt_thum': '{{ shirt_thum }}'
-                        },
+                        'size': '{{ size }}',
+                        'title':'{{ title }}',
+                        'description': '{{ description }}',
+                        'value': {{ price }},
+                        'user_id': {{ user_id }},
+                        'shirt': '{{ shirt.0 }}',
+                        'vid': {{ vid }},
+                        'vidEdit': {{ vidEdit }},
+                        'quant': $('#num').val(),
+                        'vid_parent': {{ parent_vid }},
+                        'anonimo': '{{ user_anonimo }}',
+                        'shirt_thum': '{{ shirt_thum }}',
+                        'texts': '{{ neck }}-{{ port }}-{{ fists }}-{{ button }}',
+                        'img_btn': '{{ img_btn }}',
+                        'neckCom': {{ neckCom }},
+                        'fistCom': {{ fistCom }},
+                        'portCom': {{ portCom }},
+                        'btnCom': {{ btnCom }},
+                        'custom': 1
+                    },
                     type: "post",
                     success: function(data){
-                        $('#custom_detail').html('');
-                        $('#purchase_count').html(data);
+                        if(data != 99999) {
+                            $('#custom_detail').html('');
+                            $('#purchase_count').html(data);
+                            window.location.assign("/carro-compras");
+                        } else {
+                            window.location.assign("/login");
+                        }
                     }
                 });
-            });            
+            });
         });
-        
-        
-  </script>
+    </script>
+    <script>
+        (function($){
+            img_cook = getCookieA('hilo');
+            img_cook = img_cook.replace('medium', 'thumbnail');
+            $('#thum_3 img').attr('src', img_cook);
+            $.fn.j360 = function(options) {
+                var defaults = {
+                    clicked: false,
+                    currImg: 1
+                }
+                var options = jQuery.extend(defaults, options);
+                return this.each(function() {
+                    var $obj = jQuery(this);
+                    var aImages = {};
+                    $obj.css({
+                        'margin-left' : 'auto',
+                        'margin-right' : 'auto',
+                        'text-align' : 'center',
+                        'overflow' : 'hidden'
+                    });
+                    $overlay = $obj.clone(true);
+                    $overlay.html('<img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif" style="width:100%" class="loader"/>');
+                    $overlay.attr('id', 'view_overlay');
+                    $overlay.attr('class', 'loader_360');
+                    $overlay.css({
+                        'position' : 'absolute',
+                        'z-index': '5',
+                        'top' : '0',
+                        /*'left' : $obj.offset().left,*/
+                        'background' : '#fff'
+                    });
+                    $obj.after($overlay);
+                   /* $obj.after('<div id="colors_ctrls"></div>');
+                    jQuery('#colors_ctrls').css({
+                        'width' : $obj.width(),
+                        'position' : 'absolute',
+                        'z-index': '5',
+                        'top' : $obj.offset().top + $obj.height - 50,
+                        'left' : $obj.offset().left
+                    });*/
+
+                    var imageTotal = 0;
+                    jQuery('img', $obj).each(function() {
+                        aImages[++imageTotal] = jQuery(this).attr('src');
+                        preload(jQuery(this).attr('src'));
+                    })
+                    var imageCount = 0;
+                    jQuery('.preload_img').load(function() {
+                        if (++imageCount == imageTotal) {
+                            $overlay.animate({
+                                'filter' : 'alpha(Opacity=0)',
+                                'opacity' : 0
+                            }, 100);
+                            $obj.html('<img src="' + aImages[1] + '" />');
+                            $overlay.bind('mousedown touchstart', function(e) {
+                                if (e.type == "touchstart") {
+                                    options.currPos = window.event.touches[0].pageX;
+                                } else {
+                                    options.currPos = e.pageX;
+                                }
+                                options.clicked = true;
+                                return false;
+                            });
+                            jQuery(document).bind('mouseup touchend', function() {
+                                options.clicked = false;
+                            });
+                            jQuery(document).bind('mousemove touchmove', function(e) {
+                                if (options.clicked) {
+                                    var pageX;
+                                    if (e.type == "touchmove") {
+                                        pageX = window.event.targetTouches[0].pageX;
+                                    } else {
+                                        pageX = e.pageX;
+                                    }
+
+                                    var width_step = 4;
+                                    if (Math.abs(options.currPos - pageX) >= width_step) {
+                                        if (options.currPos - pageX >= width_step) {
+                                            options.currImg++;
+                                            if (options.currImg > imageTotal) {
+                                                options.currImg = 1;
+                                            }
+                                        } else {
+                                            options.currImg--;
+                                            if (options.currImg < 1) {
+                                                options.currImg = imageTotal;
+                                            }
+                                        }
+                                        options.currPos = pageX;
+                                        $obj.html('<img src="' + aImages[options.currImg] + '"/>');
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                    /*if (jQuery.browser.msie || jQuery.browser.mozilla || jQuery.browser.opera || jQuery.browser.safari ) {
+                        jQuery(window).resize(function() {
+                            onresizeFunc($obj, $overlay);
+                        });
+                    } else {
+                        var supportsOrientationChange = "onorientationchange" in window,
+                            orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+                        window.addEventListener(orientationEvent, function() {
+                            onresizeFunc($obj, $overlay);
+                        }, false);
+                    }*/
+                    jQuery(window).resize(function() {
+                        onresizeFunc($obj, $overlay);
+                    });
+                    onresizeFunc($obj, $overlay)
+
+                });
+            };
+        })(jQuery)
+
+        function onresizeFunc($obj, $overlay) {
+            $overlay.css({
+                'margin-top' : 0,
+                'top' : $obj.offset().top,
+                'left' : $obj.offset().left
+            });
+
+            jQuery('#colors_ctrls').css({
+                'top' : $obj.offset().top + $obj.height - 50,
+                'left' : $obj.offset().left
+            });
+        }
+
+        function preload(image) {
+            if (typeof document.body == "undefined") return;
+            try {
+                var div = document.createElement("div");
+                var s = div.style;
+                s.position = "absolute";
+                s.top = s.left = 0;
+                s.visibility = "hidden";
+                document.body.appendChild(div);
+                div.innerHTML = "<img class=\"preload_img\" src=\"" + image + "\" />";
+            } catch(e) {
+                // Error. Do nothing.
+            }
+        }
+
+        function getCookieA(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
 {% endblock %}

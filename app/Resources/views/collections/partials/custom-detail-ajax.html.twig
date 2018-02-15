@@ -1,11 +1,7 @@
-{#
-{{ dump(shirt) }}
-{{ dump(queryString) }}
-#}
 <div class='row'>
     <div class='col-md-12'>
         <div class='detail-customization-wrapper no-border'>
-            <h1>La vito 2017 - II</h1>
+            <h1>{{ dataCollection.title }}</h1>
         </div>
     </div>
 </div>
@@ -17,75 +13,120 @@
         {% endif %}
         <div id="detail_{{ key }}" style="{{ style }}" class='col-md-6 align-center'>
             {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
-            <div id="combination_0">
-                <img src="{{ dt.images_detail.1 }}" width='70%'/>
-            </div>
-            <div style="display:none" id="combination_1">
-                {%if dt.images_detail.2 is defined %}
-                    <img src="{{ dt.images_detail.2 }}" width='70%'/>
-                {% endif %}
-            </div>
+                <div id="combination_{{ key }}_0">
+                    {%if dt.images_detail.1 is defined %}
+                        <img src="{{ dt.images_detail.1 }}" width='70%'/>
+                    {% endif %}
+                </div>
+                <div style="display:none" id="combination_{{ key }}_1">
+                    {%if dt.images_detail.2 is defined %}
+                        <img src="{{ dt.images_detail.2 }}" width='70%'/>
+                    {% endif %}
+                </div>
             {% endimage %}
         </div>
     {% endfor %}
     <div class='col-md-6'>
         <div class='product-custom-info-block'>
-            {% set array_title = shirt.title|split('-') %}
-            <h2>{{ array_title.0 }}</h2>
-            <!--<h3>Cuello</h3>-->
+            <h2>{{ shirt.title }}</h2>
+            {% if(nivel != 2) %}
+                <p>{{ personalTitle }}</p>
+            {% endif %}
             <div class='product-custom-options'>
                 <ul>
                     {% set resumen = '' %}
-                    {% for key, dt in shirt.childs%}
+                    {% for key, dt in shirt.childs %}
                         {% if dt.childs is defined %}
                             {% set child = 1 %}
                             {% set vchild = dt.vid %}
                             {% set url_child = url ~ '&child' ~ nivel ~ '=' ~ child ~ '&vchild' ~ nivel ~ '=' ~ vchild %}
                         {% endif %}
                         <li>
-                            <div id="btn_customizer_{{ key }}" class='customization-box'>
-                                {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
-                                    <img onclick="changeImg({{ key }}, '{{ url_child }}');" src="{{ dt.images.0 }}"/>
-                                {% endimage %}
-                            </div>
+                            {% if(nivel != 2) %}
+                                <div rel="{{ key }}" id="btn_customizer_{{ key }}" class='customization-box' onclick="">
+                            {% else %}
+                                <div style="display: none;" rel="{{ key }}" id="btn_customizer_{{ key }}" class='customization-box' onclick="">
+                            {% endif %}
+                                    {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
+                                        {% if(nivel != 3) %}
+                                            <img onclick="changeImg({{ key }}, '{{ url_child }}', {{ nivel }});" src="{{ dt.images.0 }}"/>
+                                        {% else %}
+                                            <img onclick="changeImg({{ key }}, '{{ url_child }}', {{ nivel }});getImgBtn();" src="{{ dt.images.0 }}"/>
+                                        {% endif %}
+                                    {% endimage %}
+                                </div>
                         </li>
                     {% endfor%}
                 </ul>
             </div>
-            <h3>Descripcion</h3>
-            <p>{{ shirt.description }}</p>
-            <h3>Combinacion</h3>
+            {#{% if nivel != 2 %}
+                <h3>Descripcion</h3>
+                <p>{{ shirt.childs.0.description }}</p>
+            {% endif %}#}
+            {% if(nivel == 3) %}
+                <h3>Hilo de los botones</h3>
+                <div class='buttons_block'>
+                    <ul>
+                        {% if shirt.childs.0.images_hl is defined %}
+                            {% for key, dt in shirt.childs.0.images_hl %}
+                                {% if key is divisible by(3) %}
+                                    <li>
+                                        <div rel="{{ key }}" id="btn_customizer_{{ key }}" class='customization-box' onclick="">
+                                            {% set imgH1 = key + 1 %}
+                                            {% set imgH2 = key + 2 %}
+                                            {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
+                                            <img onclick="changeImgHl({{ imgH1 }}, {{ imgH2 }});getImgBtn();" src="{{ dt }}" width="30px"/>
+                                            {% endimage %}
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor%}
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+            <h3>{{ combinationTitle }}</h3>
             <div class='custom-radio'>
-                <input onclick="changeCom(1);" type="radio" id="radio01" name="radio" />
+                {% if nivel == '' %}
+                    {% set nivel = 0 %}
+                {% endif %}
+                <input onclick="changeCom(1, {{ nivel }});" type="radio" id="radio01" name="radio" />
                 <label for="radio01"><span></span>Si</label>
-                <input onclick="changeCom(0);" type="radio" id="radio02" name="radio" />
+                <input onclick="changeCom(0, {{ nivel }});" type="radio" id="radio02" name="radio" />
                 <label for="radio02"><span></span>No</label>
             </div>
-                <div class='row'>
-                    <div class='col-md-6'>
-                        
-                        <div class='product-step-links'>
-                            {%if nivel != 3 %}
+            <div class='row'>
+                <div class='col-md-6'>
+                    <div class='product-step-links'>
+                        {%if nivel != 3 %}
+                            {% if nivel != 0 %}
                                 <a id="btn_prev" onclick="loadPage('{{ urlPrev }}');" href="javascript:void(0);" class=''>Anterior</a>
-                                <a id="btn_next" onclick="loadPage('{{ url }}');" href="javascript:void(0);" class=''>Siguiente</a>
-                            {% else %}
-                                <a id="btn_prev" onclick="loadPage('{{ urlPrev }}');" href="javascript:void(0);" class=''>Anterior</a>
-                                <a id="btn_next_f" href="{{ urlResumen }}&com=0" class=''>Siguiente</a>
                             {% endif %}
-                        </div>
+                            <a id="btn_next" onclick="loadPage('{{ url }}');" href="javascript:void(0);" class=''>Siguiente</a>
+                        {% else %}
+                            <a id="btn_prev" onclick="loadPage('{{ urlPrev }}');" href="javascript:void(0);" class=''>Anterior</a>
+                            <a id="btn_next_f" href="{{ urlResumen }}&com=0" class=''>Siguiente</a>
+                        {% endif %}
                     </div>
+                </div>
+                {%if nivel == 3 %}
                     <div class='col-md-6 align-right'>
-                        <div class='product-step-resume'>
-                            <a id="final_shirt" href="{{ urlResumen }}&com=0">Ver resumen</a>
-                        </div>
+                {% else %}
+                    <div style="display: none;" class='col-md-6 align-right'>
+                {% endif %}
+                    <div class='product-step-resume'>
+                        <a id="final_shirt" href="{{ urlResumen }}&com=0">Ver resumen</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 {% block javascripts %}
     <script>
+        var shirtChild = {{ shirt.childs|json_encode|raw }};
         $(document).ready(function(){
+            getImgBtn();
             $('#btn_customizer_0 img').trigger('click');
             document.getElementById("radio02").checked = true;
         });

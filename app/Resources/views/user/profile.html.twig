@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Perfil Usuario{% endblock %}
+{% block body %}
+    <link href="css/phase2.css" rel="stylesheet">
+    <article class="user-profile">
+        <h1> tu cuenta</h1>
+        {% if user.suscriptor %}
+            <h2>{{ user.username }}</h2>
+            <!--<h3>PARTE DE QUOT DESDE FEBRERO 2018</h3>-->
+            <h3>PARTE DE QUOT DESDE {{ user.date_suscriptor }}</h3>
+            <div class="member">
+                <h3>Ya eres parte de la cultura Quot</h3>
+                <p>Tu membresía está vigente por los próximos {{ user.end_suscription }}</p>
+            </div>
+        {% else %}
+            <article class="profile-first">
+                <section class="status not-member">
+                    <h2>{{ user.username }}</h2>
+                    <h3>La ultima vez que entraste fue en {{ user.last_login }}</h3>
+                    <div class="">
+                        <p>Aún no eres parte de la cultura Quot, ¡Te estás perdiendo de los beneficios!</p>
+                        <button onclick="window.location.href='{{ path('cultura') }}'">Hacer parte</button>
+                    </div>
+                </section>
+                <section class="benefits">
+                    <p>La Cultura Quot está diseñada para que aproveches al máximo la personalización de cada pieza. Con tu membresía anual de $70.000 tendrás acceso a estos beneficios:</p>
+                    <table>
+                        <thead>
+                        <th></th>
+                        <th>Invitado</th>
+                        <th>Cultura Quot</th>
+                        </thead>
+                        <tr>
+                            <td class="benefits01">Camisa sin personalizar</td>
+                            <td class="benefits02">180.000</td>
+                            <td class="benefits03">180.000</td>
+                        </tr>
+                        <tr>
+                            <td class="benefits01">Camisa personalizada</td>
+                            <td class="benefits02">200.000</td>
+                            <td class="benefits03">180.000</td>
+                        </tr>
+                        <tr>
+                            <td class="benefits01">Cobro por personalizar</td>
+                            <td class="benefits02">En cada compra</td>
+                            <td class="benefits03">Nunca</td>
+                        </tr>
+                        <tr>
+                            <td class="benefits01">Ajustes menores</td>
+                            <td class="benefits02">No disponible</td>
+                            <td class="benefits03">Gratis</td>
+                        </tr>
+                        <tr>
+                            <td class="benefits01">Ajuste a la medida</td>
+                            <td class="benefits02">No disponible</td>
+                            <td class="benefits03">Gratis</td>
+                        </tr>
+                    </table>
+                </section>
+            </article>
+        {% endif %}
+        <section class="personal-info">
+            <h1>Tus datos</h1>
+            <ul>
+                <li>Email <p id="edit_email">{{ user.email }}</p></li>
+                <li>Dirección de entrega <p id="edit_address">{{ user.address }}</p></li>
+                <li>Telefono<p id="edit_phone">{{ user.phone }}</p></li>
+            </ul>
+            <button id="edit-data">editar</button>
+        </section>
+        <section class="purchases">
+            <h1>Tus ultima compras</h1>
+            {% for purchase in user.purchases %}
+                <div class="content-purchases">
+                    <div class="img-compra">
+                        {% image '%kernel.root_dir%/Resources/public/images/custom-shirt.png' %}
+                            <img src="{{ purchase.image }}"/>
+                        {% endimage %}
+                    </div>
+                    <div class="txt-compra">
+                        <h3>{{ purchase.title }}</h3>
+                        <h3>${{ purchase.value }}</h3>
+                        {% for tx in purchase.texts %}
+                            <p>{{ tx }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+        {% if user.suscriptor %}
+            <section class="measures">
+                <h1>tus ultimas medidas</h1>
+                <ul>
+                    <li>Cuello<p>100cm</p></li>
+                    <li>Hombros<p>100cm</p></li>
+                    <li>Brazo<p>100cm</p></li>
+                    <li>Largo de manga<p>100cm</p></li>
+                    <li>Muñeca<p>100cm</p></li>
+                    <li>Largo Torso<p>100cm</p></li>
+                    <li>Pecho<p>100cm</p></li>
+                    <li>Cintura<p>100cm</p></li>
+                </ul>
+                <button>editar</button>
+            </section>
+        {% else %}
+            <section class="measures not-member">
+                <h1>tus ultimas medidas</h1>
+                <div class="">
+                    <p>Puedes guardar o solicitar la toma de tus medidas haciendo parte de la Cultura Quot</p>
+                    <button onclick="window.location.href='{{ path('cultura') }}'">Hacer parte</button>
+                </div>
+            </section>
+        {% endif %}
+
+    </article>
+    <div id="mySmallModalLabel" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p id="text_alert_edit"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#edit-data').click(function(){
+            if($(this).text() == 'editar') {
+                $(this).text('guardar');
+                $('#edit_email').attr('contenteditable','true');
+                $('#edit_address').attr('contenteditable','true');
+                $('#edit_phone').attr('contenteditable','true');
+            } else {
+                $.ajax({
+                    url: "/edit-data-user",
+                    data: {'user_id': {{ user.user_id }}, 'phone': $('#edit_phone').text(), 'address': $('#edit_address').text(), 'email': $('#edit_email').text()},
+                    type: "get",
+                    success: function(data){
+                        if(data == '0') {
+                            $('#text_alert_edit').html('Los datos han sido editados');
+                            $('#mySmallModalLabel').modal();
+                            $('#edit_email').attr('contenteditable','false');
+                            $('#edit_address').attr('contenteditable','false');
+                            $('#edit_phone').attr('contenteditable','false');
+                            $('#edit-data').text('editar');
+                        } else if(data == '1'){
+                            $('#text_alert_edit').html('El correo ya se encuentra registrado por otro usuario');
+                            $('#mySmallModalLabel').modal();
+                        } else if(data == '2'){
+                            $('#text_alert_edit').html('No puedes dejar campos vacíos');
+                            $('#mySmallModalLabel').modal();
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+{% endblock %}

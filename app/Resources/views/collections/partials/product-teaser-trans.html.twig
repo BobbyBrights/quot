@@ -1,8 +1,8 @@
-<div class='product-teaser'>
+<div class='product-teaser' id="data_product_bk_{{ products.vid }}_{{ products.title }}">
     <a class='shirt-block'>
         <div class='shirt-image'>
             {% image '%kernel.root_dir%/Resources/public/images/shirt-1.png' %}
-                <img src="{{ products.images.0 }}" alt=""/>
+                <img src="{{ products.images.0 }}" id="shirt_img_{{ products.vid }}" alt=""/>
             {% endimage %}
         </div>
         <h4>{{ products.title }}</h4>
@@ -24,7 +24,18 @@
             </div>
         </div>
     </div>
-    <div class='product-stock'>
-      20 de 50
+    <div id="count_shirt_teaser_{{ products.vid }}" class='product-stock'></div>
+    <div class="product-custom">
+        <div class="product-customize-link">
+            <a onclick="generateLink('{{ vid_parent }}','{{ products.vid }}', 'ppal')" href="javascript:void(0)">Personalizar</a>
+        </div>
+        <div class="product-customize-cart">
+            <a class="bk-custom" name="{{ vid_parent }}-{{ products.vid }}-{{ products.title }}-{{ products.price }}-ppal" data-toggle="modal" data-target="#myModal" href="javascript:void(0)">agregar a compras</a>
+        </div>
+    </div>
+    <div style="display: none" id="{{ products.vid }}-texts">
+        {% for tx in products.detail_text %}
+            {{ tx.value }}-
+        {% endfor %}
     </div>
 </div>

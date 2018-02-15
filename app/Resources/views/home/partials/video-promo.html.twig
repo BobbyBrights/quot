@@ -1,5 +1,10 @@
 {% image '%kernel.root_dir%/Resources/public/images/machine_bg.png' %}
-<div name="is_personal" id="is_personal" class='row' style="background-image:url({{ asset_url }}); background-position: center">
+<div name="is_personal" 
+     id="is_personal" 
+     class='row' 
+     style="background-image:url({{ module.imagen.src }});
+     background-position: center;
+     background-size: cover">
   <div class='row'>
     <div class='col-md-12'>
       <div class='is-personal-info'>

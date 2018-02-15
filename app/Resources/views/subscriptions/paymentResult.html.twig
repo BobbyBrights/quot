@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Cultura{% endblock %}
+{% block body %}
+    <link href="css/phase2.css" rel="stylesheet" media="all">
+    <link href="css/fonts.css" rel="stylesheet" media="all">
+    <article class="landing-membership">
+        <h2>¡Gracias por hacer parte de nuestra cultura!</h2>
+        <div><img src="images/member-img.jpg"></div>
+        <p>Estamos procesando tu pago. Enviaremos un correo a {{ email }} confirmando tu activación como miembro</p>
+        <button id="btn_purchase">Volver a Quot Store</button>
+    </article>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function(){
+            $('#btn_purchase').click(function () {
+                window.location.assign("{{ path('home') }}");
+            })
+        });
+    </script>
+{% endblock %}

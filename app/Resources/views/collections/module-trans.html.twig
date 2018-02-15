@@ -5,9 +5,94 @@
             <div class="owl-carousel">
                 {% for coll in session.products %}
                     {% set sizes = coll.sizes|split(',') %}
-                    {{ include('collections/partials/product-teaser-trans.html.twig', {'products': coll, 'sizes': sizes }) }}
+                    {{ include('collections/partials/product-teaser-trans.html.twig', {'vid_parent': session.vid, 'products': coll, 'sizes': sizes }) }}
                 {% endfor %}
             </div>
         </div>
     {% endfor %}
 </div>
+
+{% block javascripts %}
+    <script>
+        function countShirt2(vid_parent, title){
+            $.ajax({
+                url: "/count-shirt",
+                data: {'vidParent': vid_parent, 'title': title },
+                type: "get",
+                success: function(data){
+                    $('#count_shirt_teaser_' + vid_parent).html(data);
+                }
+            });
+        }
+        $(document).ready(function(){
+            $('div[id^="data_product_bk_"]').each(function(){
+                dataP = $(this).attr('id');
+                dataShirt = dataP.split('_');
+                countShirt2(dataShirt[3], dataShirt[4]);
+            });
+
+            $('.bk-custom').click(function () {
+                data = $(this).attr('name');
+                ids = data.split('-');
+                description = $('#' + ids[1] + '-description').text();
+                texts = $('#' + ids[1] + '-texts').text();
+                if($('#div_' + ids[1]).children('span').text() == 'Talla'){
+                    alertSize();
+                    event.stopPropagation();
+                } else {
+                    $('#link_modal').attr('href', '/personalizar/detalle?vidParent=' + ids[0] + '&vid=' + ids[1] + '&size=' + $('#div_' + ids[1]).children('span').text());
+                    $('#link_modal_cart').attr('href', 'javascript:void(0);');
+                    $('#link_modal_cart').attr('name', ids[0] + '-' + ids[1] + '-' + ids[2] + '-' + ids[3]);
+                    $('#link_modal_cart').attr('rel', description);
+                }
+            });
+
+            $('#link_modal_cart').click(function(){
+                data = $(this).attr('name');
+                description = $(this).attr('rel');
+                info = data.split('-');
+                img = $('#shirt_img_' + ids[1]).attr('src');
+                $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
+                img = $('#shirt_img_' + ids[1]).attr('src');
+                shirt_thum = $('#shirt_img_' + ids[1]).attr('src');
+                texts = $('#' + ids[1] + '-texts').text();
+                $.ajax({
+                    url: "/save-preorder",
+                    data: {
+                        'size': $('#div_' + ids[1]).children('span').text(),
+                        'title': ids[2],
+                        'description': description,
+                        'value': ids[3],
+                        'user_id': {{ userId }},
+                        'shirt': img,
+                        'vid': ids[1] ,
+                        'quant': 1,
+                        'vid_parent': ids[0],
+                        'anonimo' : '{{ user_anonimo }}',
+                        'shirt_thum': shirt_thum,
+                        'texts': texts,
+                        'custom': 0
+                    },
+                    type: "post",
+                    success: function(data){
+                        if(data != 99999) {
+                            $('#myModal').modal('toggle');
+                            $('#popover').popover('show');
+                            setTimeout(function() {
+                                $('#alert-compra').fadeOut(1500);
+                                $('#popover').popover('hide');
+                            },700);
+                            $('#custom_detail').html('');
+                            $('#purchase_count').html(data);
+                            window.location.replace("/carro-compras");
+                        } else {
+                            $('#purchase_count').html();
+                            window.location.assign("/login?referer=/colecciones");
+                        }
+
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock%}

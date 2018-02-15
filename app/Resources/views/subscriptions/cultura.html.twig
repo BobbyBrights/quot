@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quot - Cultura{% endblock %}
+{% block body %}
+    <link href="css/phase2.css" rel="stylesheet" media="all">
+    <link href="css/fonts.css" rel="stylesheet" media="all">
+    <article class="landing-membership">
+        <h2>Cultura Quot</h2>
+        <p>La Cultura Quot está diseñada para que aproveches al máximo la personalización de cada pieza. Con tu membresía anual de $70.000 tendrás acceso a estos beneficios:</p>
+        <table>
+            <thead>
+            <th></th>
+            <th>Invitado</th>
+            <th>Cultura Quot</th>
+            </thead>
+            <tr>
+                <td class="benefits01">Camisa sin personalizar</td>
+                <td class="benefits02">180.000</td>
+                <td class="benefits03">180.000</td>
+            </tr>
+            <tr>
+                <td class="benefits01">Camisa personalizada</td>
+                <td class="benefits02">200.000</td>
+                <td class="benefits03">180.000</td>
+            </tr>
+            <tr>
+                <td class="benefits01">Cobro por personalizar</td>
+                <td class="benefits02">En cada compra</td>
+                <td class="benefits03">Nunca</td>
+            </tr>
+            <tr>
+                <td class="benefits01">Ajustes menores</td>
+                <td class="benefits02">No disponible</td>
+                <td class="benefits03">Gratis</td>
+            </tr>
+            <tr>
+                <td class="benefits01">Ajuste a la medida</td>
+                <td class="benefits02">No disponible</td>
+                <td class="benefits03">Gratis</td>
+            </tr>
+            <tr>
+                <td class="total"></td>
+                <td class="total"></td>
+                <td class="total"><span>Total</span>70.000</td>
+            </tr>
+        </table>
+        <h3>Modo de pago</h3>
+        <form method="post" id="purchase_form" action="https://gateway.payulatam.com/ppp-web-gateway">
+            <input name="merchantId" type="hidden" value="{{ merchatId }}"/>
+            <input name="accountId" type="hidden" value="{{ accountId }}"/>
+            <input name="description" type="hidden" value="Compra suscripcion QUOT"/>
+            <input name="referenceCode" type="hidden" value="{{ reference }}"/>
+            <input name="amount" type="hidden" value="{{ total }}"/>
+            <input name="tax" type="hidden" value="{{ iva }}"/>
+            <input name="taxReturnBase" type="hidden" value="{{ taxReturnBase }}"/>
+            <input name="currency" type="hidden" value="COP"/>
+            <input name="signature" value="{{ signature }}" type="hidden"/>
+            <input name="test" value="{{ test }}" type="hidden"/>
+            <input name="buyerEmail" type="hidden"  value="{{ email }}" >
+            <input name="shippingAddress" value="{{ address }}" type="hidden"/>
+            <input name="shippingCity" value="Bogota" type="hidden"/>
+            <input name="shippingCountry" value="CO" type="hidden"/>
+            <input name="responseUrl" type="hidden" value="{{ urlSite }}{{ path('subscription_payment_result') }}"/>
+        </form>
+        <p>Al dar click en CONTINUAR, serás dirigido al sitio de nuestro servidor de pagos utorizado</p>
+        <button id="purchase-btn" name="Submit" type="submit"  value="Comprar">CONTINUAR</button>
+    </article>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#purchase-btn').click(function () {
+            $('#purchase_form').submit();
+        });
+    </script>
+{% endblock %}

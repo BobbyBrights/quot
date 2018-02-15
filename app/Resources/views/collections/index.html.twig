@@ -9,7 +9,7 @@
                 <div class='col-md-12'>
                     <div class='detail-wrapper'>
                       <h1>{{ col.title_collection }}</h1>
-                        <div class="owl-carousel">
+                        <div class="owl-carousel owl-theme">
                             {% set dataCount = col.products %}
                             {% for base in col.products %}
                                 {{ include('collections/partials/product-teaser.html.twig', {'data': base, 'vid_parent': col.vid }) }}
@@ -32,17 +32,90 @@
             <div class="modal-content white-modal-content">
                 <div class='white-modal-wrapper'>
                     <h2>Primero los primeros</h2>
-                    <h3>Personalizacion</h3>
+                    <h3>Espera,</h3>
                     <p>
-                      Importancia y valor a lo individual. Cada una de nuestras camisas es
-                      una edicion limitada de 50 unidades
+                        Durante nuestra preventa y por ser invitado especial, puedes personalizar tu camisa sin costo adicional. ¿Seguro que quieres agregarla al carro sin personalizar?
                     </p>
                     <div class='white-modal-links'>
-                        <a id="link_modal_cart" href="/resumen-camisa?vidParent=4&vid=33&size=&com=0">No, Gracias</a>
+                        <a id="link_modal_cart" href="javascript:void(0);">Si, agregar</a>
                     </div> 
                     <div class='white-modal-links'>
-                        <a id="link_modal" href="/personalizar/detalle?vidParent=4&vid=33&size=">Personalizar</a>
+                        <a id="link_modal" href="/personalizar/detalle?vidParent=4&vid=33&size=">Personalizarla</a>
                     </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade white-modal" id="myModalTalla" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <link href="css/tallas.css" rel="stylesheet">
+        <link href="css/fonts.css" rel="stylesheet" media="all">
+        <section class="sizechart">
+            <h1>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" x="0px" y="0px" width="160px" height="53px" viewBox="0 0 160 60" style="null" class="logo" >
+                    <rect x="139.3" y="24.6" transform="matrix(0.7074 0.7069 -0.7069 0.7074 58.4696 -91.594)" class="st0" width="1" height="0.5"/>
+                    <path class="st0" d="M146.2,31.5l-1.4-1.4l0.4-0.4l1.4,1.4L146.2,31.5z M144.1,29.5l-1.4-1.4l0.4-0.4l1.4,1.4L144.1,29.5z
+                       M142.1,27.4l-1.4-1.4l0.4-0.4l1.4,1.4L142.1,27.4z"/>
+                    <path class="st0" d="M146.8,31.7"/>
+
+                    <path class="st0" d="M142.1,36.2l-7.7-7.7l9.4-9.3h15.3L142.1,36.2z M135.8,28.5l6.3,6.3l14.5-14.6h-12.4L135.8,28.5z"/>
+
+                    <path class="st0" d="M152.7,46.8l-8.9-8.9L162,19.6l8.8,9L152.7,46.8z M145.2,37.9l7.5,7.5l16.7-16.7L162,21L145.2,37.9z"/>
+
+                    <circle class="st0" cx="152.7" cy="37.7" r="1.6"/>
+
+                    <path class="st0" d="M79.8,42.2c-0.4,0-0.7,0.1-1.1,0.3c-0.4,0.2-0.7,0.3-1.1,0.3c-0.2,0-0.5-0.1-0.6-0.2
+                c-0.2-0.1-0.3-0.4-0.4-0.9c-0.1-0.4-0.2-1.1-0.2-2.1c-0.1-0.9-0.1-2.2-0.2-3.8c0-1.6-0.1-3.6-0.1-6s0-5.4,0-8.9
+                c0-0.2-0.2-0.4-0.5-0.6c-0.3-0.2-0.7-0.3-1.1-0.3c-0.5,0-1,0.1-1.7,0.2c-0.6,0.1-1.3,0.3-2,0.5c-0.7,0.2-1.3,0.5-1.9,0.8
+                c-0.6,0.3-1.1,0.6-1.5,1c0.1,0.8,0.3,1.3,0.6,1.4c0.3,0.1,0.7,0.2,1.2,0.2c0.2,0,0.5,0,0.7,0c0.2,0,0.5,0,0.7,0
+                c0.3,0,0.6,0.1,0.9,0.2c0.2,0.1,0.4,0.5,0.4,1.1l0.1,13.5c0,0.6-0.2,1.3-0.6,1.8c-0.4,0.6-1,1.1-1.6,1.5
+                c-0.7,0.4-1.4,0.8-2.2,1.1c-0.8,0.3-1.5,0.4-2.3,0.4c-1.1,0-2-0.2-2.7-0.5c-0.6-0.3-1.1-0.8-1.5-1.4c-0.3-0.6-0.6-1.3-0.6-2.1
+                c-0.1-0.8-0.1-1.7-0.1-2.6c0-0.3,0-0.8,0-1.5s0-1.7,0-2.9s0.1-2.8,0.1-4.7c0.1-1.9,0.1-4.1,0.2-6.7c0-0.2-0.2-0.5-0.7-0.8
+                c-0.5-0.3-0.9-0.5-1.4-0.5c-0.5,0-1.1,0.1-1.8,0.4c-0.7,0.2-1.3,0.6-2,0.9c-0.6,0.4-1.3,0.8-1.9,1.2c-0.6,0.4-1.1,0.8-1.5,1.2
+                c0.1,0.8,0.3,1.3,0.7,1.5c0.4,0.2,0.8,0.3,1.3,0.3c0.2,0,0.4,0,0.7,0c0.2,0,0.5,0,0.7,0c0.4,0,0.7,0.1,1,0.2
+                c0.2,0.2,0.4,0.5,0.4,1.1l-0.1,12.6c0,2,0.6,3.7,1.8,5c1.2,1.4,3,2.1,5.4,2.1c1.5,0,3-0.4,4.5-1.1c1.4-0.7,2.8-1.5,4.1-2.5
+                c0.3,1.4,0.8,2.2,1.5,2.6c0.7,0.4,1.4,0.5,2.1,0.5c0.4,0,1-0.1,1.6-0.2c0.6-0.1,1.2-0.3,1.8-0.6c0.6-0.2,1.1-0.5,1.5-0.9
+                c0.4-0.4,0.6-0.8,0.6-1.2c0-0.3-0.1-0.6-0.2-0.9C80.1,42.4,80,42.2,79.8,42.2z"/>
+
+                    <path class="st0" d="M95.5,20.1c-1.9,0-3.6,0.3-5.2,1c-1.6,0.7-3.1,1.6-4.3,2.9c-1.2,1.2-2.2,2.7-2.9,4.4
+                  C82.3,30,82,31.9,82,34c0,4,1.1,7.1,3.2,9.3c2.1,2.3,5,3.4,8.5,3.4c1.8,0,3.5-0.3,5.1-0.9c1.6-0.6,3-1.4,4.2-2.6
+                  c1.2-1.2,2.1-2.6,2.8-4.3c0.7-1.7,1-3.7,1-6c0-4.2-1-7.4-3-9.6C101.8,21.2,99,20.1,95.5,20.1z M100.2,42
+                  c-1.2,1.6-3.1,2.3-5.5,2.3c-1.1,0-2-0.2-3-0.7c-0.9-0.5-1.8-1.2-2.5-2.2c-0.7-1-1.3-2.1-1.7-3.5c-0.4-1.4-0.6-3-0.6-4.8
+                  c0-3.5,0.7-6.1,2-7.9c1.3-1.8,3.4-2.7,6.1-2.7c1.1,0,2.1,0.3,2.9,0.9c0.9,0.6,1.6,1.4,2.2,2.4c0.6,1,1.1,2.2,1.4,3.7
+                  c0.3,1.5,0.5,3.1,0.5,4.8C102,37.8,101.4,40.4,100.2,42z"/>
+
+                    <path class="st0" d="M125,43.5c-0.1-0.4-0.2-0.6-0.3-0.6c-0.2,0.1-0.5,0.2-0.9,0.5c-0.4,0.2-1.1,0.4-2.2,0.4
+                c-1,0-1.7-0.1-2.2-0.2c-0.5-0.2-0.9-0.5-1.2-1.1c-0.3-0.5-0.4-1.4-0.5-2.4c0-1.1-0.1-2.5-0.1-4.3c0-0.1,0-0.4,0-1.1
+                c0-0.6,0-1.4,0-2.4c0-0.9,0-1.9,0-3c0-1.1,0.1-2,0.1-2.9c0-0.9,0.1-1.6,0.1-2.2c0-0.6,0.1-0.9,0.2-0.9c1.7,0,3-0.1,3.9-0.1
+                c0.9,0,1.5-0.1,1.9-0.1c0.4,0,0.6-0.1,0.6-0.2c0-0.1,0.1-0.2,0.1-0.4l0.1-1.9c0-0.4-0.1-0.6-0.3-0.6c-0.4,0-1.3,0-2.4,0.1
+                c-1.2,0-2.7,0.1-4.7,0.2v-6.9c0-0.1-0.1-0.2-0.3-0.2H115c-0.2,0-0.4,0.1-0.5,0.3c-0.2,1.5-0.5,2.8-1,3.9c-0.5,1-1,1.9-1.6,2.5
+                c-0.6,0.6-1.2,1.1-1.8,1.4c-0.6,0.3-1.2,0.5-1.7,0.6l0.1-0.1l-0.1,0.1c0,0,0,0.2,0.1,0.3c0,0.2,0.1,0.4,0.1,0.6
+                c0,0.2,0.1,0.5,0.2,0.8h4c0.1,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.5l-0.2,17.8c0,1,0.2,1.8,0.6,2.5
+                c0.3,0.6,0.8,1.1,1.3,1.5c0.5,0.4,1.1,0.6,1.8,0.8c0.6,0.1,1.3,0.2,1.9,0.2c0.3,0,0.8-0.1,1.5-0.2c0.7-0.1,1.4-0.2,2.1-0.4
+                c0.7-0.2,1.3-0.4,1.9-0.7c0.5-0.3,0.8-0.6,0.8-1C125.1,44.2,125.1,43.9,125,43.5z"/>
+
+                    <path class="st0" d="M45.6,53.9c-4.4,0-13.1-6.6-21.4-4.5c3.1-1.6,9.8-2.8,9.8-2.8l0,0c2-0.5,3.9-1.3,5.6-2.5
+                  c1.7-1.2,3.1-2.6,4.3-4.4c1.2-1.7,2.1-3.7,2.8-5.9c0.6-2.2,1-4.7,1-7.3c0-3.1-0.4-5.9-1.2-8.4c-0.8-2.5-1.9-4.6-3.4-6.4
+                  c-1.5-1.7-3.4-3.1-5.6-4c-2.2-0.9-4.8-1.4-7.6-1.4c-2.6,0-5,0.5-7.2,1.5c-2.2,1-4.1,2.4-5.8,4.2c-1.6,1.8-2.9,4-3.8,6.5
+                  c-0.9,2.5-1.4,5.3-1.4,8.3c0,2.7,0.3,5.2,1,7.6c0.7,2.3,1.6,4.4,2.9,6.1c1.3,1.8,2.9,3.2,4.8,4.3c1.9,1.1,4.1,1.9,6.6,2.2
+                  l0.6,0c-0.6,0.2-1.3,0.4-2,0.8c-4.3,2-9.5,4.1-9.5,8.1h1c0.3-3,2.9-4.1,5.7-4.1c5,0,11.7,6.7,19.4,6.7c6,0,7.7-3.7,7.7-9h-1
+                  C48.8,52.3,48.3,53.9,45.6,53.9z M24.5,42.9c-1.6-0.8-3-1.9-4.2-3.4c-1.2-1.5-2.1-3.4-2.7-5.7c-0.6-2.3-0.9-4.9-0.9-7.8
+                  c0-2.6,0.3-4.9,0.9-7c0.6-2,1.5-3.8,2.6-5.2c1.1-1.4,2.5-2.5,4-3.3c1.6-0.7,3.3-1.1,5.3-1.1c2,0,3.8,0.4,5.4,1.3
+                  c1.6,0.9,3,2.1,4.1,3.6c1.1,1.6,2,3.5,2.6,5.7c0.6,2.2,0.9,4.7,0.9,7.4c0,2.6-0.3,5-0.9,7.1c-0.6,2.1-1.5,3.8-2.6,5.3
+                  c-1.1,1.4-2.4,2.5-4,3.2C33.6,43.6,31.9,44,30,44C28,44,26.1,43.6,24.5,42.9z"/>
+                </svg>
+            </h1>
+            <img src="images/guia-tallas-quot.jpg">
+        </section>
+    </div>
+    <div id="mySmallModalLabel" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>Antes de continuar, elige una talla</p>
                 </div>
             </div>
         </div>
@@ -52,15 +125,23 @@
 {% block javascripts %}
   {{ parent() }}
   <script>
-    function generateLink(vid_parent, vid){
-        var size = $('.div_' + vid).children('span').text();
-        window.location.assign("/personalizar/detalle?vidParent=" + vid_parent + "&vid=" + vid + "&size" + size);
-        //window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
+    function generateLink(vid_parent, vid, clase){
+        if($('.div_' + vid + '-' + clase).children('span').text() == 'Talla'){
+            alertSize();
+            event.stopPropagation();
+        } else {
+            var size = $('.div_' + vid + '-' + clase).children('span').text();
+            window.location.assign("/personalizar/detalle?vidParent=" + vid_parent + "&vid=" + vid + "&size=" + size);
+        }
     }
     
     function generateLinkFromDetail(vid_parent, vid){
         var size = $('#div_' + vid).children('span').text();
         window.location.assign("/personalizar/" + vid_parent + "/" + vid + "/" + size);
+    }
+
+    function alertSize() {
+        $('#mySmallModalLabel').modal();
     }
 
     function DropDown(el) {
@@ -77,10 +158,10 @@
         }
     }
     
-    function countShirt(vid_parent){
+    function countShirt(vid_parent, title){
         $.ajax({
             url: "/count-shirt",
-            data: {'vidParent': vid_parent },
+            data: {'vidParent': vid_parent, 'title': title },
             type: "get",
             success: function(data){
                 $('#count_shirt_'+vid_parent).html(data);
@@ -88,46 +169,36 @@
         });
     }
     $(document).ready(function(){
-        
+
         $('.bk-custom').click(function () {
             data = $(this).attr('name');
             ids = data.split('-');
-            description = $(this).attr('rel');
-            if($('.div_' + ids[1]).children('span').text() == 'Talla'){
-                alert('elija talla');
+            description = $('#' + ids[1] + '-description').text();
+            texts = $('#' + ids[1] + '-texts').text();
+            if($('.div_' + ids[1] + '-ppal').children('span').text() == 'Talla'){
+                alertSize();
                 event.stopPropagation();
             } else {
-                /*$('#link_modal').attr('href', '/personalizar/detalle?vidParent=' + ids[0] + '&vid=' + ids[1] + '&size');
-                $('#link_modal_cart').attr('href', '/carro-compras');
+                $('#link_modal').attr('href', '/personalizar/detalle?vidParent=' + ids[0] + '&vid=' + ids[1] + '&size=' + $('.div_' + ids[1] + '-ppal').children('span').text());
+                $('#link_modal_cart').attr('href', 'javascript:void(0);');
                 $('#link_modal_cart').attr('name', ids[0] + '-' + ids[1] + '-' + ids[2] + '-' + ids[3]);
-                $('#link_modal_cart').attr('rel', description);*/
-                img = $('#shirt_img_' + ids[1]).attr('src');
-                shirt_thum = $('#shirt_img_' + ids[1]).attr('src');
-                $.ajax({
-                    url: "/save-preorder",
-                    data: {
-                        'size': $('.div_' + ids[1]).children('span').text(),
-                        'title': ids[2],
-                        'description': description,
-                        'value': ids[3],
-                        'user_id': {{ userId }},
-                        'shirt': img,
-                        'vid': ids[1] ,
-                        'quant': 1,
-                        'vid_parent': ids[0],
-                        'anonimo' : '{{ user_anonimo }}',
-                        'shirt_thum': shirt_thum
-                    },
-                    type: "post",
-                    success: function(data){
-                        $('#alert-compra').fadeIn(1500);
-                        setTimeout(function() {
-                            $('#alert-compra').fadeOut(1500);
-                        },2000);
-                        $('#custom_detail').html('');
-                        $('#purchase_count').html(data);
-                    }
-                });
+                $('#link_modal_cart').attr('rel', description);
+            }
+        });
+
+        $('.bk-custom-bk').click(function () {
+            data = $(this).attr('name');
+            ids = data.split('-');
+            description = $('#' + ids[1] + '-description').text();
+            texts = $('#' + ids[1] + '-texts').text();
+            if($('.div_' + ids[1] + '-carousel').children('span').text() == 'Talla'){
+                alertSize();
+                event.stopPropagation();
+            } else {
+                $('#link_modal').attr('href', '/personalizar/detalle?vidParent=' + ids[0] + '&vid=' + ids[1] + '&size=' + $('.div_' + ids[1] + '-ppal').children('span').text());
+                $('#link_modal_cart').attr('href', 'javascript:void(0);');
+                $('#link_modal_cart').attr('name', ids[0] + '-' + ids[1] + '-' + ids[2] + '-' + ids[3]);
+                $('#link_modal_cart').attr('rel', description);
             }
         });
         
@@ -137,13 +208,49 @@
             info = data.split('-');
             img = $('#shirt_img_' + ids[1]).attr('src');
             $('#custom_detail').html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
+            img = $('#shirt_img_' + ids[1]).attr('src');
+            shirt_thum = $('#shirt_img_' + ids[1]).attr('src');
+            texts = $('#' + ids[1] + '-texts').text();
+            $.ajax({
+                url: "/save-preorder",
+                data: {
+                    'size': $('.div_' + ids[1] + '-ppal').children('span').text(),
+                    'title': ids[2],
+                    'description': description,
+                    'value': ids[3],
+                    'user_id': {{ userId }},
+                    'shirt': img,
+                    'vid': ids[1] ,
+                    'quant': 1,
+                    'vid_parent': ids[0],
+                    'anonimo' : '{{ user_anonimo }}',
+                    'shirt_thum': shirt_thum,
+                    'texts': texts,
+                    'custom': 0
+                },
+                type: "post",
+                success: function(data){
+                    if(data != 99999) {
+                        $('#myModal').modal('toggle');
+                        $('#popover').popover('show');
+                        setTimeout(function() {
+                            $('#alert-compra').fadeOut(1500);
+                            $('#popover').popover('hide');
+                        },2000);
+                        $('#custom_detail').html('');
+                        $('#purchase_count').html(data);
+                    } else {
+                        $('#purchase_count').html();
+                        window.location.assign("/login?referer=/colecciones");
+                    }
+                }
+            });
         });
         
         countArray = {{ collections|json_encode|raw }};
         products = countArray[0]['products'];
-        console.log(products);
         products.forEach(function(product) {
-            countShirt(product.vid);
+            countShirt(product.vid, product.title);
         });
         
         var dd = new DropDown( $('.dd') );
@@ -169,25 +276,51 @@
       $('#detail-2').carousel();
       $('#detail-3').carousel();
       $(".owl-carousel").owlCarousel({
-         loop:true,
-         margin:10,
-         responsiveClass:true,
+         loop: false,
+         //margin:10,
          responsive:{
            0:{
                items:1,
-               nav:false
+               dots:true,
+               margin:40,
            },
            600:{
                items:3,
-               nav:false
+               nav:false,
+               dots: false,
+               margin:10,
            },
-           1000:{
+           992:{
                items:5,
                nav:false,
-               loop:false
+               loop:false,
+               margin:10,
            }
          }
       });
+
+        $('.product-stock').each(function(){
+            id = $(this).attr('id');
+            count = getCookie(id);
+            $(this).html(count);
+        });
+
+
     });
+
+    function getCookieA(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
   </script>
 {% endblock %}

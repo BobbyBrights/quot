@@ -7,7 +7,7 @@
     <div class='col-md-12'>
       <div class='detail-wrapper'>
         <h1>La vito 2017 - II</h1>
-        <div class="owl-carousel">
+        <div class="owl-carousel owl-theme">
           {{ include('home/partials/product-teaser.html.twig') }}
           {{ include('home/partials/product-teaser.html.twig') }}
           {{ include('home/partials/product-teaser.html.twig') }}
@@ -44,7 +44,9 @@
          responsive:{
            0:{
                items:1,
-               nav:false
+               nav:true,
+               dots:false,
+               navText: ["Anterior", "Siguiente"]
            },
            600:{
                items:3,

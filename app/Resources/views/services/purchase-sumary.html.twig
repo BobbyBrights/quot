@@ -2,13 +2,12 @@
 
 {% block title %}Quot - Resumen de compra{% endblock %}
 {% block body %}
-    <!-- 4379-2639 -->
     <div class='row'>
         <div class='col-md-12'>
             <div class='user-form-wrapper'>
                 <div class='user-form'>
                     <h1>Compras</h1>
-                    <form method="post" action="https://sandbox.gateway.payulatam.com/ppp-web-gateway">
+                    <form method="post" id="purchase_form" action="https://gateway.payulatam.com/ppp-web-gateway">
                         <input name="merchantId" type="hidden" value="{{ merchatId }}"/>
                         <input name="accountId" type="hidden" value="{{ accountId }}"/>
                         <input name="description" type="hidden" value="Compra productos QUOT"/>
@@ -18,12 +17,12 @@
                         <input name="taxReturnBase" type="hidden" value="{{ taxReturnBase }}"/>
                         <input name="currency" type="hidden" value="COP"/>
                         <input name="signature" value="{{ signature }}" type="hidden"/>
-                        <input name="test" value="1" type="hidden"/>
+                        <input name="test" value="0" type="hidden"/>
                         <input name="buyerEmail" type="hidden"  value="{{ email }}" >
                         <input name="shippingAddress" value="{{ address }}" type="hidden"/>
                         <input name="shippingCity" value="Bogota" type="hidden"/>
                         <input name="shippingCountry" value="CO" type="hidden"/>
-                        <input name="responseUrl" type="hidden" value="{{ urlSite }}/resultado-compra"/>                    
+                        <input name="responseUrl" type="hidden" value="{{ urlSite }}/resultado-compra"/>
 
                         {% for prod in products%}
                             {{ include('services/partials/cart-item.html.twig', {'product': prod}) }}
@@ -49,12 +48,35 @@
                                 servidor de pagos autorizado
                             </p>
                         </div>
-                        <div class="input-group align-center margin-top-40">
-                            <input name="Submit" type="submit"  value="Comprar" >
-                        </div>
                     </form>
+                    <div class="input-group align-center margin-top-40">
+                        <button id="purchase-btn" name="Submit" type="submit"  value="Comprar" >
+                            Comprar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+    <script>
+        $('#purchase-btn').click(function () {
+            $.ajax({
+                url: "{{ path('save_order') }}",
+                type: "get",
+                data: {
+                    referenceCode: '{{ reference }}',
+                    TX_VALUE: '{{ total }}'
+                },
+                success: function(response) {
+                    $('#purchase_form').submit();
+                },
+                error: function (xhr) {
+                    alert('Error, intente nuevamente');
+                }
+            });
+        });
+    </script>
 {% endblock %}

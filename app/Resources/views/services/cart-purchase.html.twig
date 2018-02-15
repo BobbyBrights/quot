@@ -7,8 +7,9 @@
         <div class='col-md-12'>
             <div class='product-to-cart-wrapper'>
                 {% for shirt in products %}
-                    <div class='row'>
-                        <div class='col-md-6'>
+                    {%  set texts = shirt.texts|split('-') %}
+                    <div id="id_purchase_{{ shirt.id }}" class='row'>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                             <div class='row'>
                                 <div class='col-md-5'>
                                     <div class='product-teaser product-to-cart-shirt'>
@@ -23,54 +24,102 @@
                                 </div>
                                 <div class='col-md-7 product-to-cart-detail'>
                                     <h2>{{ shirt.title }}</h2>
+                                    <h4>Talla {{ shirt.size }}</h4>
                                     <span>${{ shirt.value }}</span>
+                                    <div class="premium-action">
+                                        {% if suscriptor == 4  and shirt.custom == 1 %}
+                                            <p>personalización</p>
+                                            <h3>gratis</h3>
+                                        {% elseif shirt.custom == 1 %}
+                                            <p>personalización</p>
+                                            <h3>$ 30.000</h3>
+                                            <a href="{{ path('cultura') }}">Personaliza todas tus camisas durante un año haciendo parte de la cultura Quot</a>
+                                        {% endif %}
+                                    </div>
                                     <div class='product-to-cart-table'>
                                         <div class='row'>
                                             <div class='col-md-6'>
-                                                <h4>Talla {{ shirt.size }}</h4>
-                                                <p>
-                                                    Cuello semi-frances
-                                                    puño redondo
-                                                </p>
+                                                <p>{{ shirt.description }}</p>
                                             </div>
-                                            <div class='col-md-6 align-right'>
-                                                <h4>DETALLES</h4>
-                                                <p>
-                                                    Botones rojos
-                                                    hilo rojo
-                                                </p>
-                                            </div>
+                                                <div class='col-md-6 align-right'>
+                                                    <!--<h4>DETALLES</h4>-->
+                                                    {% if texts.1 is defined %}
+                                                        <p>{{ texts.1 }}</p>
+                                                    {% endif %}
+                                                    {% if texts.2 is defined %}
+                                                        <p>{{ texts.2 }}</p>
+                                                    {% endif %}
+                                                    {% if texts.3 is defined %}
+                                                        <p>{{ texts.3 }}</p>
+                                                    {% endif %}
+                                                </div>
                                         </div>
-                                        <div class='row'>
+                                        {#<div class='row'>
+                                            {% if texts.2 is defined %}
                                             <div class='col-md-6'>
                                                 <h4>Combinacion</h4>
-                                                <p>
-                                                    Pechera
-                                                    Puños
-                                                </p>
+                                                <p>{{ texts.2 }}</p>
                                             </div>
+                                            {% endif %}
                                             <div class='col-md-6 align-right'>
                                             </div>
-                                        </div>
+                                        </div>#}
                                     </div>
-                                    <div class='product-to-cart-stock'>
-                                        20 de 50
-                                    </div>
+                                    <div id="count_shirt_{{ shirt.vid }}" class='product-to-cart-stock'></div>
                                 </div>
                             </div>
                         </div>
-                        <div class='col-md-6'>
-                            <div class='product-to-cart-links'>
-                                <a href="/personalizar/detalle?vidParent={{ shirt.parent_vid }}&vid={{ shirt.vid }}&size={{ shirt.size }}">Editar</a>
+                        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                            <div class='product-to-cart-links visible-lg-block visible-md-block'>
+                                <a href="/personalizar/detalle?vidParent={{ shirt.parent_vid }}&vid={{ shirt.vid_edit }}&size={{ shirt.size }}">Editar</a>
                                 <a href="/resumen-compra">Seguir a checkout</a>
-                            </div>  
+                                <a href="javascript:void(0);" onclick="deletePurchase({{ shirt.id }})">Eliminar</a>
+                            </div>
+                            <div class='product-to-cart-links-sd visible-sm-block visible-xs-block'>
+                                <a href="/personalizar/detalle?vidParent={{ shirt.parent_vid }}&vid={{ shirt.vid_edit }}&size={{ shirt.size }}">Editar</a>
+                                <a href="/resumen-compra">Seguir a checkout</a>
+                                <a href="javascript:void(0);" onclick="deletePurchase({{ shirt.id }})">Eliminar</a>
+                            </div>
                         </div>
                     </div>
+                    <div class="load_delete_bk" id="custom_detail_delete_{{ shirt.id }}"></div>
                 {% endfor %}
             </div>
         </div>
     </div>
     <div id="trans_module" class='row'></div>
+    <div id="mySmallModalLabel" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>Antes de continuar, elige una talla</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade white-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content white-modal-content">
+                <div class='white-modal-wrapper'>
+                    <h2>Primero los primeros</h2>
+                    <h3>Espera,</h3>
+                    <p>
+                        Durante nuestra preventa y por ser invitado especial, puedes personalizar tu camisa sin costo adicional. ¿Seguro que quieres agregarla al carro sin personalizar?
+                    </p>
+                    <div class='white-modal-links'>
+                        <a id="link_modal_cart" href="javascript:void(0);">Si, agregar</a>
+                    </div>
+                    <div class='white-modal-links'>
+                        <a id="link_modal" href="/personalizar/detalle?vidParent=4&vid=33&size=">Personalizarla</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
@@ -90,7 +139,38 @@
                 });
             }
         }
+
+        function deletePurchase(id) {
+            $('#custom_detail_delete_' + id).html('<div><img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/loading.gif"/></div>');
+            $.ajax({
+                url: "/delete-purchase",
+                data: {'id': id , 'count': parseInt($('#purchase_count').text())},
+                type: "get",
+                success: function(data){
+                    $('#id_purchase_' + id).html('');
+                    $('#purchase_count').html(data);
+                    $('#custom_detail_delete_' + id).html('');
+                }
+            });
+        }
+
+        function countShirt(vid_parent, title){
+            $.ajax({
+                url: "/count-shirt",
+                data: {'vidParent': vid_parent, 'title': title },
+                type: "get",
+                success: function(data){
+                    $('#count_shirt_' + vid_parent).html(data);
+                }
+            });
+        }
+
         $(document).ready(function () {
+            countArray = {{ products|json_encode|raw }};
+            for(item in countArray){
+                countShirt(countArray[item].vid, countArray[item].title);
+            }
+
             $('#trans_module').load('/module-trans', function (responseTxt, statusTxt) {
                 if (statusTxt == "success") {
                     var dd = new DropDown($('.dd'));
@@ -126,5 +206,19 @@
                 }
             });
         });
+
+        function generateLink(vid_parent, vid, clase){
+            if($('#div_' + vid).children('span').text() == 'Talla'){
+                alertSize();
+                event.stopPropagation();
+            } else {
+                var size = $('#div_' + vid).children('span').text();
+                window.location.assign("/personalizar/detalle?vidParent=" + vid_parent + "&vid=" + vid + "&size=" + size);
+            }
+        }
+
+        function alertSize() {
+            $('#mySmallModalLabel').modal();
+        }
     </script>
 {% endblock %}

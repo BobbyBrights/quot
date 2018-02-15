@@ -1,5 +1,9 @@
-{% image '%kernel.root_dir%/Resources/public/images/stone_bg.png' %}
-    <div name="collection" id="collection" class='row' style="background-image:url({{ asset_url }}); background-position: center">
+{% image '%kernel.root_dir%/' %}
+    {% if(module.imagen.src is defined) %}
+        <div name="collection" id="collection" class='row' style="background-image:url({{ module.imagen.src }}); background-position: center">
+    {% else %}
+            <div name="collection" id="collection" class='row' style="background-position: center">
+    {% endif %}
         <div class="couture">
             <div class='row'>
                 <h2>{{ module.title }}</h2>
@@ -9,7 +13,7 @@
                 {% for tt in blocks %}
                     <div class='col-md-4'>
                         <div class='promo-block'>
-                            {{ tt|replace({'<h4>': "<h3>", "</h3>" : "</h3>"})|raw }}
+                            <h3>{{ tt|replace({'<h4>': "", "</h4>" : "</h3>", "</p>": ""})|raw }}</p>
                         </div>
                     </div>
                 {% endfor %}

@@ -3,8 +3,12 @@
     <div id="ancla_{{ data.vid }}" name="ancla_{{ data.vid }}" class='col-md-6'>
         <div id="detail-{{ class }}" class="carousel slide" data-ride="carousel">
           <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox" style="background-image:url({{ data.images_bk }})">
-                {% for key,img in data.images %}
+            {% if data.images_bk is not empty %}
+            <div class="carousel-inner" role="listbox" style="background-image:url({{ data.images_bk }}); background-position: center; background-size: cover">
+                {% else %}
+                <div class="carousel-inner" role="listbox">
+                    {% endif %}
+                {% for key,img in data.images_carousel %}
                     {% if key == 0 %}
                         <div class="item active">
                     {% else %}
@@ -20,9 +24,9 @@
                 {% endfor %}
             </div>
             <!-- Controls -->
-            <a class="left carousel-control" href="#detail-{{ class }}" role="button" data-slide="prev">
+            <a class="left carousel-control product-detail-carousel-left" href="#detail-{{ class }}" role="button" data-slide="prev">
               <span class='carousel-control-arrow'>
-                {% image '%kernel.root_dir%/Resources/public/images/left-arrow.png'%}
+                {% image '%kernel.root_dir%/Resources/public/images/slim-left-arrow.png'%}
                   <img src="{{ asset_url }}" alt="previous"/>
                 {% endimage %}
               </span>
@@ -30,7 +34,7 @@
             </a>
             <a class="right carousel-control product-detail-carousel-right" href="#detail-{{ class }}" role="button" data-slide="next">
               <span class='carousel-control-arrow'>
-                {% image '%kernel.root_dir%/Resources/public/images/right-arrow.png'%}
+                {% image '%kernel.root_dir%/Resources/public/images/slim-right-arrow.png'%}
                   <img src="{{ asset_url }}" alt="right"/>
                 {% endimage %}
               </span>
@@ -44,17 +48,17 @@
             <h2>{{ data.title }}</h2>
             <div class='product-detail-info-block'>
                 <div class='row'>
-                    <div class='col-md-6'>
-                        <span>Talla</span>
+                    <div class='col-lg-10 col-md-10 col-sm-10 col-xs-10'>
                     </div>
-                    <div class='col-md-6'>
-                      <div id="div_{{ data.vid }}" class="dd wrapper-dropdown-5" tabindex="1"><span>Talla</span>
-            						<ul class="dropdown">
-                          {% for size in sizes %}
-                            <li><a>{{ size }}</a></li>
-                          {% endfor %}
-            						</ul>
-            					</div>
+                    <div class='col-lg-2 col-md-2 col-sm-2 col-xs-2'>
+                      <div class="div_{{ data.vid }}-carousel dd wrapper-dropdown-5" tabindex="1">
+                          <span>Talla</span>
+            			  <ul class="dropdown">
+                              {% for size in sizes %}
+                                  <li><a>{{ size }}</a></li>
+                              {% endfor %}
+            			  </ul>
+            			 </div>
                     </div>
                 </div>
             </div>
@@ -62,8 +66,9 @@
                 <span>${{ data.price }}</span>
             </div>
             <div class='product-detail-info-block aligned_right'>
-                <a onclick="generateLinkFromDetail('{{ vid_parent }}','{{ data.vid }}')">Personalizar</a><br />
-                <a>Agregar a compras</a>
+                <a onclick="generateLink('{{ vid_parent }}','{{ data.vid }}', 'carousel')"  href="javascript:void(0)">Personalizar</a><br />
+                <a class="bk-custom-bk" name="{{ vid_parent }}-{{ data.vid }}-{{ data.title }}-{{ data.price }}-carousel" data-toggle="modal" data-target="#myModal" href="javascript:void(0)">Agregar a compras</a><br />
+                <a class="bk-custom-talla" data-toggle="modal" data-target="#myModalTalla" href="javascript:void(0)">Tabla de Tallas</a>
             </div>
             <div class='product-detail-info-block no-border'>
                 <h3>Descripci&oacute;n</h3>

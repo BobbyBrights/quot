@@ -11,36 +11,38 @@
         {% set aux1 = 0 %}
         {% set totalElemts = module.imagen|length - 1 %}
         {% for key, carousel in module.imagen %}
+            {% set vids = module.camisa_relacionada|split(',') %}
+            {% set vidsQ = [95, 33, 87, 84, 86] %}
             {% if aux1 < totalElemts %}
                 {% if key == 0 %}
                     <div class="item active">
-                {% else %}
-                    <div class="item">
-                {% endif %}
-                    <img src="{{ module.imagen[aux1].src }}" alt=""/>
-                    <div class="carousel-caption">
-                        {% image '%kernel.root_dir%/Resources/public/images/shirt-bg.png' %}
-                            <div class='product-wrapper' style="background-image:url({{ module.imagen[aux].src }}); background-position: center">
-                                <div class='row product-caption'>
-                                    <h3>{{ module.imagen[aux1].alt }}</h3>
-                                    <p>{{ module.imagen[aux].alt }}</p>
-                                </div>
-                                <div class='row product-links'>
-                                    <div class='col-md-6 col-lg-6 col-xs-12 col-sm-12 product-single-link'>
-                                      <a href="{{ path('products') }}">Personalizar</a>
+                        {% else %}
+                        <div class="item">
+                            {% endif %}
+                            <img src="{{ module.imagen[aux1].src }}" class="img-responsive"/>
+                            <div class="carousel-caption">
+                                {% image '%kernel.root_dir%/Resources/public/images/shirt-bg.png' %}
+                                <div class='product-wrapper' style="background-image:url({{ module.imagen[aux].src }}); background-position: center">
+                                    <div class='row product-caption'>
+                                        <h3>{{ module.imagen[aux1].alt }}</h3>
+                                        <p>{{ module.imagen[aux].alt }}</p>
                                     </div>
-                                    <div class='col-md-6 col-lg-6 col-xs-12 col-sm-12 product-single-link'>
-                                      <a href="{{ path('products') }}">Comprar</a>
+                                    <div class='row '>
+                                        <div class='col-md-6 col-lg-6 col-xs-12 col-sm-12 product-links-inverted  product-single-link'>
+                                            <a href="{{ path('custom-detail') }}?vidParent=4&vid={{ vidsQ[key] }}&size=M">Personalizar</a>
+                                        </div>
+                                        <div class='col-md-6 col-lg-6 col-xs-12 col-sm-12 product-links product-single-link'>
+                                            <a href="{{ path('products') }}">Comprar</a>
+                                        </div>
                                     </div>
                                 </div>
+                                {% endimage %}
                             </div>
-                        {% endimage %}
-                    </div>
-                </div>
-                {% set aux = aux + 2 %}
-                {% set aux1 = aux1 + 2 %}
-            {% endif %}
-        {% endfor %}
+                        </div>
+                    {% set aux = aux + 2 %}
+                    {% set aux1 = aux1 + 2 %}
+                {% endif %}
+            {% endfor %}
     </div>
 
   <!-- Controls -->
@@ -61,3 +63,4 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+

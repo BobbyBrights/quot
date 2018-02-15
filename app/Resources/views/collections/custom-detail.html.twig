@@ -22,10 +22,15 @@
 {% block javascripts %}
   {{ parent() }}
   <script>
+        var keyCom = 0;
+        var hiloCom = '';
+        var urlG = '';
+        var hrefFinal = '';
+        var $urlImgBtn = '';
         $(document).ready(function(){
             $.ajax({
                 url: "/personalizar/detalle-ajax",
-                data: {'vidParent':'{{ vidParent }}', 'vid':'{{ vid }}', 'child':'{{ child }}', 'vchild':'{{ vchild }}', 'child1':'{{ child1 }}', 'vchild1':'{{ vchild1 }}',  'child2':'{{ child2 }}',  'vchild2':'{{ vchild2 }}',  'size':'{{ size }}'},
+                data: {'com_n3': {{ com_n3 }}, 'com_n2': {{ com_n2 }}, 'com_n0': {{ com_n0 }}, 'com_n1': {{ com_n1 }}, 'vidParent':'{{ vidParent }}', 'vid':'{{ vid }}', 'child':'{{ child }}', 'vchild':'{{ vchild }}', 'child1':'{{ child1 }}', 'vchild1':'{{ vchild1 }}',  'child2':'{{ child2 }}',  'vchild2':'{{ vchild2 }}',  'size':'{{ size }}'},
                 type: "get",
                 success: function(data){
                     $('#custom_detail').html(data);
@@ -43,30 +48,68 @@
             });
         }
 
-        function changeImg(key, urlNext, urlPrev){
+        function changeImg(key, urlNext, nivel){
+            keyCom = key;
+            urlG = urlNext;
             $('#btn_next').attr('onclick', 'loadPage("' + urlNext + '")');
+            if(nivel == 3){
+                hrefFinal = urlG.replace('/personalizar/detalle?', '/resumen-camisa?');
+                $('#final_shirt').attr('href', hrefFinal);
+                $('#btn_next_f').attr('href', hrefFinal);
+            }
             $("div[id*='detail_']").css('display', 'none');
             $("#detail_" + key).css('display', 'block');
             if($('#radio01').is(':checked')){
-                $("#detail_" + key + " #combination_1").css('display', 'block');
+                $("#detail_" + key + " #combination_" + key + "_1").css('display', 'block');
             } else{
-                $("#detail_" + key + " #combination_0").css('display', 'block');
+                $("#detail_" + key + " #combination_" + key + "_0").css('display', 'block');
             }
         }
-        
-        function changeCom(id){
-            var hrefCom = $('#final_shirt').attr('href');
-            if(id == '1'){                
-                var hrefFinal = hrefCom.replace("&com=0", "&com=1");
-                $('#final_shirt').attr('href', hrefFinal);
-                $('#btn_next_f').attr('href', hrefFinal);
+
+        function changeImgHl(hilo, hiloC) {
+            hiloCom = shirtChild[keyCom]['images_detail_hl'][hiloC];
+            if($('#radio01').is(':checked')){
+                $("#detail_" + keyCom + " #combination_" + keyCom + "_1 img").attr('src', shirtChild[keyCom]['images_detail_hl'][hiloC]);
             } else{
-                var hrefFinal = hrefCom.replace("&com=1", "&com=0");
+                $("#detail_" + keyCom + " #combination_" + keyCom + "_0 img").attr('src', shirtChild[keyCom]['images_detail_hl'][hilo]);
+            }
+
+        }
+        
+        function changeCom(id, nivel){
+            var hrefCom = $('#final_shirt').attr('href');
+            if(id == '1'){
+                urlG = urlG.replace("&com_n"+nivel+"=0", "&com_n"+nivel+"=1");
+                hrefFinal = hrefCom.replace("&com_n"+nivel+"=0", "&com_n"+nivel+"=1");
                 $('#final_shirt').attr('href', hrefFinal);
                 $('#btn_next_f').attr('href', hrefFinal);
+                $('#btn_next').attr('onclick', 'loadPage("' + urlG + '")');
+            } else{
+                urlG = urlG.replace("&com_n"+nivel+"=1", "&com_n"+nivel+"=0");
+                hrefFinal = hrefCom.replace("&com_n"+nivel+"=1", "&com_n"+nivel+"=0");
+                $('#final_shirt').attr('href', urlG);
+                $('#btn_next_f').attr('href', urlG);
+                $('#btn_next').attr('onclick', 'loadPage("' + urlG + '")');
             }
             $("div[id*='combination_']").css('display', 'none');
-            $("#combination_" + id).css('display', 'block');
+            $("#combination_" + keyCom + "_" + id).css('display', 'block');
+        }
+
+        function getImgBtn() {
+            $("div[id*='combination_']").each(function(index){
+                if($(this).is(':visible')) {
+                    img = this;
+                    urlImgBtn = $(img.getElementsByTagName('img')).attr('src');
+                    setCookieA('hilo', urlImgBtn, '10000');
+                }
+            });
+        }
+
+        function setCookieA(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
   </script>
 {% endblock %}
