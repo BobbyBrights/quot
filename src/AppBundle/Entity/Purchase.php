@@ -43,6 +43,50 @@ class Purchase
     /** @ORM\Column(name="reference_pol", type="string", length=255, nullable=true) */
     protected $reference_pol;
 
+    /** @ORM\Column(name="pay_date", type="integer", length=255, nullable=true) */
+    protected $pay_date;
+
+    /** @ORM\Column(name="update_date", type="integer", length=255, nullable=true) */
+    protected $update_date;
+
+    /** @ORM\Column(name="confirmed", type="integer", length=255, nullable=true) */
+    protected $confirmed;
+
+    /** @ORM\Column(name="reference", type="string", length=255, nullable=true) */
+    protected $reference;
+
+    /**
+     * @return mixed
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * @param mixed $reference
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmed()
+    {
+        return $this->confirmed;
+    }
+
+    /**
+     * @param mixed $confirmed
+     */
+    public function setConfirmed($confirmed)
+    {
+        $this->confirmed = $confirmed;
+    }
+
     /**
      * Get id
      *
@@ -236,5 +280,53 @@ class Purchase
     public function getReferencePol()
     {
         return $this->reference_pol;
+    }
+
+    /**
+     * Set payDate
+     *
+     * @param integer $payDate
+     *
+     * @return Purchase
+     */
+    public function setPayDate($payDate)
+    {
+        $this->pay_date = $payDate;
+
+        return $this;
+    }
+
+    /**
+     * Get payDate
+     *
+     * @return integer
+     */
+    public function getPayDate()
+    {
+        return $this->pay_date;
+    }
+
+    /**
+     * Set updateDate
+     *
+     * @param integer $updateDate
+     *
+     * @return Purchase
+     */
+    public function setUpdateDate($updateDate)
+    {
+        $this->update_date = $updateDate;
+
+        return $this;
+    }
+
+    /**
+     * Get updateDate
+     *
+     * @return integer
+     */
+    public function getUpdateDate()
+    {
+        return $this->update_date;
     }
 }

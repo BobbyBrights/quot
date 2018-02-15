@@ -38,7 +38,10 @@ class PurchaseDetail
     
     /** @ORM\Column(name="vid", type="integer", length=255, nullable=true) */
     protected $vid;
-    
+
+    /** @ORM\Column(name="vidEdit", type="integer", length=255, nullable=true) */
+    protected $vidEdit;
+
     /** @ORM\Column(name="vid_parent", type="integer", length=255, nullable=true) */
     protected $vid_parent;
     
@@ -61,6 +64,34 @@ class PurchaseDetail
 
     /** @ORM\Column(name="shirt_thum", type="string", length=255, nullable=true) */
     protected $shirt_thum;
+
+    /** @ORM\Column(name="texts", type="string", length=1000, nullable=true) */
+    protected $texts;
+
+    /** @ORM\Column(name="img_btn", type="string", length=255, nullable=true) */
+    protected $img_btn;
+
+    /** @ORM\Column(name="combinations", type="string", length=255, nullable=true) */
+    protected $combinations;
+
+    /** @ORM\Column(name="custom", type="integer", length=255, nullable=true) */
+    protected $custom;
+
+    /**
+     * @return mixed
+     */
+    public function getImgBtn()
+    {
+        return $this->img_btn;
+    }
+
+    /**
+     * @param mixed $img_btn
+     */
+    public function setImgBtn($img_btn)
+    {
+        $this->img_btn = $img_btn;
+    }
 
     
 
@@ -385,4 +416,78 @@ class PurchaseDetail
     {
         return $this->shirt_thum;
     }
+
+    /**
+     * Set texts
+     *
+     * @param string $texts
+     *
+     * @return PurchaseDetail
+     */
+    public function setTexts($texts)
+    {
+        $this->texts = $texts;
+
+        return $this;
+    }
+
+    /**
+     * Get texts
+     *
+     * @return string
+     */
+    public function getTexts()
+    {
+        return $this->texts;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVidEdit()
+    {
+        return $this->vidEdit;
+    }
+
+    /**
+     * @param mixed $vidEdit
+     */
+    public function setVidEdit($vidEdit)
+    {
+        $this->vidEdit = $vidEdit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCombinations()
+    {
+        return $this->combinations;
+    }
+
+    /**
+     * @param mixed $combinations
+     */
+    public function setCombinations($combinations)
+    {
+        $this->combinations = $combinations;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustom()
+    {
+        return $this->custom;
+    }
+
+    /**
+     * @param mixed $custom
+     */
+    public function setCustom($custom)
+    {
+        $this->custom = $custom;
+    }
+
+
 }

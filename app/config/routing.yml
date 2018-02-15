@@ -100,6 +100,9 @@ address_save:
 result_compra:
     path:     /resultado-compra
     defaults: { _controller: AppBundle:Services:resultCompra }
+save_order:
+    path:     /save-order
+    defaults: { _controller: AppBundle:Services:saveOrder }
 module_trans:
     path:     /module-trans
     defaults: { _controller: AppBundle:Products:moduleTrans }
@@ -109,3 +112,27 @@ count_shirt:
 cart-purchase:
     path:     /carro-compras
     defaults: { _controller: AppBundle:Services:cartPurchase }
+pre-home:
+  path:       /pre-home
+  defaults:   { _controller: AppBundle:Home:preHome }
+delete-purchase:
+    path:     /delete-purchase
+    defaults: { _controller: AppBundle:Services:deletePurchase }
+profile:
+    path:     /perfil-usuario
+    defaults: { _controller: AppBundle:User:profile }
+edit_data_user:
+    path:     /edit-data-user
+    defaults: { _controller: AppBundle:User:editInfo }
+subscriptions_payments:
+    path:     /save-subscriptions
+    defaults: { _controller: AppBundle:Subscriptions:payments }
+cultura_validate:
+    path:     /validate-cultura-quot
+    defaults: { _controller: AppBundle:Subscriptions:validateCultura }
+cultura:
+    path:     /cultura-quot
+    defaults: { _controller: AppBundle:Subscriptions:cultura }
+subscription_payment_result:
+    path:     /resultado-compra-suscripcion
+    defaults: { _controller: AppBundle:Subscriptions:paymentResult }

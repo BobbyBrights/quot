@@ -71,11 +71,16 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    #transport: smtp
+    #host:      "%mailer_host%"
+    #username:  "%mailer_user%"
+    #password:  "%mailer_password%"
+    #spool:     { type: memory }
+    transport:  gmail
+    host:       null
+    username:   quot.developer@gmail.com
+    password:   developers
+    spool:      { type: memory }
 
 # Assetic
 assetic:

@@ -14,8 +14,8 @@ hwi_oauth:
     resource_owners:
         facebook:
             type:                'facebook'
-            client_id:           '1551315244925566'
-            client_secret:       'e87a3d76a527dd0e8a05ea7076027e94'
+            client_id:           '322752398201586'
+            client_secret:       '4acd134fe0f21fe9e9c2d9c7eef08e2c  '
             scope:               'email public_profile'
         google:
             type:                'google'

@@ -36,6 +36,11 @@ class User extends BaseUser
      */
     private $address;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Suscritors", mappedBy="user_suscritor")
+     */
+    private $suscritor;
+
     public function __construct()
     {
         parent::__construct();
@@ -120,5 +125,21 @@ class User extends BaseUser
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSuscritor()
+    {
+        return $this->suscritor;
+    }
+
+    /**
+     * @param mixed $suscritor
+     */
+    public function setSuscritor($suscritor)
+    {
+        $this->suscritor = $suscritor;
     }
 }

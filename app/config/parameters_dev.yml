@@ -1,13 +1,23 @@
-# This file is auto-generated during the composer install
 parameters:
     database_host: 127.0.0.1
     database_port: null
     database_name: symfony
     database_user: root
-    database_password: null
+    database_password: 123456
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
-    json_home: http://dev-quot.pantheonsite.io/modulos-home
+    json_productos: http://quotstore.com:8888/productos
+    json_home: http://quotstore.com:8888/modulos-home
+    access_codes: [UQ6VCX, UQY5ZS, UQQ24X, UQM8E5,UQ2SUX, UQ6TZG, UQZBF2, UQTWVH, UQB5GT, UQ99TX, UQAYH8, UQVYZV, UQUHRN, UQN5XH, UQTPN4, UQGZLW, UQ46VP, UQ94K9, UQW5HN, UQYGPG, UQVHW7, UQ4LGK, UQA5Q2, UQ95MP, UQWF2A, UQTWUJ, UQGYYR, UQV63P, UQS8L7, UQJZXV, UQFTWK, UQP53D, UQH9XB, UQXG5U, UQ5XW3, UQ8HU8, UQ3JX3, UQMWBT, UQJ48C, UQ4PBE, UQWT4L, UQY6PX, UQKJJJ, UQZ499, UQCBD4, UQ5JBK, UQW3BY, UQVVUR, UQ78VD, UQRBW2, UQ7WEH, UQRQ2E, UQPRPN, UQXVUY, UQCE9W, UQMM7G, UQXQZG, UQ6US5, UQY4PV, UQTUJ5, UQDZW6, UQSJAJ, UQWR7Y, UQB8G2, UQBEPC, UQSC4Q, UQ4YHZ, UQSTDR, UQGU46, UQZQL4, UQKCBN, UQHEW8, UQY72R, UQTA7T, UQUKKN, UQ7TXR, UQUNQU, UQEWRG, UQMPTM, UQ2EFX]
+    reference_payment: compra_quot_t_
+    reference_payment_subscription: compra_suscripcion_t_
+    url_payU: https://gateway.payulatam.com/ppp-web-gateway
+    merchatId: 630936
+    accountId: 633275
+    apiKey: FhkmbRHL3nAveKjQ1IKEr6Qh8i
+    iva: 0.19
+    total_subscription: 70000
+    test_payU: 1

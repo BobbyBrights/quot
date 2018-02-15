@@ -62,6 +62,9 @@ class PurchaseDetail
     /** @ORM\Column(name="shirt_thum", type="string", length=255, nullable=true) */
     protected $shirt_thum;
 
+    /** @ORM\Column(name="texts", type="string", length=1000, nullable=true) */
+    protected $texts;
+
     
 
     /**
@@ -360,5 +363,53 @@ class PurchaseDetail
     public function getUserAnonimo()
     {
         return $this->user_anonimo;
+    }
+
+    /**
+     * Set shirtThum
+     *
+     * @param string $shirtThum
+     *
+     * @return PurchaseDetail
+     */
+    public function setShirtThum($shirtThum)
+    {
+        $this->shirt_thum = $shirtThum;
+
+        return $this;
+    }
+
+    /**
+     * Get shirtThum
+     *
+     * @return string
+     */
+    public function getShirtThum()
+    {
+        return $this->shirt_thum;
+    }
+
+    /**
+     * Set texts
+     *
+     * @param string $texts
+     *
+     * @return PurchaseDetail
+     */
+    public function setTexts($texts)
+    {
+        $this->texts = $texts;
+
+        return $this;
+    }
+
+    /**
+     * Get texts
+     *
+     * @return string
+     */
+    public function getTexts()
+    {
+        return $this->texts;
     }
 }
